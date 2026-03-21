@@ -1,26 +1,28 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import type { TerminalLine } from "@/entities/command";
+import type { CommandResult, TerminalLine } from "@/entities/command";
 import { parseCommand } from "@/entities/command";
 import { buildFileSystem } from "@/entities/file-system";
 import type { Post } from "@/entities/post";
 import { executeCommand } from "@/features/command-executor";
 import { CommandInput } from "@/features/command-input";
 import { TerminalLineRenderer } from "@/features/terminal-output";
-import { ASCII_BANNER } from "./ascii-banner";
+import { ASCII_BANNER } from "@/shared/lib/ascii-banner";
 import { MobileCommandBar } from "./mobile-command-bar";
 import { TerminalBackground } from "./terminal-background";
 
 interface TerminalWindowProps {
   posts: Post[];
+  initialCommand?: string;
 }
 
-const lineIdCounter = { current: 100 };
-function nextId(): string {
-  lineIdCounter.current += 1;
-  return `line-${lineIdCounter.current}`;
+interface ChatMessage {
+  role: "user" | "assistant";
+  content: string;
 }
+
+const MAX_LINES = 500;
 
 function createInitialLines(): TerminalLine[] {
   return [
@@ -38,12 +40,72 @@ function createInitialLines(): TerminalLine[] {
   ];
 }
 
-export function TerminalWindow({ posts }: TerminalWindowProps) {
+function executeAiSlashCommand(
+  cmd: string,
+  chatHistory: ChatMessage[],
+): { result: CommandResult; clearHistory?: boolean } | null {
+  switch (cmd) {
+    case "/status":
+      return {
+        result: {
+          type: "text",
+          content: `Model: llama-3.3-70b-versatile (Groq)\nMode: AI chat\nConversation turns: ${Math.floor(chatHistory.length / 2)}`,
+        },
+      };
+    case "/clear":
+      return {
+        clearHistory: true,
+        result: {
+          type: "text",
+          content: "Conversation history cleared.",
+        },
+      };
+    case "/context": {
+      const contextChars = chatHistory.reduce(
+        (sum, msg) => sum + msg.content.length,
+        0,
+      );
+      const contextTokensEstimate = Math.ceil(contextChars / 4);
+      return {
+        result: {
+          type: "text",
+          content: `Conversation turns: ${Math.floor(chatHistory.length / 2)}\nContext size: ~${contextChars.toLocaleString()} chars (~${contextTokensEstimate.toLocaleString()} tokens)\nMax history: 10 turns`,
+        },
+      };
+    }
+    case "/help":
+      return {
+        result: {
+          type: "text",
+          content: `AI mode commands:
+
+  /status    Show current model info
+  /clear     Clear conversation history
+  /context   Show context usage
+  /help      Show this help
+
+  !          Switch to terminal mode`,
+        },
+      };
+    default:
+      return null;
+  }
+}
+
+export function TerminalWindow({ posts, initialCommand }: TerminalWindowProps) {
   const [lines, setLines] = useState<TerminalLine[]>(createInitialLines);
   const [currentPath, setCurrentPath] = useState("~");
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [isAiMode, setIsAiMode] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const chatHistoryRef = useRef<ChatMessage[]>([]);
+  const lineIdRef = useRef(100);
+
+  const nextId = useCallback(() => {
+    lineIdRef.current += 1;
+    return `line-${lineIdRef.current}`;
+  }, []);
 
   const fs = useMemo(() => buildFileSystem(posts), [posts]);
   const allSlugs = useMemo(() => posts.map((p) => p.slug), [posts]);
@@ -52,8 +114,9 @@ export function TerminalWindow({ posts }: TerminalWindowProps) {
       slugs: allSlugs,
       dirs: fs.directories,
       pathEntries: posts.map((p) => `${p.category}/${p.slug}`),
+      currentPath,
     }),
-    [allSlugs, fs.directories, posts],
+    [allSlugs, fs.directories, posts, currentPath],
   );
 
   const scrollToBottom = useCallback(() => {
@@ -70,7 +133,16 @@ export function TerminalWindow({ posts }: TerminalWindowProps) {
   }, [lines, scrollToBottom]);
 
   const addLine = useCallback((line: TerminalLine) => {
-    setLines((prev) => [...prev, line]);
+    setLines((prev) => {
+      const next = [...prev, line];
+      return next.length > MAX_LINES ? next.slice(-MAX_LINES) : next;
+    });
+  }, []);
+
+  const replaceLine = useCallback((targetId: string, result: CommandResult) => {
+    setLines((prev) =>
+      prev.map((l) => (l.id === targetId ? { ...l, result } : l)),
+    );
   }, []);
 
   const handleCat = useCallback(
@@ -89,7 +161,6 @@ export function TerminalWindow({ posts }: TerminalWindowProps) {
         return;
       }
 
-      // If content is already loaded
       if (post.content) {
         addLine({
           id: nextId(),
@@ -100,9 +171,9 @@ export function TerminalWindow({ posts }: TerminalWindowProps) {
         return;
       }
 
-      // Fetch content
+      const loadingId = nextId();
       addLine({
-        id: nextId(),
+        id: loadingId,
         type: "output",
         result: { type: "text", content: "Loading..." },
       });
@@ -111,76 +182,23 @@ export function TerminalWindow({ posts }: TerminalWindowProps) {
         const res = await fetch(`/api/posts/${slug}`);
         if (!res.ok) throw new Error("Not found");
         const data = await res.json();
-        // Replace loading with actual content
-        setLines((prev) => {
-          const newLines = [...prev];
-          newLines[newLines.length - 1] = {
-            id: nextId(),
-            type: "output",
-            result: { type: "markdown", content: data.content },
-          };
-          return newLines;
-        });
+        replaceLine(loadingId, { type: "markdown", content: data.content });
       } catch {
-        setLines((prev) => {
-          const newLines = [...prev];
-          newLines[newLines.length - 1] = {
-            id: nextId(),
-            type: "output",
-            result: {
-              type: "error",
-              content: `cat: ${slug}: Failed to load content`,
-            },
-          };
-          return newLines;
+        replaceLine(loadingId, {
+          type: "error",
+          content: `cat: ${slug}: Failed to load content`,
         });
       }
       setIsProcessing(false);
     },
-    [posts, addLine],
-  );
-
-  const handleGrep = useCallback(
-    (keyword: string) => {
-      const lower = keyword.toLowerCase();
-      const matches = posts.filter(
-        (p) =>
-          p.title.toLowerCase().includes(lower) ||
-          p.description.toLowerCase().includes(lower) ||
-          p.tags.some((t) => t.toLowerCase().includes(lower)),
-      );
-
-      if (matches.length === 0) {
-        addLine({
-          id: nextId(),
-          type: "output",
-          result: {
-            type: "error",
-            content: `grep: no results for "${keyword}"`,
-          },
-        });
-      } else {
-        const content = matches
-          .map(
-            (p) =>
-              `${p.slug}\t${p.date}\t${p.tags.map((t) => `#${t}`).join(" ")}\n  ${p.description || p.title}`,
-          )
-          .join("\n\n");
-        addLine({
-          id: nextId(),
-          type: "output",
-          result: { type: "posts", content },
-        });
-      }
-      setIsProcessing(false);
-    },
-    [posts, addLine],
+    [posts, addLine, nextId, replaceLine],
   );
 
   const handleAsk = useCallback(
-    async (question: string) => {
+    async (question: string, withHistory = false) => {
+      const loadingId = nextId();
       addLine({
-        id: nextId(),
+        id: loadingId,
         type: "output",
         result: { type: "text", content: "Thinking..." },
       });
@@ -189,7 +207,10 @@ export function TerminalWindow({ posts }: TerminalWindowProps) {
         const res = await fetch("/api/ask", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ question }),
+          body: JSON.stringify({
+            question,
+            history: withHistory ? chatHistoryRef.current : undefined,
+          }),
         });
 
         if (!res.ok) throw new Error("API error");
@@ -197,44 +218,63 @@ export function TerminalWindow({ posts }: TerminalWindowProps) {
         const data = await res.json();
 
         let content = data.answer;
-        if (data.sources && data.sources.length > 0) {
+        if (data.sources?.length > 0) {
           content += "\n\n---\nSources:";
           for (const src of data.sources) {
             content += `\n  - ${src.title} (cat ${src.slug})`;
           }
         }
 
-        setLines((prev) => {
-          const newLines = [...prev];
-          newLines[newLines.length - 1] = {
-            id: nextId(),
-            type: "output",
-            result: { type: "markdown", content },
-          };
-          return newLines;
-        });
+        if (withHistory) {
+          chatHistoryRef.current = [
+            ...chatHistoryRef.current,
+            { role: "user", content: question },
+            { role: "assistant", content: data.answer },
+          ];
+        }
+
+        replaceLine(loadingId, { type: "markdown", content });
       } catch {
-        setLines((prev) => {
-          const newLines = [...prev];
-          newLines[newLines.length - 1] = {
-            id: nextId(),
-            type: "output",
-            result: {
-              type: "error",
-              content: "ask: error connecting to AI. Try again later.",
-            },
-          };
-          return newLines;
+        replaceLine(loadingId, {
+          type: "error",
+          content: "ask: error connecting to AI. Try again later.",
         });
       }
       setIsProcessing(false);
     },
-    [addLine],
+    [addLine, nextId, replaceLine],
   );
 
   const handleCommand = useCallback(
     (input: string) => {
-      // Add input line
+      // AI mode
+      if (isAiMode) {
+        addLine({
+          id: nextId(),
+          type: "input",
+          prompt: "ai",
+          command: input,
+        });
+        setCommandHistory((prev) => [...prev, input]);
+
+        const slashResult = executeAiSlashCommand(
+          input.trim().toLowerCase(),
+          chatHistoryRef.current,
+        );
+        if (slashResult) {
+          if (slashResult.clearHistory) {
+            chatHistoryRef.current = [];
+          }
+          addLine({ id: nextId(), type: "output", result: slashResult.result });
+          return;
+        }
+
+        setIsProcessing(true);
+        handleAsk(input, true);
+        return;
+      }
+
+      // Terminal mode
       addLine({
         id: nextId(),
         type: "input",
@@ -246,39 +286,34 @@ export function TerminalWindow({ posts }: TerminalWindowProps) {
 
       const parsed = parseCommand(input);
       const fsState = { ...fs, currentPath };
-      const { result, newPath, asyncAction, asyncArg } = executeCommand(
-        parsed,
-        fsState,
-        posts,
-        commandHistory,
-      );
+      const { result, newPath, asyncAction, asyncArg, openMailto } =
+        executeCommand(parsed, fsState, posts, commandHistory);
 
-      // Handle clear
       if (result?.type === "clear") {
         setLines([]);
         return;
       }
 
-      // Handle path change
       if (newPath !== undefined) {
         setCurrentPath(newPath);
       }
 
-      // Handle sync result
+      if (openMailto) {
+        window.location.href =
+          "mailto:senugw0u@gmail.com?subject=[seunan.dev] Contact";
+      }
+
       if (result) {
         addLine({ id: nextId(), type: "output", result });
         return;
       }
 
-      // Handle async actions
       if (asyncAction && asyncArg) {
         setIsProcessing(true);
         if (asyncAction === "cat") {
           handleCat(asyncArg);
-        } else if (asyncAction === "grep") {
-          handleGrep(asyncArg);
         } else if (asyncAction === "ask") {
-          handleAsk(asyncArg);
+          handleAsk(asyncArg, false);
         }
       }
     },
@@ -287,20 +322,31 @@ export function TerminalWindow({ posts }: TerminalWindowProps) {
       fs,
       posts,
       commandHistory,
+      isAiMode,
       addLine,
+      nextId,
       handleCat,
-      handleGrep,
       handleAsk,
     ],
   );
 
-  // Focus terminal on click — but not if user is selecting text or clicking a link
+  const initialCommandExecuted = useRef(false);
+  // biome-ignore lint/correctness/useExhaustiveDependencies: run only once on mount when handleCommand is ready
+  useEffect(() => {
+    if (initialCommand && !initialCommandExecuted.current) {
+      initialCommandExecuted.current = true;
+      handleCommand(initialCommand);
+    }
+  }, [initialCommand, handleCommand]);
+
+  const toggleAiMode = useCallback(() => {
+    setIsAiMode((prev) => !prev);
+  }, []);
+
   const handleTerminalClick = useCallback((e: React.MouseEvent) => {
-    // Don't steal focus from links
     const target = e.target as HTMLElement;
     if (target.closest("a")) return;
 
-    // Don't steal focus if user is selecting text
     const selection = window.getSelection();
     if (selection && selection.toString().length > 0) return;
 
@@ -312,10 +358,8 @@ export function TerminalWindow({ posts }: TerminalWindowProps) {
 
   return (
     <div className="h-screen w-screen flex items-center justify-center overflow-hidden relative">
-      {/* Background effect */}
       <TerminalBackground />
 
-      {/* Terminal window */}
       <div className="relative z-10 w-[90%] h-[90vh] flex flex-col rounded-lg overflow-hidden shadow-2xl border border-ctp-surface0">
         {/* Title bar */}
         <div className="shrink-0 bg-ctp-mantle/90 backdrop-blur-md rounded-t-lg px-4 py-2 flex items-center gap-2 border-b border-ctp-surface0">
@@ -329,7 +373,6 @@ export function TerminalWindow({ posts }: TerminalWindowProps) {
           </span>
         </div>
 
-        {/* Terminal body */}
         {/* biome-ignore lint/a11y/noStaticElementInteractions: terminal container needs click handler for focus */}
         {/* biome-ignore lint/a11y/useKeyWithClickEvents: keyboard input handled by CommandInput */}
         <div
@@ -349,10 +392,12 @@ export function TerminalWindow({ posts }: TerminalWindowProps) {
             history={commandHistory}
             completionContext={completionContext}
             disabled={isProcessing}
+            isAiMode={isAiMode}
+            onToggleAiMode={toggleAiMode}
+            onLayoutChange={scrollToBottom}
           />
         </div>
 
-        {/* Mobile command bar */}
         <MobileCommandBar onCommand={handleCommand} disabled={isProcessing} />
       </div>
     </div>

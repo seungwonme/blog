@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
+import { createWebSiteJsonLd, JsonLd } from "@/shared/lib";
 import "./globals.css";
 
 const SITE_NAME = "seunan.dev";
 const SITE_DESCRIPTION =
-  "Terminal-style blog powered by Notion — Catppuccin Mocha theme";
+  "Aiden Ahn — JAX Partners AX Director, Demodev Co-founder, and software engineer. Sharing insights on AI, automation, and software development.";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://seunan.dev";
 
 export const metadata: Metadata = {
@@ -14,15 +15,26 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   keywords: [
-    "blog",
-    "terminal",
-    "catppuccin",
-    "notion",
-    "developer",
     "Aiden Ahn",
+    "안승원",
+    "개발 블로그",
+    "소프트웨어 엔지니어",
+    "AI",
+    "바이브 코딩",
+    "vibe coding",
+    "자동화",
+    "n8n",
+    "Claude Code",
+    "대모산개발단",
+    "DemoDev",
+    "터미널 블로그",
   ],
-  authors: [{ name: "Aiden Ahn" }],
+  authors: [{ name: "Aiden Ahn", url: "https://github.com/seungwonme" }],
   creator: "Aiden Ahn",
+  publisher: "Aiden Ahn",
+  alternates: {
+    canonical: SITE_URL,
+  },
   openGraph: {
     type: "website",
     locale: "ko_KR",
@@ -33,8 +45,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/og-image.png",
-        width: 1200,
-        height: 630,
+        width: 2400,
+        height: 1260,
         alt: SITE_NAME,
       },
     ],
@@ -58,6 +70,9 @@ export const metadata: Metadata = {
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: {
+      "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || "",
+    },
   },
 };
 
@@ -74,7 +89,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" data-theme="dark">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <JsonLd data={createWebSiteJsonLd()} />
+        {children}
+      </body>
     </html>
   );
 }

@@ -13,12 +13,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  // Use the most recent post date as lastModified for homepage
+  const latestPostDate =
+    posts.length > 0
+      ? posts.reduce((latest, post) =>
+          post.date > latest.date ? post : latest,
+        ).date
+      : new Date().toISOString();
+
   return [
     {
       url: SITE_URL,
-      lastModified: new Date().toISOString(),
+      lastModified: latestPostDate,
       changeFrequency: "weekly" as const,
       priority: 1,
+    },
+    {
+      url: `${SITE_URL}/about`,
+      lastModified: latestPostDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
     },
     ...postRoutes,
   ];

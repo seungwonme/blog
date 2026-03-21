@@ -1,9 +1,53 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CompletionContext } from "@/entities/command";
 import { getCommandCompletions } from "@/entities/command";
+import { cn } from "@/shared/lib";
 import { TerminalCursor, TerminalPrompt } from "@/shared/ui";
+
+interface SlashMenuItemProps {
+  cmd: { name: string; description: string };
+  isSelected: boolean;
+  onMouseEnter: () => void;
+  onSelect: () => void;
+}
+
+const SlashMenuItem = memo(function SlashMenuItem({
+  cmd,
+  isSelected,
+  onMouseEnter,
+  onSelect,
+}: SlashMenuItemProps) {
+  return (
+    <div
+      className={cn(
+        "flex items-center gap-4 px-3 py-1.5 font-mono text-sm cursor-pointer",
+        isSelected
+          ? "bg-ctp-surface0 text-ctp-text"
+          : "text-ctp-subtext0 hover:bg-ctp-surface0/50",
+      )}
+      role="option"
+      tabIndex={-1}
+      aria-selected={isSelected}
+      onMouseEnter={onMouseEnter}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") onSelect();
+      }}
+      onClick={onSelect}
+    >
+      <span className="text-ctp-lavender min-w-[100px]">{cmd.name}</span>
+      <span className="text-ctp-overlay1 truncate">{cmd.description}</span>
+    </div>
+  );
+});
+
+const AI_SLASH_COMMANDS = [
+  { name: "/status", description: "Show current model info" },
+  { name: "/clear", description: "Clear conversation history" },
+  { name: "/context", description: "Show context usage" },
+  { name: "/help", description: "Show available commands" },
+] as const;
 
 interface CommandInputProps {
   currentPath: string;
@@ -11,6 +55,9 @@ interface CommandInputProps {
   history: string[];
   completionContext: CompletionContext;
   disabled?: boolean;
+  isAiMode?: boolean;
+  onToggleAiMode?: () => void;
+  onLayoutChange?: () => void;
 }
 
 export function CommandInput({
@@ -19,12 +66,36 @@ export function CommandInput({
   history,
   completionContext,
   disabled = false,
+  isAiMode = false,
+  onToggleAiMode,
+  onLayoutChange,
 }: CommandInputProps) {
   const [input, setInput] = useState("");
   const [cursorPos, setCursorPos] = useState(0);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [completions, setCompletions] = useState<string[]>([]);
+  const [slashMenuIndex, setSlashMenuIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Compute filtered slash commands based on current input
+  const slashMatches = useMemo(
+    () =>
+      isAiMode && input.startsWith("/") && !input.includes(" ")
+        ? AI_SLASH_COMMANDS.filter((cmd) =>
+            cmd.name.startsWith(input.toLowerCase()),
+          )
+        : [],
+    [isAiMode, input],
+  );
+  const showSlashMenu = slashMatches.length > 0;
+
+  // Reset menu index when matches change and scroll to show menu
+  useEffect(() => {
+    setSlashMenuIndex(0);
+    if (slashMatches.length > 0) {
+      onLayoutChange?.();
+    }
+  }, [slashMatches.length, onLayoutChange]);
 
   useEffect(() => {
     if (!disabled) {
@@ -107,7 +178,49 @@ export function CommandInput({
         return;
       }
 
-      // Tab: autocomplete
+      // Slash menu navigation
+      if (showSlashMenu) {
+        if (e.key === "ArrowUp") {
+          e.preventDefault();
+          setSlashMenuIndex((prev) =>
+            prev <= 0 ? slashMatches.length - 1 : prev - 1,
+          );
+          return;
+        }
+        if (e.key === "ArrowDown") {
+          e.preventDefault();
+          setSlashMenuIndex((prev) =>
+            prev >= slashMatches.length - 1 ? 0 : prev + 1,
+          );
+          return;
+        }
+        if (e.key === "Tab" || e.key === "Enter") {
+          e.preventDefault();
+          const selected = slashMatches[slashMenuIndex];
+          if (selected) {
+            // If it's an exact match, submit directly
+            if (input.toLowerCase() === selected.name) {
+              onSubmit(selected.name);
+              setInput("");
+              setCursorPos(0);
+              setHistoryIndex(-1);
+            } else {
+              // Fill in the command
+              setInput(selected.name);
+              setCursorPos(selected.name.length);
+            }
+          }
+          return;
+        }
+        if (e.key === "Escape") {
+          e.preventDefault();
+          setInput("");
+          setCursorPos(0);
+          return;
+        }
+      }
+
+      // Tab: autocomplete (terminal mode)
       if (e.key === "Tab") {
         e.preventDefault();
         const matches = getCommandCompletions(input, completionContext);
@@ -178,13 +291,34 @@ export function CommandInput({
       // Any other key clears completions
       setCompletions([]);
     },
-    [input, cursorPos, history, historyIndex, completionContext, onSubmit],
+    [
+      input,
+      cursorPos,
+      history,
+      historyIndex,
+      completionContext,
+      onSubmit,
+      showSlashMenu,
+      slashMatches,
+      slashMenuIndex,
+    ],
   );
 
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setInput(e.target.value);
-    setCursorPos(e.target.selectionStart ?? e.target.value.length);
-  }, []);
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = e.target.value;
+
+      // Toggle AI mode when '!' is typed on empty input
+      if (value === "!" && input === "" && onToggleAiMode) {
+        onToggleAiMode();
+        return;
+      }
+
+      setInput(value);
+      setCursorPos(e.target.selectionStart ?? value.length);
+    },
+    [input, onToggleAiMode],
+  );
 
   const handleSelect = useCallback(() => {
     if (inputRef.current) {
@@ -201,7 +335,10 @@ export function CommandInput({
         <div className="text-ctp-overlay1 mb-1">{completions.join("  ")}</div>
       )}
       <div className="flex items-center">
-        <TerminalPrompt path={currentPath} />
+        <TerminalPrompt
+          path={currentPath}
+          variant={isAiMode ? "ai" : "terminal"}
+        />
         <span className="text-ctp-text">&nbsp;</span>
         <div
           className="relative flex-1 flex items-center"
@@ -216,6 +353,7 @@ export function CommandInput({
             onSelect={handleSelect}
             disabled={disabled}
             className="bg-transparent text-ctp-text outline-none w-full caret-transparent font-mono text-sm"
+            placeholder={isAiMode ? "Ask anything..." : undefined}
             // biome-ignore lint/a11y/noAutofocus: terminal input must auto-focus
             autoFocus
             spellCheck={false}
@@ -229,6 +367,32 @@ export function CommandInput({
           </span>
         </div>
       </div>
+      {/* Slash command menu — below input */}
+      {showSlashMenu && (
+        <div className="mt-1 border border-ctp-surface0 rounded bg-ctp-mantle overflow-hidden">
+          {slashMatches.map((cmd, i) => (
+            <SlashMenuItem
+              key={cmd.name}
+              cmd={cmd}
+              isSelected={i === slashMenuIndex}
+              onMouseEnter={() => setSlashMenuIndex(i)}
+              onSelect={() => {
+                onSubmit(cmd.name);
+                setInput("");
+                setCursorPos(0);
+                setHistoryIndex(-1);
+                inputRef.current?.focus();
+              }}
+            />
+          ))}
+        </div>
+      )}
+      {/* Hint */}
+      {!input && !disabled && !showSlashMenu && (
+        <div className="text-ctp-overlay0 text-xs mt-1">
+          {isAiMode ? "! for terminal mode · / for commands" : "! for AI mode"}
+        </div>
+      )}
     </div>
   );
 }

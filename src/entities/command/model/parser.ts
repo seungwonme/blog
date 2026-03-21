@@ -11,6 +11,10 @@ const VALID_COMMANDS: CommandName[] = [
   "about",
   "tags",
   "whoami",
+  "hostname",
+  "echo",
+  "email",
+  "date",
   "history",
   "clear",
 ];
@@ -33,6 +37,15 @@ export function parseCommand(input: string): ParsedCommand {
     return { name: "ask", args: [askNoQuoteMatch[1]], raw: trimmed };
   }
 
+  // Handle echo: preserve everything after "echo "
+  const echoMatch = trimmed.match(/^echo\s+(.+)$/);
+  if (echoMatch) {
+    return { name: "echo", args: [echoMatch[1]], raw: trimmed };
+  }
+  if (trimmed === "echo") {
+    return { name: "echo", args: [], raw: trimmed };
+  }
+
   const parts = trimmed.split(/\s+/);
   const cmd = parts[0].toLowerCase();
   const args = parts.slice(1);
@@ -49,6 +62,8 @@ export interface CompletionContext {
   dirs: string[];
   /** Map of category → slugs for path-based completion */
   pathEntries: string[];
+  /** Current directory path for context-aware completion */
+  currentPath: string;
 }
 
 export function getCommandCompletions(
@@ -68,9 +83,20 @@ export function getCommandCompletions(
 
   // Complete arguments based on command
   if (cmd === "cat") {
-    // Match both plain slugs and category/slug paths
-    const allOptions = [...context.slugs, ...context.pathEntries];
-    return [...new Set(allOptions.filter((s) => s.startsWith(argPartial)))];
+    const segments =
+      context.currentPath === "~"
+        ? []
+        : context.currentPath.replace("~/", "").split("/");
+    if (segments.length > 0) {
+      // Inside a category: only suggest slugs in this directory
+      const categorySlugs = context.slugs.filter((_s, i) =>
+        context.pathEntries[i]?.startsWith(`${segments[0]}/`),
+      );
+      return categorySlugs.filter((s) => s.startsWith(argPartial));
+    }
+    // At home: suggest "about" and category/slug paths (not bare slugs)
+    const options = ["about", ...context.pathEntries];
+    return options.filter((s) => s.startsWith(argPartial));
   }
   if (cmd === "cd") {
     const dirs = ["~", "..", ...context.dirs];

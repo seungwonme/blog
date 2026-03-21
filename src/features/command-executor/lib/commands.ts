@@ -2,7 +2,8 @@ import type { CommandResult, ParsedCommand } from "@/entities/command";
 import type { VirtualFS } from "@/entities/file-system";
 import { getPathSegments, resolvePath } from "@/entities/file-system";
 import type { Post } from "@/entities/post";
-import { ASCII_BANNER } from "@/widgets/terminal/ui/ascii-banner";
+import { ASCII_BANNER } from "@/shared/lib/ascii-banner";
+import { getAboutContent } from "@/shared/lib/content";
 
 const HELP_TEXT = `Available commands:
 
@@ -13,9 +14,14 @@ const HELP_TEXT = `Available commands:
   cat <slug>        Read a blog post
   grep <keyword>    Search posts by keyword
   ask "<question>"  Ask AI about blog content
+  !                 Toggle AI chat mode (remembers context)
   about             Show profile information
+  email             Send me an email
   tags              List all tags
   whoami            Who are you?
+  hostname          Show hostname
+  echo <text>       Print text
+  date              Show current date/time
   history           Show command history
   clear             Clear terminal
 
@@ -27,23 +33,6 @@ Keyboard shortcuts:
   Ctrl+W            Delete word before cursor
   Ctrl+C            Cancel input
   Ctrl+L / Cmd+K    Clear screen`;
-
-const ABOUT_TEXT = `
-# About Me
-
-**Aiden Ahn** (안승원)
-Software Engineer
-
----
-
-## Contact & Links
-- GitHub: github.com/seungwonme
-- Blog: seunan.dev
-
----
-
-*Type 'ls' to browse posts, or 'ask "question"' to chat with AI.*
-`;
 
 function formatLsHome(fs: VirtualFS): string {
   const lines: string[] = [];
@@ -75,8 +64,9 @@ export function executeCommand(
 ): {
   result: CommandResult | null;
   newPath?: string;
-  asyncAction?: "cat" | "ask" | "grep";
+  asyncAction?: "cat" | "ask";
   asyncArg?: string;
+  openMailto?: boolean;
 } {
   if (!parsed.name) {
     return {
@@ -100,8 +90,37 @@ export function executeCommand(
     case "whoami":
       return { result: { type: "text", content: "visitor" } };
 
+    case "hostname":
+      return { result: { type: "text", content: "seunan.dev" } };
+
+    case "echo":
+      return {
+        result: {
+          type: "text",
+          content: parsed.args.join(" ") || "",
+        },
+      };
+
+    case "date":
+      return {
+        result: {
+          type: "text",
+          content: new Date().toLocaleString("ko-KR", {
+            timeZone: "Asia/Seoul",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            weekday: "short",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: false,
+          }),
+        },
+      };
+
     case "about":
-      return { result: { type: "markdown", content: ABOUT_TEXT } };
+      return { result: { type: "markdown", content: getAboutContent() } };
 
     case "history": {
       if (commandHistory.length === 0) {
@@ -180,8 +199,53 @@ export function executeCommand(
           result: { type: "error", content: "cat: missing operand" },
         };
       }
-      // Support both "cat slug" and "cat category/slug"
-      const slug = arg.includes("/") ? (arg.split("/").pop() ?? arg) : arg;
+
+      // Handle "about" file at home directory
+      if (arg === "about") {
+        return { result: { type: "markdown", content: getAboutContent() } };
+      }
+
+      // Resolve slug based on current path and argument
+      let slug: string;
+      if (arg.includes("/")) {
+        // Explicit path: "cat dev/hello-world"
+        const parts = arg.split("/");
+        const targetSlug = parts.pop() ?? arg;
+        const targetDir = parts.join("/");
+        const dirPosts = fs.files.get(targetDir);
+        if (!dirPosts?.some((p) => p.slug === targetSlug)) {
+          return {
+            result: {
+              type: "error",
+              content: `cat: ${arg}: No such file or directory`,
+            },
+          };
+        }
+        slug = targetSlug;
+      } else {
+        const segments = getPathSegments(fs.currentPath);
+        if (segments.length > 0) {
+          // Inside a category directory: only files in this directory
+          const categoryPosts = fs.files.get(segments[0]);
+          if (!categoryPosts?.some((p) => p.slug === arg)) {
+            return {
+              result: {
+                type: "error",
+                content: `cat: ${arg}: No such file in ${fs.currentPath}`,
+              },
+            };
+          }
+          slug = arg;
+        } else {
+          // At home directory: no post files here, only 'about'
+          return {
+            result: {
+              type: "error",
+              content: `cat: ${arg}: No such file. Try 'ls' to see available files.`,
+            },
+          };
+        }
+      }
       return { asyncAction: "cat", asyncArg: slug, result: null };
     }
 
@@ -192,7 +256,28 @@ export function executeCommand(
           result: { type: "error", content: "grep: missing pattern" },
         };
       }
-      return { asyncAction: "grep", asyncArg: keyword, result: null };
+      const lower = keyword.toLowerCase();
+      const matches = allPosts.filter(
+        (p) =>
+          p.title.toLowerCase().includes(lower) ||
+          p.description.toLowerCase().includes(lower) ||
+          p.tags.some((t) => t.toLowerCase().includes(lower)),
+      );
+      if (matches.length === 0) {
+        return {
+          result: {
+            type: "error",
+            content: `grep: no results for "${keyword}"`,
+          },
+        };
+      }
+      const content = matches
+        .map(
+          (p) =>
+            `${p.slug}\t${p.date}\t${p.tags.map((t) => `#${t}`).join(" ")}\n  ${p.description || p.title}`,
+        )
+        .join("\n\n");
+      return { result: { type: "posts", content } };
     }
 
     case "ask": {
@@ -207,6 +292,15 @@ export function executeCommand(
       }
       return { asyncAction: "ask", asyncArg: question, result: null };
     }
+
+    case "email":
+      return {
+        result: {
+          type: "text",
+          content: "Opening email client...",
+        },
+        openMailto: true,
+      };
 
     default:
       return {
