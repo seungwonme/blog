@@ -443,7 +443,7 @@ function cmdStart(options, prompt) {
   const jobsDir =
     options["jobs-dir"] ||
     process.env.COUNCIL_JOBS_DIR ||
-    path.join(require("os").tmpdir(), "agent-council-jobs");
+    path.join(require("node:os").tmpdir(), "agent-council-jobs");
 
   ensureDir(jobsDir);
 
