@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { createWebSiteJsonLd, JsonLd } from "@/shared/lib";
 import "./globals.css";
@@ -94,6 +95,7 @@ export default function RootLayout({
       <body className="antialiased">
         <JsonLd data={createWebSiteJsonLd()} />
         {children}
+        <Analytics />
       </body>
     </html>
   );

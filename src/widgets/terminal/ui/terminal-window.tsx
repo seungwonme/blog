@@ -360,7 +360,7 @@ export function TerminalWindow({ posts, initialCommand }: TerminalWindowProps) {
     <div className="h-screen w-screen flex items-center justify-center overflow-hidden relative">
       <TerminalBackground />
 
-      <div className="relative z-10 w-[90%] h-[90vh] flex flex-col rounded-lg overflow-hidden shadow-2xl border border-ctp-surface0">
+      <div className="relative z-10 w-[90%] h-[90dvh] md:h-[90vh] flex flex-col rounded-lg overflow-hidden shadow-2xl border border-ctp-surface0">
         {/* Title bar */}
         <div className="shrink-0 bg-ctp-mantle/90 backdrop-blur-md rounded-t-lg px-4 py-2 flex items-center gap-2 border-b border-ctp-surface0">
           <div className="flex gap-1.5">

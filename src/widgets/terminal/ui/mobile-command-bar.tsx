@@ -26,7 +26,6 @@ const EXTRA_COMMANDS = [
   { label: "date", cmd: "date" },
   { label: "history", cmd: "history" },
   { label: "email", cmd: "email" },
-  { label: "! AI", cmd: "!" },
 ];
 
 export function MobileCommandBar({
@@ -40,7 +39,6 @@ export function MobileCommandBar({
     { label: "/help", cmd: "/help" },
     { label: "/status", cmd: "/status" },
     { label: "/clear", cmd: "/clear" },
-    { label: "! Terminal", cmd: "!" },
   ];
 
   const primary = isAiMode ? aiCommands : PRIMARY_COMMANDS;
