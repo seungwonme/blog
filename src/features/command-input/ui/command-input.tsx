@@ -354,6 +354,7 @@ export function CommandInput({
             disabled={disabled}
             className="bg-transparent text-ctp-text outline-none w-full caret-transparent font-mono text-sm"
             placeholder={isAiMode ? "Ask anything..." : undefined}
+            aria-label={isAiMode ? "AI search input" : "Terminal command input"}
             // biome-ignore lint/a11y/noAutofocus: terminal input must auto-focus
             autoFocus
             spellCheck={false}
