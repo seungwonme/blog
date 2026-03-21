@@ -2,6 +2,7 @@
 
 import { memo } from "react";
 import ReactMarkdown from "react-markdown";
+import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
 import type { TerminalLine } from "@/entities/command";
 import { TerminalPrompt } from "@/shared/ui";
@@ -24,7 +25,10 @@ export const TerminalLineRenderer = memo(function TerminalLineRenderer({
   if (line.type === "input") {
     return (
       <div className="flex items-center">
-        <TerminalPrompt path={line.prompt ?? "~"} />
+        <TerminalPrompt
+          path={line.prompt ?? "~"}
+          variant={line.prompt === "ai" ? "ai" : "terminal"}
+        />
         <span className="text-ctp-text">&nbsp;{line.command}</span>
       </div>
     );
@@ -50,7 +54,7 @@ export const TerminalLineRenderer = memo(function TerminalLineRenderer({
     return (
       <div className="terminal-markdown">
         <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
+          remarkPlugins={[remarkGfm, remarkBreaks]}
           components={{
             a: ({ href, children }) => (
               <a

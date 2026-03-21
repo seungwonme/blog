@@ -10,8 +10,8 @@ import type {
   WithContext,
 } from "schema-dts";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
-const SITE_NAME = "Next.js Boilerplate";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://seunan.dev";
+const SITE_NAME = "seunan.dev";
 
 type JsonLdType =
   | WithContext<WebSite>
@@ -139,6 +139,34 @@ export function createOrganizationJsonLd(
     name: options.name,
     url: options.url,
     logo: options.logo,
+    sameAs: options.sameAs,
+  };
+}
+
+interface PersonJsonLdOptions {
+  name: string;
+  url: string;
+  jobTitle?: string;
+  worksFor?: { name: string; url?: string };
+  sameAs?: string[];
+}
+
+export function createPersonJsonLd(
+  options: PersonJsonLdOptions,
+): WithContext<Person> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: options.name,
+    url: options.url,
+    jobTitle: options.jobTitle,
+    worksFor: options.worksFor
+      ? {
+          "@type": "Organization",
+          name: options.worksFor.name,
+          url: options.worksFor.url,
+        }
+      : undefined,
     sameAs: options.sameAs,
   };
 }

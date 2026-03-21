@@ -1,5 +1,6 @@
 // Shared Lib - Public API
 
+export { ASCII_BANNER } from "./ascii-banner";
 export type { PostData, PostFrontmatter } from "./content";
 export {
   getAboutContent,
@@ -12,6 +13,7 @@ export {
   createBreadcrumbJsonLd,
   createFAQJsonLd,
   createOrganizationJsonLd,
+  createPersonJsonLd,
   createWebPageJsonLd,
   createWebSiteJsonLd,
   JsonLd,

@@ -9,6 +9,10 @@ export type CommandName =
   | "about"
   | "tags"
   | "whoami"
+  | "hostname"
+  | "echo"
+  | "email"
+  | "date"
   | "history"
   | "clear";
 
@@ -19,17 +23,8 @@ export interface ParsedCommand {
 }
 
 export interface CommandResult {
-  type:
-    | "text"
-    | "markdown"
-    | "error"
-    | "clear"
-    | "loading"
-    | "posts"
-    | "banner";
+  type: "text" | "markdown" | "error" | "clear" | "posts" | "banner";
   content: string;
-  isStreaming?: boolean;
-  sources?: Array<{ title: string; slug: string }>;
 }
 
 export interface TerminalLine {

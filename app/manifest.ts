@@ -2,14 +2,14 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Next.js Boilerplate",
-    short_name: "Next.js",
+    name: "seunan.dev",
+    short_name: "seunan",
     description:
-      "Production-ready Next.js boilerplate with TypeScript, Tailwind CSS, and shadcn/ui",
+      "Aiden Ahn의 터미널 스타일 개발 블로그 — AI, 바이브 코딩, 자동화",
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#000000",
+    background_color: "#1e1e2e",
+    theme_color: "#1e1e2e",
     icons: [
       {
         src: "/icon-192.png",

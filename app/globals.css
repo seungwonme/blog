@@ -3,7 +3,8 @@
 
 @font-face {
   font-family: "D2Coding";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff") format("woff");
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff")
+    format("woff");
   font-weight: normal;
   font-display: swap;
 }
@@ -238,6 +239,19 @@
 .terminal-markdown li {
   margin: 0.125rem 0;
 }
+.terminal-markdown li::marker {
+  color: #6c7086;
+}
+/* Nested list indentation */
+.terminal-markdown ul ul,
+.terminal-markdown ol ul {
+  padding-left: 1.5rem;
+  list-style: circle;
+}
+.terminal-markdown ul ol,
+.terminal-markdown ol ol {
+  padding-left: 1.5rem;
+}
 .terminal-markdown hr {
   border-color: #45475a;
   margin: 0.75rem 0;
@@ -266,8 +280,14 @@
 
 /* Cursor blink animation */
 @keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
 }
 .cursor-blink {
   animation: blink 1s step-end infinite;
