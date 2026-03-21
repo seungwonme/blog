@@ -1,2 +1,7 @@
-// Next.js App Router - re-export from FSD pages layer
-export { HomePage as default } from "@/pages/home";
+import { getPosts } from "@/entities/post";
+import { HomePage } from "@/pages/home";
+
+export default function Page() {
+  const posts = getPosts();
+  return <HomePage posts={posts} />;
+}

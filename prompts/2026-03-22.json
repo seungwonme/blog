@@ -38,5 +38,205 @@
     "time": "00:11:13",
     "user": "seungwonan",
     "prompt": "지금 한 단계 더 앞서있는데 깃 리셋 소프트로 뒤로갔다가 이그노어랑 같이 커밋 다시 해줘 그다음 각 브랜치에 반영"
+  },
+  {
+    "time": "00:12:05",
+    "user": "seungwonan",
+    "prompt": "다시 물어봐줘"
+  },
+  {
+    "time": "00:12:15",
+    "user": "seungwonan",
+    "prompt": "빌드하지말고 그냥 해줘"
+  },
+  {
+    "time": "00:13:12",
+    "user": "seungwonan",
+    "prompt": "아니 고민 중인게 웹 터미널 명령어 시뮬레이터처럼 만들고 명령어를 쳐야 볼 수 있도록 하려고 하는데 어떻게 생각해?"
+  },
+  {
+    "time": "00:22:01",
+    "user": "seungwonan",
+    "prompt": "그렇게 해줘"
+  },
+  {
+    "time": "00:31:18",
+    "user": "seungwonan",
+    "prompt": "진행해줘"
+  },
+  {
+    "time": "00:43:33",
+    "user": "seungwonan",
+    "prompt": "@font-face {\n    font-family: 'D2Coding';\n    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff') format('woff');\n    font-weight: normal;\n    font-display: swap;\n} \n\nfornt"
+  },
+  {
+    "time": "00:43:44",
+    "user": "seungwonan",
+    "prompt": "@font-face {\n    font-family: 'D2Coding';\n    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff') format('woff');\n    font-weight: normal;\n    font-display: swap;\n} \n\nfont 변경"
+  },
+  {
+    "time": "00:44:35",
+    "user": "seungwonan",
+    "prompt": "## Error Type\nRuntime ReferenceError\n\n## Error Message\njetbrainsMono is not defined\n\n\n    at RootLayout (app/layout.tsx:78:27)\n\n## Code Frame\n  76 |   return (\n  77 |     <html lang=\"ko\" suppressHydrationWarning>\n> 78 |       <body className={`${jetbrainsMono.variable} antialiased`}>\n     |                           ^\n  79 |         <ThemeProvider\n  80 |           attribute=\"data-theme\"\n  81 |           defaultTheme=\"dark\"\n\nNext.js version: 16.2.1 (Turbopack)"
+  },
+  {
+    "time": "00:45:33",
+    "user": "seungwonan",
+    "prompt": "풀 사이즈로 해줘"
+  },
+  {
+    "time": "00:46:19",
+    "user": "seungwonan",
+    "prompt": ".env.example 만들어줘"
+  },
+  {
+    "time": "00:51:31",
+    "user": "seungwonan",
+    "prompt": "notion 말고 cloudflare r2랑 d1 쓸래"
+  },
+  {
+    "time": "00:54:52",
+    "user": "seungwonan",
+    "prompt": "1로 가면 DB가 왜필요해?"
+  },
+  {
+    "time": "00:55:29",
+    "user": "seungwonan",
+    "prompt": "근데 DB가 필요하다고 생각한 것은 cloudflare cli를 통한 DB 접근이라고 생각했어"
+  },
+  {
+    "time": "00:56:01",
+    "user": "seungwonan",
+    "prompt": "아니야 AI 친화적이지 않잖아"
+  },
+  {
+    "time": "00:58:11",
+    "user": "seungwonan",
+    "prompt": "일단 Cloudflare Cli나 mcp로 d1 접근이 간단할까?"
+  },
+  {
+    "time": "01:01:31",
+    "user": "seungwonan",
+    "prompt": "왜 DB에 저장해야 하냐면 AI가 내 글을 나중에 참조하기 쉽게 하기 위해서야\n궁금한 것은 깃허브에 글을 써도 AI가 참조하기 쉬울까?"
+  },
+  {
+    "time": "01:01:48",
+    "user": "seungwonan",
+    "prompt": "로컬 말고 클라우드 환경에서"
+  },
+  {
+    "time": "01:02:41",
+    "user": "seungwonan",
+    "prompt": "그래 일단 그럼 깃허브로 하자\n그럼 vercel도 쓸 필요 없는 거 아냐?"
+  },
+  {
+    "time": "01:03:31",
+    "user": "seungwonan",
+    "prompt": "그래 vercel + 정적 파일로 하자"
+  },
+  {
+    "time": "01:06:37",
+    "user": "seungwonan",
+    "prompt": "그럼 AI는 뭐를 통해서 답변해?"
+  },
+  {
+    "time": "01:07:01",
+    "user": "seungwonan",
+    "prompt": "관련 글 본문을 어떻게 줄 수 있지?"
+  },
+  {
+    "time": "01:07:49",
+    "user": "seungwonan",
+    "prompt": "빌드 시 JSON 생성이 좋아보인다"
+  },
+  {
+    "time": "01:10:23",
+    "user": "seungwonan",
+    "prompt": "1. ctrl a, e 기능 추가\n2. cmd + k 가 clear\n3. 터미널에서 $ 사이에 띄어쓰기\n4. 터미널 전체가 화면에 딱 붙지말고 90퍼 + 중앙 정렬"
+  },
+  {
+    "time": "01:11:38",
+    "user": "seungwonan",
+    "prompt": "https://reactbits.dev/backgrounds/faulty-terminal\n\n이거 써볼래?"
+  },
+  {
+    "time": "01:13:18",
+    "user": "seungwonan",
+    "prompt": "1. $랑 입력 사이에 공백으로 변경\n2. 높이 유지 안된다 높이 유지\n\n추가로 이거 터미널 뒷 배경으로 써볼래?\n\npnpm dlx shadcn@latest add @react-bits/FaultyTerminal-TS-TW\nimport FaultyTerminal from './FaultyTerminal';\n\n<div style={{ width: '100%', height: '600px', position: 'relative' }}>\n  <FaultyTerminal\n    scale={1.5}\n    gridMul={[2, 1]}\n    digitSize={1.2}\n    timeScale={0.5}\n    pause={false}\n    scanlineIntensity={0.5}\n    glitchAmount={1}\n    flickerAmount={1}\n    noiseAmp={1}\n    chromaticAberration={0}\n    dither={0}\n    curvature={0.1}\n    tint=\"#A7EF9E\"\n    mouseReact\n    mouseStrength={0.5}\n    pageLoadAnimation\n    brightness={0.6}\n  />\n</div>\nimport { Renderer, Program, Mesh, Color, Triangle } from 'ogl';\nimport React, { useEffect, useRef, useMemo, useCallback } from 'react';\n\ntype Vec2 = [number, number];\n\nexport interface FaultyTerminalProps extends React.HTMLAttributes<HTMLDivElement> {\n  scale?: number;\n  gridMul?: Vec2;\n  digitSize?: number;\n  timeScale?: number;\n  pause?: boolean;\n  scanlineIntensity?: number;\n  glitchAmount?: number;\n  flickerAmount?: number;\n  noiseAmp?: number;\n  chromaticAberration?: number;\n  dither?: number | boolean;\n  curvature?: number;\n  tint?: string;\n  mouseReact?: boolean;\n  mouseStrength?: number;\n  dpr?: number;\n  pageLoadAnimation?: boolean;\n  brightness?: number;\n}\n\nconst vertexShader = `\nattribute vec2 position;\nattribute vec2 uv;\nvarying vec2 vUv;\nvoid main() {\n  vUv = uv;\n  gl_Position = vec4(position, 0.0, 1.0);\n}\n`;\n\nconst fragmentShader = `\nprecision mediump float;\n\nvarying vec2 vUv;\n\nuniform float iTime;\nuniform vec3  iResolution;\nuniform float uScale;\n\nuniform vec2  uGridMul;\nuniform float uDigitSize;\nuniform float uScanlineIntensity;\nuniform float uGlitchAmount;\nuniform float uFlickerAmount;\nuniform float uNoiseAmp;\nuniform float uChromaticAberration;\nuniform float uDither;\nuniform float uCurvature;\nuniform vec3  uTint;\nuniform vec2  uMouse;\nuniform float uMouseStrength;\nuniform float uUseMouse;\nuniform float uPageLoadProgress;\nuniform float uUsePageLoadAnimation;\nuniform float uBrightness;\n\nfloat time;\n\nfloat hash21(vec2 p){\n  p = fract(p * 234.56);\n  p += dot(p, p + 34.56);\n  return fract(p.x * p.y);\n}\n\nfloat noise(vec2 p)\n{\n  return sin(p.x * 10.0) * sin(p.y * (3.0 + sin(time * 0.090909))) + 0.2; \n}\n\nmat2 rotate(float angle)\n{\n  float c = cos(angle);\n  float s = sin(angle);\n  return mat2(c, -s, s, c);\n}\n\nfloat fbm(vec2 p)\n{\n  p *= 1.1;\n  float f = 0.0;\n  float amp = 0.5 * uNoiseAmp;\n  \n  mat2 modify0 = rotate(time * 0.02);\n  f += amp * noise(p);\n  p = modify0 * p * 2.0;\n  amp *= 0.454545;\n  \n  mat2 modify1 = rotate(time * 0.02);\n  f += amp * noise(p);\n  p = modify1 * p * 2.0;\n  amp *= 0.454545;\n  \n  mat2 modify2 = rotate(time * 0.08);\n  f += amp * noise(p);\n  \n  return f;\n}\n\nfloat pattern(vec2 p, out vec2 q, out vec2 r) {\n  vec2 offset1 = vec2(1.0);\n  vec2 offset0 = vec2(0.0);\n  mat2 rot01 = rotate(0.1 * time);\n  mat2 rot1 = rotate(0.1);\n  \n  q = vec2(fbm(p + offset1), fbm(rot01 * p + offset1));\n  r = vec2(fbm(rot1 * q + offset0), fbm(q + offset0));\n  return fbm(p + r);\n}\n\nfloat digit(vec2 p){\n    vec2 grid = uGridMul * 15.0;\n    vec2 s = floor(p * grid) / grid;\n    p = p * grid;\n    vec2 q, r;\n    float intensity = pattern(s * 0.1, q, r) * 1.3 - 0.03;\n    \n    if(uUseMouse > 0.5){\n        vec2 mouseWorld = uMouse * uScale;\n        float distToMouse = distance(s, mouseWorld);\n        float mouseInfluence = exp(-distToMouse * 8.0) * uMouseStrength * 10.0;\n        intensity += mouseInfluence;\n        \n        float ripple = sin(distToMouse * 20.0 - iTime * 5.0) * 0.1 * mouseInfluence;\n        intensity += ripple;\n    }\n    \n    if(uUsePageLoadAnimation > 0.5){\n        float cellRandom = fract(sin(dot(s, vec2(12.9898, 78.233))) * 43758.5453);\n        float cellDelay = cellRandom * 0.8;\n        float cellProgress = clamp((uPageLoadProgress - cellDelay) / 0.2, 0.0, 1.0);\n        \n        float fadeAlpha = smoothstep(0.0, 1.0, cellProgress);\n        intensity *= fadeAlpha;\n    }\n    \n    p = fract(p);\n    p *= uDigitSize;\n    \n    float px5 = p.x * 5.0;\n    float py5 = (1.0 - p.y) * 5.0;\n    float x = fract(px5);\n    float y = fract(py5);\n    \n    float i = floor(py5) - 2.0;\n    float j = floor(px5) - 2.0;\n    float n = i * i + j * j;\n    float f = n * 0.0625;\n    \n    float isOn = step(0.1, intensity - f);\n    float brightness = isOn * (0.2 + y * 0.8) * (0.75 + x * 0.25);\n    \n    return step(0.0, p.x) * step(p.x, 1.0) * step(0.0, p.y) * step(p.y, 1.0) * brightness;\n}\n\nfloat onOff(float a, float b, float c)\n{\n  return step(c, sin(iTime + a * cos(iTime * b))) * uFlickerAmount;\n}\n\nfloat displace(vec2 look)\n{\n    float y = look.y - mod(iTime * 0.25, 1.0);\n    float window = 1.0 / (1.0 + 50.0 * y * y);\n    return sin(look.y * 20.0 + iTime) * 0.0125 * onOff(4.0, 2.0, 0.8) * (1.0 + cos(iTime * 60.0)) * window;\n}\n\nvec3 getColor(vec2 p){\n    \n    float bar = step(mod(p.y + time * 20.0, 1.0), 0.2) * 0.4 + 1.0;\n    bar *= uScanlineIntensity;\n    \n    float displacement = displace(p);\n    p.x += displacement;\n\n    if (uGlitchAmount != 1.0) {\n      float extra = displacement * (uGlitchAmount - 1.0);\n      p.x += extra;\n    }\n\n    float middle = digit(p);\n    \n    const float off = 0.002;\n    float sum = digit(p + vec2(-off, -off)) + digit(p + vec2(0.0, -off)) + digit(p + vec2(off, -off)) +\n                digit(p + vec2(-off, 0.0)) + digit(p + vec2(0.0, 0.0)) + digit(p + vec2(off, 0.0)) +\n                digit(p + vec2(-off, off)) + digit(p + vec2(0.0, off)) + digit(p + vec2(off, off));\n    \n    vec3 baseColor = vec3(0.9) * middle + sum * 0.1 * vec3(1.0) * bar;\n    return baseColor;\n}\n\nvec2 barrel(vec2 uv){\n  vec2 c = uv * 2.0 - 1.0;\n  float r2 = dot(c, c);\n  c *= 1.0 + uCurvature * r2;\n  return c * 0.5 + 0.5;\n}\n\nvoid main() {\n    time = iTime * 0.333333;\n    vec2 uv = vUv;\n\n    if(uCurvature != 0.0){\n      uv = barrel(uv);\n    }\n    \n    vec2 p = uv * uScale;\n    vec3 col = getColor(p);\n\n    if(uChromaticAberration != 0.0){\n      vec2 ca = vec2(uChromaticAberration) / iResolution.xy;\n      col.r = getColor(p + ca).r;\n      col.b = getColor(p - ca).b;\n    }\n\n    col *= uTint;\n    col *= uBrightness;\n\n    if(uDither > 0.0){\n      float rnd = hash21(gl_FragCoord.xy);\n      col += (rnd - 0.5) * (uDither * 0.003922);\n    }\n\n    gl_FragColor = vec4(col, 1.0);\n}\n`;\n\nfunction hexToRgb(hex: string): [number, number, number] {\n  let h = hex.replace('#', '').trim();\n  if (h.length === 3)\n    h = h\n      .split('')\n      .map(c => c + c)\n      .join('');\n  const num = parseInt(h, 16);\n  return [((num >> 16) & 255) / 255, ((num >> 8) & 255) / 255, (num & 255) / 255];\n}\n\nexport default function FaultyTerminal({\n  scale = 1,\n  gridMul = [2, 1],\n  digitSize = 1.5,\n  timeScale = 0.3,\n  pause = false,\n  scanlineIntensity = 0.3,\n  glitchAmount = 1,\n  flickerAmount = 1,\n  noiseAmp = 1,\n  chromaticAberration = 0,\n  dither = 0,\n  curvature = 0.2,\n  tint = '#ffffff',\n  mouseReact = true,\n  mouseStrength = 0.2,\n  dpr = Math.min(window.devicePixelRatio || 1, 2),\n  pageLoadAnimation = true,\n  brightness = 1,\n  className,\n  style,\n  ...rest\n}: FaultyTerminalProps) {\n  const containerRef = useRef<HTMLDivElement>(null);\n  const programRef = useRef<Program>(null);\n  const rendererRef = useRef<Renderer>(null);\n  const mouseRef = useRef({ x: 0.5, y: 0.5 });\n  const smoothMouseRef = useRef({ x: 0.5, y: 0.5 });\n  const frozenTimeRef = useRef(0);\n  const rafRef = useRef<number>(0);\n  const loadAnimationStartRef = useRef<number>(0);\n  const timeOffsetRef = useRef<number>(Math.random() * 100);\n\n  const tintVec = useMemo(() => hexToRgb(tint), [tint]);\n\n  const ditherValue = useMemo(() => (typeof dither === 'boolean' ? (dither ? 1 : 0) : dither), [dither]);\n\n  const handleMouseMove = useCallback((e: MouseEvent) => {\n    const ctn = containerRef.current;\n    if (!ctn) return;\n    const rect = ctn.getBoundingClientRect();\n    const x = (e.clientX - rect.left) / rect.width;\n    const y = 1 - (e.clientY - rect.top) / rect.height;\n    mouseRef.current = { x, y };\n  }, []);\n\n  useEffect(() => {\n    const ctn = containerRef.current;\n    if (!ctn) return;\n\n    const renderer = new Renderer({ dpr });\n    rendererRef.current = renderer;\n    const gl = renderer.gl;\n    gl.clearColor(0, 0, 0, 1);\n\n    const geometry = new Triangle(gl);\n\n    const program = new Program(gl, {\n      vertex: vertexShader,\n      fragment: fragmentShader,\n      uniforms: {\n        iTime: { value: 0 },\n        iResolution: {\n          value: new Color(gl.canvas.width, gl.canvas.height, gl.canvas.width / gl.canvas.height)\n        },\n        uScale: { value: scale },\n\n        uGridMul: { value: new Float32Array(gridMul) },\n        uDigitSize: { value: digitSize },\n        uScanlineIntensity: { value: scanlineIntensity },\n        uGlitchAmount: { value: glitchAmount },\n        uFlickerAmount: { value: flickerAmount },\n        uNoiseAmp: { value: noiseAmp },\n        uChromaticAberration: { value: chromaticAberration },\n        uDither: { value: ditherValue },\n        uCurvature: { value: curvature },\n        uTint: { value: new Color(tintVec[0], tintVec[1], tintVec[2]) },\n        uMouse: {\n          value: new Float32Array([smoothMouseRef.current.x, smoothMouseRef.current.y])\n        },\n        uMouseStrength: { value: mouseStrength },\n        uUseMouse: { value: mouseReact ? 1 : 0 },\n        uPageLoadProgress: { value: pageLoadAnimation ? 0 : 1 },\n        uUsePageLoadAnimation: { value: pageLoadAnimation ? 1 : 0 },\n        uBrightness: { value: brightness }\n      }\n    });\n    programRef.current = program;\n\n    const mesh = new Mesh(gl, { geometry, program });\n\n    function resize() {\n      if (!ctn || !renderer) return;\n      renderer.setSize(ctn.offsetWidth, ctn.offsetHeight);\n      program.uniforms.iResolution.value = new Color(\n        gl.canvas.width,\n        gl.canvas.height,\n        gl.canvas.width / gl.canvas.height\n      );\n    }\n\n    const resizeObserver = new ResizeObserver(() => resize());\n    resizeObserver.observe(ctn);\n    resize();\n\n    const update = (t: number) => {\n      rafRef.current = requestAnimationFrame(update);\n\n      if (pageLoadAnimation && loadAnimationStartRef.current === 0) {\n        loadAnimationStartRef.current = t;\n      }\n\n      if (!pause) {\n        const elapsed = (t * 0.001 + timeOffsetRef.current) * timeScale;\n        program.uniforms.iTime.value = elapsed;\n        frozenTimeRef.current = elapsed;\n      } else {\n        program.uniforms.iTime.value = frozenTimeRef.current;\n      }\n\n      if (pageLoadAnimation && loadAnimationStartRef.current > 0) {\n        const animationDuration = 2000;\n        const animationElapsed = t - loadAnimationStartRef.current;\n        const progress = Math.min(animationElapsed / animationDuration, 1);\n        program.uniforms.uPageLoadProgress.value = progress;\n      }\n\n      if (mouseReact) {\n        const dampingFactor = 0.08;\n        const smoothMouse = smoothMouseRef.current;\n        const mouse = mouseRef.current;\n        smoothMouse.x += (mouse.x - smoothMouse.x) * dampingFactor;\n        smoothMouse.y += (mouse.y - smoothMouse.y) * dampingFactor;\n\n        const mouseUniform = program.uniforms.uMouse.value as Float32Array;\n        mouseUniform[0] = smoothMouse.x;\n        mouseUniform[1] = smoothMouse.y;\n      }\n\n      renderer.render({ scene: mesh });\n    };\n    rafRef.current = requestAnimationFrame(update);\n    ctn.appendChild(gl.canvas);\n\n    if (mouseReact) ctn.addEventListener('mousemove', handleMouseMove);\n\n    return () => {\n      cancelAnimationFrame(rafRef.current);\n      resizeObserver.disconnect();\n      if (mouseReact) ctn.removeEventListener('mousemove', handleMouseMove);\n      if (gl.canvas.parentElement === ctn) ctn.removeChild(gl.canvas);\n      gl.getExtension('WEBGL_lose_context')?.loseContext();\n      loadAnimationStartRef.current = 0;\n      timeOffsetRef.current = Math.random() * 100;\n    };\n  }, [\n    dpr,\n    pause,\n    timeScale,\n    scale,\n    gridMul,\n    digitSize,\n    scanlineIntensity,\n    glitchAmount,\n    flickerAmount,\n    noiseAmp,\n    chromaticAberration,\n    ditherValue,\n    curvature,\n    tintVec,\n    mouseReact,\n    mouseStrength,\n    pageLoadAnimation,\n    brightness,\n    handleMouseMove\n  ]);\n\n  return (\n    <div ref={containerRef} className={`w-full h-full relative overflow-hidden ${className}`} style={style} {...rest} />\n  );\n}"
+  },
+  {
+    "time": "01:15:15",
+    "user": "seungwonan",
+    "prompt": "1. ctrl a 시에 커서 안움직임 \n2. ctrl u 로 지울 수 있게 해줘\n3. ctrl w로 제거할 수 있게 해줘"
+  },
+  {
+    "time": "01:20:54",
+    "user": "seungwonan",
+    "prompt": "1. 명령어 칠 때마다 리랜더링되는 거 수정해줘\n2. 아직도 달러랑 입력이랑 붙어있음"
+  },
+  {
+    "time": "01:24:24",
+    "user": "seungwonan",
+    "prompt": "터미널 명령어 칠 때마다 백그라운드 애니메이션이 계속 새로 시작해\n추가로 백그라운드에 60% 검정 오버레이 깔아줘 너무 거슬린다"
+  },
+  {
+    "time": "01:25:28",
+    "user": "seungwonan",
+    "prompt": "GET / 200 in 1306ms (next.js: 747ms, application-code: 559ms)\n GET /manifest.webmanifest 200 in 206ms (next.js: 173ms, application-code: 33ms)\n[browser] Encountered a script tag while rendering React component. Scripts inside React components are never executed when rendering on the client. Consider using template tag instead (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template).\n[browser] Uncaught Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:\n\n- A server/client branch `if (typeof window !== 'undefined')`.\n- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.\n- Date formatting in a user's locale which doesn't match the server.\n- External changing data without sending a snapshot of it along with the HTML.\n- Invalid HTML tag nesting.\n\nIt can also happen if the client has a browser extension installed which messes with the HTML before React loaded.\n\nhttps://react.dev/link/hydration-mismatch\n\n  ...\n    <HTTPAccessFallbackBoundary notFound={{...}} forbidden={undefined} unauthorized={undefined}>\n      <HTTPAccessFallbackErrorBoundary pathname=\"/\" notFound={{...}} forbidden={undefined} unauthorized={undefined} ...>\n        <RedirectBoundary>\n          <RedirectErrorBoundary router={{...}}>\n            <InnerLayoutRouter url=\"/\" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>\n              <SegmentViewNode type=\"page\" pagePath=\"page.tsx\">\n                <SegmentTrieNode>\n                <Page>\n                  <HomePage>\n                    <TerminalWindow posts={[...]}>\n                      <div className=\"h-screen w...\">\n                        <TerminalBackground>\n                        <div className=\"relative z...\">\n                          <div>\n                          <div ref={{current:null}} onClick={function TerminalWindow.useCallback[handleTerminalClick]} ...>\n                            <div>\n                            <CommandInput currentPath=\"~\" onSubmit={function TerminalWindow.useCallback[handleCommand]} ...>\n                              <div>\n                                <div className=\"flex items...\">\n                                  <TerminalPrompt>\n                                  <span>\n                                  <div className=\"relative f...\">\n-                                   <sider-quick-translation\n-                                     dir=\"ltr\"\n-                                     data-gpts-theme=\"dark\"\n-                                     style={{display:\"contents\"}}\n-                                   >\n                          ...\n              ...\n            ...\n\n    at <unknown> (https://react.dev/link/hydration-mismatch)                                                                                                                       at div (<anonymous>)\n    at CommandInput (src/features/command-input/ui/command-input.tsx:220:9)\n    at TerminalWindow (src/widgets/terminal/ui/terminal-window.tsx:318:11)\n    at HomePage (src/pages/home/ui/home-page.tsx:9:10)\n    at Page (app/page.tsx:6:10)\n  218 |         <TerminalPrompt path={currentPath} />\n  219 |         <span className=\"text-ctp-text select-none\">&nbsp;</span>\n> 220 |         <div className=\"relative flex-1 flex items-center\">\n      |         ^\n  221 |           <input\n  222 |             ref={inputRef}\n  223 |             type=\"text\"\n GET /manifest.webmanifest 200 in 19ms (next.js: 12ms, application-code: 7ms)\n\n## Error Type\nConsole Error\n\n## Error Message\nEncountered a script tag while rendering React component. Scripts inside React components are never executed when rendering on the client. Consider using template tag instead (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template).\n\n\n    at script (<anonymous>:null:null)\n    at ThemeProvider (src/shared/ui/theme-provider.tsx:7:10)\n    at RootLayout (app/layout.tsx:79:9)\n\n## Code Frame\n  5 |\n  6 | export function ThemeProvider({ children, ...props }: ThemeProviderProps) {\n> 7 |   return <NextThemesProvider {...props}>{children}</NextThemesProvider>;\n    |          ^\n  8 | }\n  9 |\n\nNext.js version: 16.2.1 (Turbopack)\n\n\n## Error Type\nRecoverable Error\n\n## Error Message\nHydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:\n\n- A server/client branch `if (typeof window !== 'undefined')`.\n- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.\n- Date formatting in a user's locale which doesn't match the server.\n- External changing data without sending a snapshot of it along with the HTML.\n- Invalid HTML tag nesting.\n\nIt can also happen if the client has a browser extension installed which messes with the HTML before React loaded.\n\nhttps://react.dev/link/hydration-mismatch\n\n  ...\n    <HTTPAccessFallbackBoundary notFound={{...}} forbidden={undefined} unauthorized={undefined}>\n      <HTTPAccessFallbackErrorBoundary pathname=\"/\" notFound={{...}} forbidden={undefined} unauthorized={undefined} ...>\n        <RedirectBoundary>\n          <RedirectErrorBoundary router={{...}}>\n            <InnerLayoutRouter url=\"/\" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>\n              <SegmentViewNode type=\"page\" pagePath=\"page.tsx\">\n                <SegmentTrieNode>\n                <Page>\n                  <HomePage>\n                    <TerminalWindow posts={[...]}>\n                      <div className=\"h-screen w...\">\n                        <TerminalBackground>\n                        <div className=\"relative z...\">\n                          <div>\n                          <div ref={{current:null}} onClick={function TerminalWindow.useCallback[handleTerminalClick]} ...>\n                            <div>\n                            <CommandInput currentPath=\"~\" onSubmit={function TerminalWindow.useCallback[handleCommand]} ...>\n                              <div>\n                                <div className=\"flex items...\">\n                                  <TerminalPrompt>\n                                  <span>\n                                  <div className=\"relative f...\">\n-                                   <sider-quick-translation\n-                                     dir=\"ltr\"\n-                                     data-gpts-theme=\"dark\"\n-                                     style={{display:\"contents\"}}\n-                                   >\n                          ...\n              ...\n            ...\n\n\n\n    at div (<anonymous>:null:null)\n    at CommandInput (src/features/command-input/ui/command-input.tsx:220:9)\n    at TerminalWindow (src/widgets/terminal/ui/terminal-window.tsx:318:11)\n    at HomePage (src/pages/home/ui/home-page.tsx:9:10)\n    at Page (app/page.tsx:6:10)\n\n## Code Frame\n  218 |         <TerminalPrompt path={currentPath} />\n  219 |         <span className=\"text-ctp-text select-none\">&nbsp;</span>\n> 220 |         <div className=\"relative flex-1 flex items-center\">\n      |         ^\n  221 |           <input\n  222 |             ref={inputRef}\n  223 |             type=\"text\"\n\nNext.js version: 16.2.1 (Turbopack)"
+  },
+  {
+    "time": "01:25:52",
+    "user": "seungwonan",
+    "prompt": "banner 명령어 추가, 모든 명령어 help로 업데이트"
+  },
+  {
+    "time": "01:27:39",
+    "user": "seungwonan",
+    "prompt": "처음 배너랑 다르네 \n그리고 첫 시작이 banner 명령어로 시작된 걸로 해줘"
+  },
+  {
+    "time": "01:28:34",
+    "user": "seungwonan",
+    "prompt": "## Error Type\nConsole Error\n\n## Error Message\nEncountered a script tag while rendering React component. Scripts inside React components are never executed when rendering on the client. Consider using template tag instead (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template).\n\n\n    at script (<anonymous>:null:null)\n    at ThemeProvider (src/shared/ui/theme-provider.tsx:7:10)\n    at RootLayout (app/layout.tsx:79:9)\n\n## Code Frame\n  5 |\n  6 | export function ThemeProvider({ children, ...props }: ThemeProviderProps) {\n> 7 |   return <NextThemesProvider {...props}>{children}</NextThemesProvider>;\n    |          ^\n  8 | }\n  9 |\n\nNext.js version: 16.2.1 (Turbopack)\n         ...\n\n    at <unknown> (https://react.dev/link/hydration-mismatch)\n    at span (<anonymous>)\n    at TerminalPrompt (src/shared/ui/terminal-prompt.tsx:3:5)\n    at TerminalLineRenderer (src/features/terminal-output/ui/terminal-line-renderer.tsx:25:9)\n    at <unknown> (src/widgets/terminal/ui/terminal-window.tsx:320:15)\n    at Array.map (<anonymous>)\n    at TerminalWindow (src/widgets/terminal/ui/terminal-window.tsx:318:18)\n    at HomePage (src/pages/home/ui/home-page.tsx:9:10)\n    at Page (app/page.tsx:6:10)\n  1 | export function TerminalPrompt({ path }: { path: string }) {\n  2 |   return (\n> 3 |     <span className=\"whitespace-nowrap select-none\">\n    |     ^\n  4 |       <span className=\"text-ctp-green font-bold\">visitor</span>\n  5 |       <span className=\"text-ctp-text\">@</span>\n  6 |       <span className=\"text-ctp-green font-bold\">seunan.dev</span>\n GET /manifest.webmanifest 200 in 6ms (next.js: 3ms, application-code: 4ms)\n✓ Compiled in 189ms\n\n에러 해결좀"
+  },
+  {
+    "time": "01:29:32",
+    "user": "seungwonan",
+    "prompt": "드래그 가능하게 해줘\n링크 클릭도 가능하게 해줘"
+  },
+  {
+    "time": "01:30:24",
+    "user": "seungwonan",
+    "prompt": "## Error Type\nConsole Error\n\n## Error Message\nEncountered two children with the same key, `line-2`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.\n\n\n    at div (<anonymous>:null:null)\n    at eval (src/widgets/terminal/ui/terminal-window.tsx:331:13)\n    at Array.map (<anonymous>:null:null)\n    at TerminalWindow (src/widgets/terminal/ui/terminal-window.tsx:330:18)\n    at HomePage (src/pages/home/ui/home-page.tsx:9:10)\n    at Page (app/page.tsx:6:10)\n\n## Code Frame\n  329 |         >\n  330 |           {lines.map((line) => (\n> 331 |             <div key={line.id} className=\"mb-1\">\n      |             ^\n  332 |               <TerminalLineRenderer line={line} />\n  333 |             </div>\n  334 |           ))}\n\nNext.js version: 16.2.1 (Turbopack)"
+  },
+  {
+    "time": "01:30:48",
+    "user": "seungwonan",
+    "prompt": "터미널의 모든 것이 복사 가능하게 해줘"
+  },
+  {
+    "time": "01:31:55",
+    "user": "seungwonan",
+    "prompt": "tab 할 때 커서 맨 뒤로 안감"
+  },
+  {
+    "time": "01:33:10",
+    "user": "seungwonan",
+    "prompt": "## Error Type\nConsole Error\n\n## Error Message\nA tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:\n\n- A server/client branch `if (typeof window !== 'undefined')`.\n- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.\n- Date formatting in a user's locale which doesn't match the server.\n- External changing data without sending a snapshot of it along with the HTML.\n- Invalid HTML tag nesting.\n\nIt can also happen if the client has a browser extension installed which messes with the HTML before React loaded.\n\nhttps://react.dev/link/hydration-mismatch\n\n  ...\n    <ScrollAndMaybeFocusHandler cacheNode={{rsc:{...}, ...}}>\n      <InnerScrollAndFocusHandlerOld focusAndScrollRef={{scrollRef:null, ...}} cacheNode={{rsc:{...}, ...}}>\n        <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>\n          <LoadingBoundary name=\"/\" loading={null}>\n            <HTTPAccessFallbackBoundary notFound={{...}} forbidden={undefined} unauthorized={undefined}>\n              <HTTPAccessFallbackErrorBoundary pathname=\"/\" notFound={{...}} forbidden={undefined} ...>\n                <RedirectBoundary>\n                  <RedirectErrorBoundary router={{...}}>\n                    <InnerLayoutRouter url=\"/\" tree={[...]} params={{}} cacheNode={{rsc:{...}, ...}} segmentPath={[...]} ...>\n                      <SegmentViewNode type=\"page\" pagePath=\"page.tsx\">\n                        <SegmentTrieNode>\n                        <Page>\n                          <HomePage>\n                            <TerminalWindow posts={[...]}>\n                              <div className=\"h-screen w...\">\n                                <TerminalBackground>\n                                <div className=\"relative z...\">\n                                  <div>\n                                  <div\n                                    ref={{current:null}}\n                                    onClick={function TerminalWindow.useCallback[handleTerminalClick]}\n                                    onKeyDown={undefined}\n+                                   className=\"flex-1 overflow-y-auto p-4 font-mono text-sm text-ctp-text bg-ctp-base/...\"\n-                                   className=\"flex-1 overflow-y-auto p-4 font-mono text-sm text-ctp-text bg-ctp-base/...\"\n                                  >\n                                    <div className=\"mb-1\">\n                                      <TerminalLineRenderer line={{id:\"init-i...\", ...}}>\n                                        <div className=\"flex items...\">\n                                          <TerminalPrompt path=\"~\">\n                                            <span\n+                                             className=\"whitespace-nowrap\"\n-                                             className=\"whitespace-nowrap select-none\"\n                                            >\n                                          ...\n                                    <div className=\"mb-1\">\n                                      <TerminalLineRenderer line={{id:\"init-b...\", ...}}>\n                                        <div\n+                                         className=\"text-ctp-mauve whitespace-pre font-mono text-xs leading-tight\"\n-                                         className=\"text-ctp-mauve whitespace-pre font-mono text-xs leading-tight sel...\"\n                                        >\n+                                         {\"\\n███████╗███████╗██╗   ██╗███╗   ██╗ █████╗ ███╗   ██╗   ██████╗ ██████...\"}\n                                    <CommandInput currentPath=\"~\" ...>\n                                      <div>\n                                        <div className=\"flex items...\">\n                                          <TerminalPrompt path=\"~\">\n                                            <span\n+                                             className=\"whitespace-nowrap\"\n-                                             className=\"whitespace-nowrap select-none\"\n                                            >\n                                          <span\n+                                           className=\"text-ctp-text\"\n-                                           className=\"text-ctp-text select-none\"\n                                          >\n+                                           {\" \"}\n                                          ...\n                                  ...\n                      ...\n                    ...\n        ...\n\n\n\n    at span (<anonymous>:null:null)\n    at TerminalPrompt (src/shared/ui/terminal-prompt.tsx:3:5)\n    at TerminalLineRenderer (src/features/terminal-output/ui/terminal-line-renderer.tsx:25:9)\n    at <unknown> (src/widgets/terminal/ui/terminal-window.tsx:332:15)\n    at Array.map (<anonymous>:null:null)\n    at TerminalWindow (src/widgets/terminal/ui/terminal-window.tsx:330:18)\n    at HomePage (src/pages/home/ui/home-page.tsx:9:10)\n    at Page (app/page.tsx:6:10)\n\n## Code Frame\n  1 | export function TerminalPrompt({ path }: { path: string }) {\n  2 |   return (\n> 3 |     <span className=\"whitespace-nowrap\">\n    |     ^\n  4 |       <span className=\"text-ctp-green font-bold\">visitor</span>\n  5 |       <span className=\"text-ctp-text\">@</span>\n  6 |       <span className=\"text-ctp-green font-bold\">seunan.dev</span>\n\nNext.js version: 16.2.1 (Turbopack)\n\n\ncat dev/hello-world.md 이렇게 폴더, 파일이 자동 완성이 되게 해줘"
+  },
+  {
+    "time": "01:36:01",
+    "user": "seungwonan",
+    "prompt": "cat d 에서 탭하면 가장 가까운 dev 부터 탭 자동완성이 되고 그 다음에 hello-world가 잡혀야하는데 그렇게 안잡혀\n순서가 달라"
+  },
+  {
+    "time": "01:36:39",
+    "user": "seungwonan",
+    "prompt": "/review \n\n이후 커밋해줘"
+  },
+  {
+    "time": "01:37:30",
+    "user": "seungwonan",
+    "prompt": "커밋 훅이 왜 안되지?"
   }
 ]

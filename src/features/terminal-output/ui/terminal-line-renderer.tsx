@@ -1,0 +1,85 @@
+"use client";
+
+import { memo } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import type { TerminalLine } from "@/entities/command";
+import { TerminalPrompt } from "@/shared/ui";
+
+interface TerminalLineRendererProps {
+  line: TerminalLine;
+}
+
+export const TerminalLineRenderer = memo(function TerminalLineRenderer({
+  line,
+}: TerminalLineRendererProps) {
+  if (line.type === "banner") {
+    return (
+      <div className="text-ctp-mauve whitespace-pre font-mono text-xs leading-tight">
+        {line.result?.content}
+      </div>
+    );
+  }
+
+  if (line.type === "input") {
+    return (
+      <div className="flex items-center">
+        <TerminalPrompt path={line.prompt ?? "~"} />
+        <span className="text-ctp-text">&nbsp;{line.command}</span>
+      </div>
+    );
+  }
+
+  // output
+  const result = line.result;
+  if (!result) return null;
+
+  if (result.type === "banner") {
+    return (
+      <div className="text-ctp-mauve whitespace-pre font-mono text-xs leading-tight">
+        {result.content}
+      </div>
+    );
+  }
+
+  if (result.type === "error") {
+    return <div className="text-ctp-red">{result.content}</div>;
+  }
+
+  if (result.type === "markdown") {
+    return (
+      <div className="terminal-markdown">
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          components={{
+            a: ({ href, children }) => (
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-ctp-sapphire underline hover:text-ctp-sky cursor-pointer"
+              >
+                {children}
+              </a>
+            ),
+          }}
+        >
+          {result.content}
+        </ReactMarkdown>
+      </div>
+    );
+  }
+
+  if (result.type === "posts") {
+    return (
+      <div className="text-ctp-text whitespace-pre font-mono text-sm">
+        {result.content}
+      </div>
+    );
+  }
+
+  // text
+  return (
+    <div className="text-ctp-text whitespace-pre-wrap">{result.content}</div>
+  );
+});

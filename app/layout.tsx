@@ -1,22 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { ThemeProvider } from "@/shared/ui";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const SITE_NAME = "Next.js Boilerplate";
+const SITE_NAME = "seunan.dev";
 const SITE_DESCRIPTION =
-  "Production-ready Next.js boilerplate with TypeScript, Tailwind CSS, and shadcn/ui";
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+  "Terminal-style blog powered by Notion — Catppuccin Mocha theme";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://seunan.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -25,7 +13,14 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
-  keywords: ["Next.js", "React", "TypeScript", "Tailwind CSS", "shadcn/ui"],
+  keywords: [
+    "blog",
+    "terminal",
+    "catppuccin",
+    "notion",
+    "developer",
+    "Aiden Ahn",
+  ],
   authors: [{ name: "Aiden Ahn" }],
   creator: "Aiden Ahn",
   openGraph: {
@@ -63,15 +58,11 @@ export const metadata: Metadata = {
   },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
-    // naver: process.env.NEXT_PUBLIC_NAVER_SITE_VERIFICATION,
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
-  ],
+  themeColor: "#1e1e2e",
   width: "device-width",
   initialScale: 1,
 };
@@ -82,20 +73,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ThemeProvider
-          attribute="data-theme"
-          defaultTheme="system"
-          enableSystem
-          enableColorScheme
-          disableTransitionOnChange
-        >
-          <main>{children}</main>
-        </ThemeProvider>
-      </body>
+    <html lang="ko" data-theme="dark">
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

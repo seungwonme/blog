@@ -1,0 +1,1 @@
+export { getGroq } from "./client";

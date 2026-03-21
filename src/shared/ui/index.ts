@@ -50,6 +50,9 @@ export * from "./spinner";
 export * from "./switch";
 export * from "./table";
 export * from "./tabs";
+// Terminal components
+export { TerminalCursor } from "./terminal-cursor";
+export { TerminalPrompt } from "./terminal-prompt";
 export * from "./textarea";
 // Theme
 export { ThemeProvider } from "./theme-provider";
@@ -57,3 +60,4 @@ export { ThemeToggle } from "./theme-toggle";
 export * from "./toggle";
 export * from "./toggle-group";
 export * from "./tooltip";
+export { TypingEffect } from "./typing-effect";

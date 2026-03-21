@@ -1,10 +1,10 @@
-import { ThemeToggle } from "@/shared/ui";
+import type { Post } from "@/entities/post";
+import { TerminalWindow } from "@/widgets/terminal";
 
-export function HomePage() {
-  return (
-    <div className="flex flex-col items-center justify-center h-screen gap-4">
-      <h1>Boilerplate Next.js</h1>
-      <ThemeToggle />
-    </div>
-  );
+interface HomePageProps {
+  posts: Post[];
+}
+
+export function HomePage({ posts }: HomePageProps) {
+  return <TerminalWindow posts={posts} />;
 }
