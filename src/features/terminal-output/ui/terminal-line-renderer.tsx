@@ -9,10 +9,12 @@ import { TerminalPrompt } from "@/shared/ui";
 
 interface TerminalLineRendererProps {
   line: TerminalLine;
+  onCommand?: (command: string) => void;
 }
 
 export const TerminalLineRenderer = memo(function TerminalLineRenderer({
   line,
+  onCommand,
 }: TerminalLineRendererProps) {
   if (line.type === "banner") {
     return (
@@ -56,16 +58,30 @@ export const TerminalLineRenderer = memo(function TerminalLineRenderer({
         <ReactMarkdown
           remarkPlugins={[remarkGfm, remarkBreaks]}
           components={{
-            a: ({ href, children }) => (
-              <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-ctp-sapphire underline hover:text-ctp-sky cursor-pointer"
-              >
-                {children}
-              </a>
-            ),
+            a: ({ href, children }) => {
+              if (href?.startsWith("#cmd:") && onCommand) {
+                const cmd = decodeURIComponent(href.slice(5));
+                return (
+                  <button
+                    type="button"
+                    onClick={() => onCommand(cmd)}
+                    className="text-ctp-sapphire underline hover:text-ctp-sky cursor-pointer"
+                  >
+                    {children}
+                  </button>
+                );
+              }
+              return (
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-ctp-sapphire underline hover:text-ctp-sky cursor-pointer"
+                >
+                  {children}
+                </a>
+              );
+            },
           }}
         >
           {result.content}

@@ -114,6 +114,7 @@ ${aboutContent}`;
     const sources = relevantPosts.map((p) => ({
       title: p.title,
       slug: p.slug,
+      category: p.category,
     }));
 
     return NextResponse.json({ answer, sources });

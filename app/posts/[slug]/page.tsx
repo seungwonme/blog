@@ -87,7 +87,7 @@ export default async function PostPage({ params }: Props) {
         </ReactMarkdown>
       </article>
       {/* Terminal UI with cat command auto-executed */}
-      <HomePage posts={posts} initialCommand={`cat ${slug}`} />
+      <HomePage posts={posts} initialCommand={`cat ${post.category}/${slug}`} />
     </>
   );
 }

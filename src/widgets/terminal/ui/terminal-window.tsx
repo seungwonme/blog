@@ -221,7 +221,7 @@ export function TerminalWindow({ posts, initialCommand }: TerminalWindowProps) {
         if (data.sources?.length > 0) {
           content += "\n\n---\nSources:";
           for (const src of data.sources) {
-            content += `\n  - ${src.title} (cat ${src.slug})`;
+            content += `\n  - [${src.title}](/posts/${src.slug})`;
           }
         }
 
@@ -382,7 +382,7 @@ export function TerminalWindow({ posts, initialCommand }: TerminalWindowProps) {
         >
           {lines.map((line) => (
             <div key={line.id} className="mb-1">
-              <TerminalLineRenderer line={line} />
+              <TerminalLineRenderer line={line} onCommand={handleCommand} />
             </div>
           ))}
 
