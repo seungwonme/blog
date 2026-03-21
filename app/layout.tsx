@@ -72,6 +72,8 @@ export const metadata: Metadata = {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
     other: {
       "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || "",
+      "naver-site-verification":
+        process.env.NEXT_PUBLIC_NAVER_SITE_VERIFICATION || "",
     },
   },
 };
