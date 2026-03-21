@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const fs = require("fs");
-const path = require("path");
-const crypto = require("crypto");
-const { spawn } = require("child_process");
+const fs = require("node:fs");
+const path = require("node:path");
+const crypto = require("node:crypto");
+const { spawn } = require("node:child_process");
 
 function exitWithError(message) {
   process.stderr.write(`${message}\n`);
