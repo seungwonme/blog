@@ -25,14 +25,23 @@ export function getPostBySlug(slug: string): PostData | null {
 }
 
 export function searchPosts(keyword: string): PostData[] {
-  const lower = keyword.toLowerCase();
-  return posts.filter(
-    (p) =>
-      p.title.toLowerCase().includes(lower) ||
-      p.description.toLowerCase().includes(lower) ||
-      p.content.toLowerCase().includes(lower) ||
-      p.tags.some((t) => t.toLowerCase().includes(lower)),
-  );
+  const words = keyword
+    .toLowerCase()
+    .split(/\s+/)
+    .filter((w) => w.length >= 2);
+
+  if (words.length === 0) return [];
+
+  return posts
+    .map((p) => {
+      const searchable =
+        `${p.title} ${p.description} ${p.content} ${p.tags.join(" ")}`.toLowerCase();
+      const score = words.filter((w) => searchable.includes(w)).length;
+      return { post: p, score };
+    })
+    .filter((r) => r.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .map((r) => r.post);
 }
 
 export function getAboutContent(): string {
