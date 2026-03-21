@@ -498,5 +498,95 @@
     "time": "03:17:07",
     "user": "seungwonan",
     "prompt": "커밋하고 푸시해줘"
+  },
+  {
+    "time": "03:21:13",
+    "user": "seungwonan",
+    "prompt": "모바일에서 버튼 더 추가해줘\n자주 쓸만한 버튼만 지금처럼 보여줬다가 ... 버튼으로 확장 가능하게 해줄래?"
+  },
+  {
+    "time": "03:21:51",
+    "user": "seungwonan",
+    "prompt": "03:20:12.415 Running build in Washington, D.C., USA (East) – iad1\n03:20:12.416 Build machine configuration: 2 cores, 8 GB\n03:20:12.641 Cloning github.com/seungwonme/blog (Branch: main, Commit: 0f8c804)\n03:20:12.643 Previous build caches not available.\n03:20:13.017 Cloning completed: 375.000ms\n03:20:14.765 Running \"vercel build\"\n03:20:15.411 Vercel CLI 50.34.2\n03:20:15.688 Installing dependencies...\n03:20:15.956 npm warn Unknown project config \"minimum-release-age-exclude\". This will stop working in the next major version of npm.\n03:20:57.092 \n03:20:57.093 added 401 packages in 41s\n03:20:57.093 \n03:20:57.093 149 packages are looking for funding\n03:20:57.093   run `npm fund` for details\n03:20:57.379 Detected Next.js version: 16.2.1\n03:20:57.387 Running \"npm run build\"\n03:20:57.472 npm warn Unknown project config \"minimum-release-age-exclude\". This will stop working in the next major version of npm.\n03:20:57.502 \n03:20:57.502 > nextjs@0.1.0 prebuild\n03:20:57.502 > bunx tsx scripts/generate-posts-json.ts\n03:20:57.502 \n03:20:58.005 Resolving dependencies\n03:20:58.486 Resolved, downloaded and extracted [72]\n03:20:58.502 Saved lockfile\n03:20:59.221 Generated 1 posts → /vercel/path0/src/shared/generated/posts.json\n03:20:59.248 \n03:20:59.248 > nextjs@0.1.0 build\n03:20:59.248 > next build\n03:20:59.248 \n03:21:00.016 Attention: Next.js now collects completely anonymous telemetry regarding usage.\n03:21:00.018 This information is used to shape Next.js' roadmap and prioritize features.\n03:21:00.018 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:\n03:21:00.018 https://nextjs.org/telemetry\n03:21:00.018 \n03:21:00.036 ▲ Next.js 16.2.1 (Turbopack)\n03:21:00.037 \n03:21:00.069   Creating an optimized production build ...\n03:21:10.368 ✓ Compiled successfully in 9.9s\n03:21:10.371   Running TypeScript ...\n03:21:17.275 Failed to type check.\n03:21:17.275 \n03:21:17.276 ./src/shared/ui/calendar.tsx:13:8\n03:21:17.276 Type error: Cannot find module 'react-day-picker' or its corresponding type declarations.\n03:21:17.276 \n03:21:17.276    [90m11 | [0m    [33mDayPicker [0m,\n03:21:17.277    [90m12 | [0m   getDefaultClassNames,\n03:21:17.277  [31m [1m> [0m  [90m13 | [0m }  [36mfrom [0m  [32m\"react-day-picker\" [0m;\n03:21:17.277    [90m   | [0m         [31m [1m^ [0m\n03:21:17.277    [90m14 | [0m\n03:21:17.277    [90m15 | [0m  [36mimport [0m { cn }  [36mfrom [0m  [32m\"@/shared/lib/utils\" [0m;\n03:21:17.277    [90m16 | [0m  [36mimport [0m {  [33mButton [0m, buttonVariants }  [36mfrom [0m  [32m\"@/shared/ui/button\" [0m;\n03:21:17.316 Next.js build worker exited with code: 1 and signal: null\n03:21:17.354 Error: Command \"npm run build\" exited with 1"
+  },
+  {
+    "time": "03:32:08",
+    "user": "seungwonan",
+    "prompt": "아래의 메타 태그를 복사해 사이트 홈페이지의 <head>섹션에 붙여 넣어주세요.\n\n<meta name=\"naver-site-verification\" content=\"f3b3651a724b79757013775dbe13d5064a7f13b0\" />\n자세한 설명은 도움말 및 스마트봇에게 물어보세요\n\n\n\nNEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=\"\"\n와 비슷한 포멧으로 네이버 거 해줘"
+  },
+  {
+    "time": "03:59:11",
+    "user": "seungwonan",
+    "prompt": "커밋해줘"
+  },
+  {
+    "time": "04:01:09",
+    "user": "seungwonan",
+    "prompt": "1. 모바일에서 버튼으로 ! 입력 부분 없애줘\n2. 모바일에서 전체화면이 스크롤돼 꽉차지 않고"
+  },
+  {
+    "time": "04:03:16",
+    "user": "seungwonan",
+    "prompt": "100% 하지말고 \n여백 준다음 전체화면 스크롤 안되게 해줘 뭐하는 거야"
+  },
+  {
+    "time": "04:03:49",
+    "user": "seungwonan",
+    "prompt": "90%로 돌려줘"
+  },
+  {
+    "time": "04:04:46",
+    "user": "seungwonan",
+    "prompt": "커밋 해줘"
+  },
+  {
+    "time": "04:08:32",
+    "user": "seungwonan",
+    "prompt": "/session-history \n\n24시간 이내 작업 내용 확인해보자"
+  },
+  {
+    "time": "04:11:48",
+    "user": "seungwonan",
+    "prompt": "'blog 제작 후기' 라는 이름의 블로그 글 하나 써보자\n\n1. 내가 왜 블로그를 해야겠다고 생각했는지\n2. 블로그를 이 기술 스택으로 구현한 이유\n3. 블로그를 개발할 때 순서\n\n이 밖에 내 세션에서 내 질문와 대답을 토대로한 내용 등등을 내게 인터뷰 해줘"
+  },
+  {
+    "time": "04:19:40",
+    "user": "seungwonan",
+    "prompt": "# 1. 블로그가 있었지만 잘 안썼다.\n블로그를 제작하는 이유는 \n1. 회고를 해야겠다고 생각을 계속 하고 있었고\n2. 겪은 실수나 깨달음을 기록하기 위함\n\n블로그를 이왕 쓸 거면, 기록을 할 거라면 AI에게 데이터를 손쉽게 줄 수 있어야 한다고 생각했다\n\n# 2. 어차피 내 지식 베이스인 깃허브 마크다운 파일의 쇼케이스일 뿐이라고 생각했다.\n그래서 사용성은 고려하지 않았고\n다 만들고 보니 내 블로그의 터미널 UI를 보고 리눅스 명령어의 매력을 느끼면 좋겠다고 생각 정도 해봤다\n\n# 3.\nNotion API -> AI가 참조하기 최악의 환경이다.\nAPI call 제한, 복잡한 타입\n대안이 Supabase 였으나 어차피 DB + Storage만 필요해서 무료로, 새로운 스택으로 해보고 싶었다\n그 대안이 R2 + D1 이였으나 AI에게 DB를 참조시키는 것도 결국 API 키와 호출 방법이 필요했기에 그냥 제일 쓰기 쉽게 마크다운 형식으로 깃허브 저장으로 정했다\n\n# 4. 세션 기록 12시부터 04시까지\n3시간 정도? (중간에 쉬었음)\n\n까다롭기보다는 놀랐다.\n\n---\n\n추가로 내가 개발을 어떻게 진행했는지 흐름도 블로그에 담기면 좋겠어\n주요 포인트는\n1. 스펙을 정의한다\n2. 검증 -> 개선 작업 요청 (적절한 skill 사용, find-skills 좋더라)"
+  },
+  {
+    "time": "04:23:42",
+    "user": "seungwonan",
+    "prompt": "# 5. AI의 발전, 2023년부터 AI를 썼다. 그로부터 3년이 지났는데 이 정도의 발전속도가 말이 안된다.\n특히 최근 4개월간의 소프트웨어 분야에서의 발전이 정말 인상적\n\n# 6. \n- 스팩 정의 맞다\n- 기능 하나 끝나거나, 병렬적으로 계속 돌렸다\n- 책의 엑기스 부분만 필요할 때 써내쓰는 느낌이였다. 상당히 효율적\n\n# 7.\n대상은 내가 나중에 AI를 쓸 때 참조하기 위함이다.\n가볍지만, 핵심적인 기술 포인트는 담자"
+  },
+  {
+    "time": "04:29:12",
+    "user": "seungwonan",
+    "prompt": "1. 글의 톤이 지금 너무 오그라들어 약간만 덜어보자\n2. '## 개발 과정: 스펙 → 구현 → 검증 루프' 이런게 부자연스럽다는 거야 그냥 개발 과정만 하면 되잖아\n3. 구현 시 보일러 플레이트를 사용했어 보일러플레이트에는 최소한의 코드 품질을 위한 FSD 구조, 린터, 프리커밋 훅 등 다양한 설정 파일이 담겨있어 https://github.com/seungwonme/nextjs-boilerplate"
+  },
+  {
+    "time": "04:31:24",
+    "user": "seungwonan",
+    "prompt": "지금 글 쓰는 거 스킬로 만들어줘\n/skill-creator \n\n그리고 블로그 템플릿도 하나 있으면 좋겠어"
+  },
+  {
+    "time": "04:34:19",
+    "user": "seungwonan",
+    "prompt": "+ 나중에 AI 뉴스를 AI로 매일매일 올리게 된다면\n\n1. news 명령어로 구독\n2. 올리는 뉴스를 옾카방에 재활용\n3. 유튜브, 링크드인, 스레드, X 소재로 사용\n\n하려고 한다는 내용 추가"
+  },
+  {
+    "time": "04:36:42",
+    "user": "seungwonan",
+    "prompt": "커밋 해줘"
+  },
+  {
+    "time": "04:36:48",
+    "user": "seungwonan",
+    "prompt": "커밋 푸시"
+  },
+  {
+    "time": "04:37:27",
+    "user": "seungwonan",
+    "prompt": "해줘"
   }
 ]
