@@ -398,7 +398,11 @@ export function TerminalWindow({ posts, initialCommand }: TerminalWindowProps) {
           />
         </div>
 
-        <MobileCommandBar onCommand={handleCommand} disabled={isProcessing} />
+        <MobileCommandBar
+          onCommand={handleCommand}
+          disabled={isProcessing}
+          isAiMode={isAiMode}
+        />
       </div>
     </div>
   );
