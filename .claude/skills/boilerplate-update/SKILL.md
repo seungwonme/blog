@@ -27,7 +27,8 @@ main (보일러플레이트 원본)
    # pnpm의 minimumReleaseAge 정책으로 최신 버전 설치가 실패할 수 있음
    # bun install로 node_modules를 먼저 구성한 뒤 codemod 실행
    bun install
-   npx @next/codemod@canary upgrade latest
+   # pnpm에서는 @next/codemod가 정상 동작하지 않음. bun install로 flat node_modules를 만든 뒤 실행
+   bunx @next/codemod@canary upgrade latest
    ```
 
 2. **빌드 검증**
@@ -37,12 +38,12 @@ main (보일러플레이트 원본)
    pnpm build
    ```
 
-4. **세션 중 추가 변경사항 적용** (해당 시에만)
+3. **세션 중 추가 변경사항 적용** (해당 시에만)
    - 스킬 추가/수정
    - 설정 파일 업데이트
    - AGENTS.md 갱신
 
-5. **커밋 및 푸시**
+4. **커밋 및 푸시**
    ```bash
    git add <changed-files>
    git commit -m "chore: update Next.js to <version>"

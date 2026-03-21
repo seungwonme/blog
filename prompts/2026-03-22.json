@@ -1,0 +1,42 @@
+[
+  {
+    "time": "00:05:17",
+    "user": "seungwonan",
+    "prompt": "한 단계 더갔어 머지점"
+  },
+  {
+    "time": "00:06:12",
+    "user": "seungwonan",
+    "prompt": "/skill-creator \n\n@.claude/skills/boilerplate-update/ \n\n잘 구성되어있니?"
+  },
+  {
+    "time": "00:07:24",
+    "user": "seungwonan",
+    "prompt": "1. 원래 pnpm이지만 pnpm으로 진행 시 nextjs 업데이트 명령어가 안먹음\n그래서 npm 보다 빠르고 오류가 안나는 bun 선택\n3. 그렇게 해줘"
+  },
+  {
+    "time": "00:07:32",
+    "user": "seungwonan",
+    "prompt": ". 원래 pnpm이지만 pnpm으로 진행 시 nextjs 업데이트 명령어가 안먹음\n그래서 npm 보다 빠르고 오류가 안나는 bun 선택\n3. 그렇게 해줘"
+  },
+  {
+    "time": "00:07:36",
+    "user": "seungwonan",
+    "prompt": "2. 원래 pnpm이지만 pnpm으로 진행 시 nextjs 업데이트 명령어가 안먹음\n그래서 npm 보다 빠르고 오류가 안나는 bun 선택\n3. 그렇게 해줘"
+  },
+  {
+    "time": "00:08:10",
+    "user": "seungwonan",
+    "prompt": "npx -> bunx 로 바꾸어줘"
+  },
+  {
+    "time": "00:10:34",
+    "user": "seungwonan",
+    "prompt": "/clarify \n\n내가 구현하고 싶은 것은 간단하게 노션 기반 블로그야\n디자인이 가장 중요할 거 같은데\n내가 가장 좋아하는 터미널 디자인으로 구현하면 좋겠어\n\ncatpuccin mocha 테마로\n\n기능\n\n1. notion 데이터베이스 기반 블로그\n2. ai 기능 (groq + notion api) 으로 블로그에서 적힌 내용을 토대로 답변 및 블로그 출처 명시"
+  },
+  {
+    "time": "00:11:13",
+    "user": "seungwonan",
+    "prompt": "지금 한 단계 더 앞서있는데 깃 리셋 소프트로 뒤로갔다가 이그노어랑 같이 커밋 다시 해줘 그다음 각 브랜치에 반영"
+  }
+]
