@@ -172,15 +172,24 @@ const askGraph = workflow.compile();
 export async function runAskGraph(
   question: string,
   history: ChatMessage[],
+  threadId?: string,
 ): Promise<{ answer: string; sources: Source[] }> {
-  const result = await askGraph.invoke({
-    question,
-    history,
-    route: "chat" as const,
-    relevantPosts: [],
-    answer: "",
-    sources: [],
-  });
+  const result = await askGraph.invoke(
+    {
+      question,
+      history,
+      route: "chat" as const,
+      relevantPosts: [],
+      answer: "",
+      sources: [],
+    },
+    threadId
+      ? {
+          metadata: { thread_id: threadId },
+          configurable: { thread_id: threadId },
+        }
+      : undefined,
+  );
 
   return {
     answer: result.answer,

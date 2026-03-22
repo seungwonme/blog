@@ -100,6 +100,7 @@ export function TerminalWindow({ posts, initialCommand }: TerminalWindowProps) {
   const [isAiMode, setIsAiMode] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const chatHistoryRef = useRef<ChatMessage[]>([]);
+  const sessionIdRef = useRef(crypto.randomUUID());
   const lineIdRef = useRef(100);
 
   const nextId = useCallback(() => {
@@ -210,6 +211,7 @@ export function TerminalWindow({ posts, initialCommand }: TerminalWindowProps) {
           body: JSON.stringify({
             question,
             history: withHistory ? chatHistoryRef.current : undefined,
+            sessionId: sessionIdRef.current,
           }),
         });
 
@@ -264,6 +266,7 @@ export function TerminalWindow({ posts, initialCommand }: TerminalWindowProps) {
         if (slashResult) {
           if (slashResult.clearHistory) {
             chatHistoryRef.current = [];
+            sessionIdRef.current = crypto.randomUUID();
           }
           addLine({ id: nextId(), type: "output", result: slashResult.result });
           return;

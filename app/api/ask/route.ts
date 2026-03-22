@@ -37,7 +37,7 @@ function validateHistory(history: unknown): ChatMessage[] {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { question, history } = body;
+    const { question, history, sessionId } = body;
 
     if (!question || typeof question !== "string") {
       return NextResponse.json({ error: "Missing question" }, { status: 400 });
@@ -53,7 +53,15 @@ export async function POST(request: Request) {
     }
 
     const chatHistory = validateHistory(history);
-    const result = await runAskGraph(sanitizeContent(question), chatHistory);
+    const threadId =
+      typeof sessionId === "string" && sessionId.length > 0
+        ? sessionId
+        : undefined;
+    const result = await runAskGraph(
+      sanitizeContent(question),
+      chatHistory,
+      threadId,
+    );
 
     return NextResponse.json(result);
   } catch (error) {
