@@ -2,7 +2,7 @@
 
 ## Overview
 
-Catpuccin Mocha 테마의 풀 터미널 에뮬레이션 블로그. 로컬 마크다운 파일을 콘텐츠 소스로 사용하며, 방문자는 실제 터미널처럼 명령어를 입력해 블로그를 탐색한다. Groq AI로 블로그 내용 기반 Q&A를 제공하고, 정적 생성(SSG)으로 SEO를 대응한다.
+Catpuccin Mocha 테마의 풀 터미널 에뮬레이션 블로그. 로컬 마크다운 파일을 콘텐츠 소스로 사용하며, 방문자는 실제 터미널처럼 명령어를 입력해 블로그를 탐색한다. Gemini AI로 블로그 내용 기반 Q&A를 제공하고, 정적 생성(SSG)으로 SEO를 대응한다.
 
 **도메인**: seunan.dev
 **프롬프트**: `visitor@seunan.dev:~$`
@@ -48,7 +48,7 @@ Catpuccin Mocha 테마의 풀 터미널 에뮬레이션 블로그. 로컬 마크
 | Tailwind CSS v4 | 스타일링 (Catpuccin Mocha 팔레트) |
 | gray-matter     | 마크다운 프론트매터 파싱          |
 | react-markdown  | 마크다운 렌더링                   |
-| Groq SDK        | AI 답변 생성                      |
+| Gemini SDK        | AI 답변 생성                      |
 | Vercel          | 배포                              |
 
 ### System Design
@@ -62,7 +62,7 @@ Catpuccin Mocha 테마의 풀 터미널 에뮬레이션 블로그. 로컬 마크
                          ┌─────────────┼─────────────┐
                          │             │             │
                   ┌──────▼───┐  ┌──────▼──┐   ┌─────▼────┐
-                  │  Local   │  │  Groq   │   │  Static  │
+                  │  Local   │  │  Gemini   │   │  Static  │
                   │ Markdown │  │   API   │   │  Assets  │
                   └──────────┘  └─────────┘   └──────────┘
 ```
@@ -70,7 +70,7 @@ Catpuccin Mocha 테마의 풀 터미널 에뮬레이션 블로그. 로컬 마크
 **데이터 흐름**:
 1. 빌드 시 `scripts/generate-posts-json.ts`가 `content/posts/` 마크다운 파일을 파싱하여 `src/shared/generated/posts.json` 생성
 2. 브라우저에서는 터미널 UI를 렌더링, 명령어 입력 시 빌드 타임에 생성된 데이터에서 조회
-3. `ask` 명령어 시 → Next.js API Route → 키워드 검색으로 관련 글 찾기 → 본문을 Groq에 전달 → 답변 반환
+3. `ask` 명령어 시 → Next.js API Route → 키워드 검색으로 관련 글 찾기 → 본문을 Gemini에 전달 → 답변 반환
 4. `/posts/[slug]` 정적 페이지로 SEO 대응 (크롤러 + 일반 사용자 모두 접근 가능)
 
 ### FSD Architecture
@@ -103,7 +103,7 @@ src/
 └── shared/
     ├── ui/                 # 공통 UI (커서, 프롬프트 등)
     ├── lib/                # 유틸리티
-    ├── api/                # Groq 클라이언트
+    ├── api/                # Gemini 클라이언트
     └── config/             # Catpuccin 팔레트, 사이트 설정
 ```
 
@@ -369,10 +369,10 @@ visitor@seunan.dev:~/dev$ ls
 - [x] `clear` 명령어
 
 ### Step 5: AI 기능
-- [x] Groq API 클라이언트 설정 (`shared/api/groq/`)
+- [x] Gemini API 클라이언트 설정 (`shared/api/gemini/`)
 - [x] `/api/ask` API Route
 - [x] `ask` 명령어 (command-executor에 통합)
-- [x] 키워드 매칭 검색 → 관련 글 본문을 Groq context로 전달
+- [x] 키워드 매칭 검색 → 관련 글 본문을 Gemini context로 전달
 - [x] 응답 렌더링 + 출처 표시
 
 ### Step 6: SEO & 모바일
@@ -403,7 +403,7 @@ visitor@seunan.dev:~/dev$ ls
 
 ```bash
 # .env.local
-GROQ_API_KEY=gsk_xxx                # Groq API Key
+GROQ_API_KEY=gsk_xxx                # Gemini API Key
 NEXT_PUBLIC_SITE_URL=https://seunan.dev
 NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=  # Google Search Console 인증 코드
 ```
@@ -414,7 +414,7 @@ NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=  # Google Search Console 인증 코드
 - **타이핑 속도**: 문자당 5~10ms — 사용감에 따라 조정
 - **ls 출력**: Unix `ls -l` 스타일 (drwxr-xr-x, 날짜, 태그 포함)
 - **콘텐츠 소스**: 로컬 마크다운 파일 + 빌드 타임 JSON 생성
-- **AI 모델**: Groq `llama-3.3-70b-versatile`
+- **AI 모델**: Gemini `gemini-3.1-flash-lite-preview`
 - **SEO**: `generateStaticParams()`로 정적 페이지 생성
 
 ## Open Questions

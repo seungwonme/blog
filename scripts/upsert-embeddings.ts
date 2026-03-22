@@ -45,9 +45,27 @@ async function main() {
   const gemini = new GoogleGenAI({ apiKey: geminiApiKey });
   const index = pinecone.index(INDEX_NAME);
 
-  // Load posts
+  // Load posts and about
   const raw = fs.readFileSync(POSTS_JSON_PATH, "utf-8");
-  const { posts } = JSON.parse(raw);
+  const { posts, about } = JSON.parse(raw);
+
+  // about을 posts와 동일한 형태로 추가
+  const allEntries = [
+    ...posts,
+    ...(about
+      ? [
+          {
+            title: "About",
+            slug: "about",
+            category: "",
+            tags: [],
+            date: "",
+            description: "블로그 주인장 소개",
+            content: about,
+          },
+        ]
+      : []),
+  ];
 
   // Load previous hashes
   let prevHashes: Record<string, string> = {};
@@ -60,7 +78,7 @@ async function main() {
   let upserted = 0;
   let skipped = 0;
 
-  for (const post of posts) {
+  for (const post of allEntries) {
     const text = `${post.title}\n${post.description}\n${post.content}`;
     const truncated = text.slice(0, 10000);
     const hash = contentHash(truncated);

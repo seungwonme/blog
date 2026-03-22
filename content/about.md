@@ -32,6 +32,26 @@ AI 자동화와 워크플로우 설계를 통해 기업의 AX(AI Transformation)
 
 ---
 
+## Projects
+
+- [ShortsGen](https://shorts.demodev.io/) — AI 쇼츠 자동 생성 서비스
+
+---
+
+## Education
+
+- [42 Seoul](https://42seoul.kr/) 컴퓨터공학계열 멤버 (2023.03 - 2024.12)
+- [Codyssey X SeSAC](https://codysseycampus.kr/) AI/데이터 분석 (2024.12 - 2025.03)
+- [LG AI Research – LG Aimers](https://www.lgaimers.ai/) 6기 (Data Intelligence) 수료 (2025.01 - 2025.02)
+
+---
+
+## Awards
+
+- Codyssey X SeSAC AI 과학기술정보통신부 장관상 (2025.03)
+
+---
+
 ## Other Activities
 
 - [대모산개발단 유튜브](https://www.youtube.com/@%EB%8C%80%EB%AA%A8%EC%82%B0%EA%B0%9C%EB%B0%9C%EB%8B%A8) 운영 — 바이브 코딩/AI 정보 공유 (2025.02 - 현재)

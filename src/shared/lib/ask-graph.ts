@@ -1,5 +1,5 @@
+import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { Annotation, StateGraph } from "@langchain/langgraph";
-import { getGroq } from "@/shared/api/groq";
 import type { PostData } from "./content";
 import { getAboutContent, searchPosts } from "./content";
 import { semanticSearch } from "./semantic-search";
@@ -15,6 +15,20 @@ interface ChatMessage {
   content: string;
 }
 
+const MODEL_NAME = "gemini-3.1-flash-lite-preview";
+
+function getModel(options?: {
+  temperature?: number;
+  maxOutputTokens?: number;
+}) {
+  return new ChatGoogleGenerativeAI({
+    model: MODEL_NAME,
+    apiKey: process.env.GEMINI_API_KEY,
+    temperature: options?.temperature ?? 0.7,
+    maxOutputTokens: options?.maxOutputTokens,
+  });
+}
+
 const AskState = Annotation.Root({
   question: Annotation<string>,
   history: Annotation<ChatMessage[]>,
@@ -26,27 +40,23 @@ const AskState = Annotation.Root({
 
 // Node 1: 질문 분류
 async function classify(state: typeof AskState.State) {
-  const groq = getGroq();
-  const result = await groq.chat.completions.create({
-    messages: [
-      {
-        role: "system",
-        content: `You are a query classifier for a developer blog. Classify the user's message into one of two categories:
+  const model = getModel({ temperature: 0, maxOutputTokens: 10 });
+  const result = await model.invoke([
+    [
+      "system",
+      `You are a query classifier for a developer blog. Classify the user's message into one of two categories:
 - "rag": The user is asking about blog content, technical topics, the blog owner, or anything that could be answered by searching blog posts.
 - "chat": The user is making casual conversation, greeting, or asking something unrelated to blog content.
 
 Respond with ONLY "rag" or "chat", nothing else.`,
-      },
-      { role: "user", content: state.question },
     ],
-    model: "llama-3.3-70b-versatile",
-    temperature: 0,
-    max_tokens: 10,
-  });
+    ["human", state.question],
+  ]);
 
-  const classification = result.choices[0]?.message?.content
-    ?.trim()
-    .toLowerCase();
+  const classification =
+    typeof result.content === "string"
+      ? result.content.trim().toLowerCase()
+      : "";
   const route = classification === "rag" ? "rag" : "chat";
 
   return { route };
@@ -83,26 +93,21 @@ ${postsContext || "No relevant posts found."}
 About the blog owner:
 ${aboutContent}`;
 
-  const messages: Array<{
-    role: "system" | "user" | "assistant";
-    content: string;
-  }> = [{ role: "system", content: systemPrompt }];
-
+  const messages: Array<["system" | "human" | "ai", string]> = [
+    ["system", systemPrompt],
+  ];
   for (const msg of state.history) {
-    messages.push({ role: msg.role, content: msg.content });
+    messages.push([msg.role === "user" ? "human" : "ai", msg.content]);
   }
-  messages.push({ role: "user", content: state.question });
+  messages.push(["human", state.question]);
 
-  const completion = await getGroq().chat.completions.create({
-    messages,
-    model: "llama-3.3-70b-versatile",
-    temperature: 0.7,
-    max_tokens: 1024,
-  });
+  const model = getModel({ maxOutputTokens: 1024 });
+  const result = await model.invoke(messages);
 
   const answer =
-    completion.choices[0]?.message?.content ??
-    "Sorry, I couldn't generate a response.";
+    typeof result.content === "string"
+      ? result.content
+      : "Sorry, I couldn't generate a response.";
   const sources = state.relevantPosts.map((p) => ({
     title: p.title,
     slug: p.slug,
@@ -123,26 +128,21 @@ If the visitor asks something that might be related to blog content, suggest the
 About the blog owner:
 ${aboutContent}`;
 
-  const messages: Array<{
-    role: "system" | "user" | "assistant";
-    content: string;
-  }> = [{ role: "system", content: systemPrompt }];
-
+  const messages: Array<["system" | "human" | "ai", string]> = [
+    ["system", systemPrompt],
+  ];
   for (const msg of state.history) {
-    messages.push({ role: msg.role, content: msg.content });
+    messages.push([msg.role === "user" ? "human" : "ai", msg.content]);
   }
-  messages.push({ role: "user", content: state.question });
+  messages.push(["human", state.question]);
 
-  const completion = await getGroq().chat.completions.create({
-    messages,
-    model: "llama-3.3-70b-versatile",
-    temperature: 0.7,
-    max_tokens: 512,
-  });
+  const model = getModel({ maxOutputTokens: 512 });
+  const result = await model.invoke(messages);
 
   const answer =
-    completion.choices[0]?.message?.content ??
-    "Sorry, I couldn't generate a response.";
+    typeof result.content === "string"
+      ? result.content
+      : "Sorry, I couldn't generate a response.";
 
   return { answer, sources: [] };
 }

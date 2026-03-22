@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "content/posts/**"
+      - "content/about.md"
   workflow_dispatch:
 
 jobs:
