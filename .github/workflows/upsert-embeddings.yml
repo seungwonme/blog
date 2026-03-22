@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "content/posts/**"
+  workflow_dispatch:
 
 jobs:
   upsert:
