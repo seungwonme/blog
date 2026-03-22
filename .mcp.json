@@ -14,7 +14,24 @@
     },
     "@21st-dev/magic": {
       "command": "bunx",
-      "args": ["@21st-dev/magic@latest", "API_KEY=\"{$MAGIC_API_KEY}\""]
+      "args": ["@21st-dev/magic@latest", "API_KEY=\"${MAGIC_API_KEY}\""]
+    },
+    "pinecone": {
+      "command": "bunx",
+      "args": [
+        "@pinecone-database/mcp"
+      ],
+      "env": {
+        "PINECONE_API_KEY": "${PINECONE_API_KEY}"
+      }
+    },
+    "langsmith": {
+      "command": "uvx",
+      "args": ["langsmith-mcp-server"],
+      "env": {
+        "LANGSMITH_API_KEY": "${LANGSMITH_API_KEY}",
+        "LANGSMITH_ENDPOINT": "https://api.smith.langchain.com"
+      }
     }
   }
 }
