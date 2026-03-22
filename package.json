@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "prebuild": "bunx tsx scripts/generate-posts-json.ts",
+    "upsert-embeddings": "bunx tsx scripts/upsert-embeddings.ts",
     "predev": "bunx tsx scripts/generate-posts-json.ts",
     "dev": "next dev",
     "build": "next build",
@@ -15,6 +16,10 @@
     "repomix": "bunx repomix"
   },
   "dependencies": {
+    "@google/genai": "^1.46.0",
+    "@langchain/core": "^1.1.34",
+    "@langchain/langgraph": "^1.2.5",
+    "@pinecone-database/pinecone": "^7.1.0",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-alert-dialog": "^1.1.15",
     "@radix-ui/react-aspect-ratio": "^1.1.8",
