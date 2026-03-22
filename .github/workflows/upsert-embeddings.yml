@@ -25,7 +25,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Generate posts JSON
-        run: bunx tsx scripts/generate-posts-json.ts
+        run: pnpm exec tsx scripts/generate-posts-json.ts
 
       - name: Restore embedding hashes
         uses: actions/cache@v4
@@ -35,7 +35,7 @@ jobs:
           restore-keys: embeddings-hash-
 
       - name: Upsert embeddings
-        run: bunx tsx scripts/upsert-embeddings.ts
+        run: pnpm exec tsx scripts/upsert-embeddings.ts
         env:
           PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
