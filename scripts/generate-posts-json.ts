@@ -40,7 +40,11 @@ function main() {
         slug: data.slug ?? file.replace(".md", ""),
         category: data.category ?? "uncategorized",
         tags: data.tags ?? [],
-        date: data.date ? String(data.date).slice(0, 10) : "1970-01-01",
+        date: data.date
+          ? data.date instanceof Date
+            ? data.date.toISOString().slice(0, 10)
+            : String(data.date).slice(0, 10)
+          : "1970-01-01",
         description: data.description ?? "",
         content,
       });
