@@ -3,6 +3,7 @@ import path from "node:path";
 import matter from "gray-matter";
 
 const POSTS_DIR = path.join(process.cwd(), "content/posts");
+const DIGEST_DIR = path.join(process.cwd(), "content/digest");
 const ABOUT_PATH = path.join(process.cwd(), "content/about.md");
 const OUTPUT_PATH = path.join(process.cwd(), "src/shared/generated/posts.json");
 
@@ -16,8 +17,11 @@ interface PostEntry {
   content: string;
 }
 
+type DigestEntry = PostEntry;
+
 interface GeneratedData {
   posts: PostEntry[];
+  digests: DigestEntry[];
   about: string;
   generatedAt: string;
 }
@@ -53,6 +57,31 @@ function main() {
 
   posts.sort((a, b) => (a.date > b.date ? -1 : 1));
 
+  // Parse digests
+  const digests: DigestEntry[] = [];
+  if (fs.existsSync(DIGEST_DIR)) {
+    const files = fs.readdirSync(DIGEST_DIR).filter((f) => f.endsWith(".md"));
+    for (const file of files) {
+      const raw = fs.readFileSync(path.join(DIGEST_DIR, file), "utf-8");
+      const { data, content } = matter(raw);
+      digests.push({
+        title: data.title ?? file.replace(".md", ""),
+        slug: data.slug ?? file.replace(".md", ""),
+        category: data.category ?? "digest",
+        tags: data.tags ?? [],
+        date: data.date
+          ? data.date instanceof Date
+            ? data.date.toISOString().slice(0, 10)
+            : String(data.date).slice(0, 10)
+          : "1970-01-01",
+        description: data.description ?? "",
+        content,
+      });
+    }
+  }
+
+  digests.sort((a, b) => (a.date > b.date ? -1 : 1));
+
   // Parse about
   let about = "";
   if (fs.existsSync(ABOUT_PATH)) {
@@ -63,12 +92,15 @@ function main() {
 
   const data: GeneratedData = {
     posts,
+    digests,
     about,
     generatedAt: new Date().toISOString(),
   };
 
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(data, null, 2), "utf-8");
-  console.log(`Generated ${posts.length} posts → ${OUTPUT_PATH}`);
+  console.log(
+    `Generated ${posts.length} posts, ${digests.length} digests → ${OUTPUT_PATH}`,
+  );
 }
 
 main();

@@ -13,8 +13,17 @@ export interface PostData extends PostFrontmatter {
   content: string;
 }
 
-const posts: PostData[] = postsData.posts;
-const aboutContent: string = postsData.about;
+interface GeneratedPostsData {
+  posts: PostData[];
+  digests: PostData[];
+  about: string;
+  generatedAt: string;
+}
+
+const data = postsData as GeneratedPostsData;
+const posts: PostData[] = data.posts;
+const digests: PostData[] = data.digests;
+const aboutContent: string = data.about;
 
 export function getAllPosts(): PostData[] {
   return posts;
@@ -42,6 +51,14 @@ export function searchPosts(keyword: string): PostData[] {
     .filter((r) => r.score > 0)
     .sort((a, b) => b.score - a.score)
     .map((r) => r.post);
+}
+
+export function getAllDigests(): PostData[] {
+  return digests;
+}
+
+export function getDigestBySlug(slug: string): PostData | null {
+  return digests.find((d) => d.slug === slug) ?? null;
 }
 
 export function getAboutContent(): string {

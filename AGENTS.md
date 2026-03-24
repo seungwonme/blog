@@ -169,6 +169,22 @@ export const metadata: Metadata = {
 };
 ```
 
+## Content Types
+
+### Posts
+- Location: `content/posts/*.md`
+- Category from frontmatter (e.g., `dev`, `til`)
+- Parsed by `scripts/generate-posts-json.ts` into `src/shared/generated/posts.json`
+
+### Digests
+- Location: `content/digest/*.md`
+- Daily newsletter-style markdown with `category: digest`
+- Frontmatter: `title`, `slug` (date-based, e.g., `2026-03-24`), `category`, `tags`, `date`, `description`
+- Parsed alongside posts in the same generate script, stored as `digests[]` in `posts.json`
+- Accessed via `getDigests()`, `getDigestBySlug()` from `@/entities/post`
+- Appears as `digest/` directory in the terminal virtual filesystem
+- Terminal command: `cat digest/2026-03-24`
+
 ## Key Paths
 
 | 용도           | 경로                               |

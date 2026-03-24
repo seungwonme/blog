@@ -1,5 +1,7 @@
 import {
+  getAllDigests,
   getAllPosts,
+  getDigestBySlug as getDigestBySlugFromContent,
   getPostBySlug as getPostBySlugFromContent,
   searchPosts as searchPostsFromContent,
 } from "@/shared/lib/content";
@@ -30,4 +32,23 @@ export function getPostBySlug(slug: string): Post | null {
 
 export function getPostsByKeyword(keyword: string): Post[] {
   return searchPostsFromContent(keyword).map(toPost);
+}
+
+export function getDigests(): Post[] {
+  return getAllDigests().map(toPost);
+}
+
+export function getDigestBySlug(slug: string): Post | null {
+  const data = getDigestBySlugFromContent(slug);
+  return data ? toPost(data) : null;
+}
+
+export function getAllEntries(): Post[] {
+  return [...getPosts(), ...getDigests()].sort((a, b) =>
+    b.date.localeCompare(a.date),
+  );
+}
+
+export function getEntryBySlug(slug: string): Post | null {
+  return getPostBySlug(slug) ?? getDigestBySlug(slug);
 }

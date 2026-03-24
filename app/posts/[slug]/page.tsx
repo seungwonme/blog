@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
-import { getPostBySlug, getPosts } from "@/entities/post";
+import { getAllEntries, getEntryBySlug } from "@/entities/post";
 import { HomePage } from "@/pages/home";
 import {
   createArticleJsonLd,
@@ -19,7 +19,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://seunan.dev";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = getEntryBySlug(slug);
   if (!post) return {};
 
   const postUrl = `${SITE_URL}/posts/${slug}`;
@@ -47,16 +47,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export function generateStaticParams() {
-  const posts = getPosts();
-  return posts.map((post) => ({ slug: post.slug }));
+  return getAllEntries().map((entry) => ({ slug: entry.slug }));
 }
 
 export default async function PostPage({ params }: Props) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = getEntryBySlug(slug);
   if (!post) notFound();
 
-  const posts = getPosts();
+  const posts = getAllEntries();
   const postUrl = `${SITE_URL}/posts/${slug}`;
 
   return (

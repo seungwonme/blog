@@ -1,11 +1,11 @@
-import { getPosts } from "@/entities/post";
+import { getAllEntries } from "@/entities/post";
 import { HomePage } from "@/pages/home";
 import { createPersonJsonLd, JsonLd } from "@/shared/lib";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://seunan.dev";
 
 export default function Page() {
-  const posts = getPosts();
+  const posts = getAllEntries();
   return (
     <>
       <JsonLd
