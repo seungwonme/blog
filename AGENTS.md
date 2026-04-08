@@ -185,6 +185,12 @@ export const metadata: Metadata = {
 - Appears as `digest/` directory in the terminal virtual filesystem
 - Terminal command: `cat digest/2026-03-24`
 
+### Private Notes
+- Location: `content/_private/*.md`
+- Purpose: 블로그 작업 관련 비공개 로컬 메모 저장 경로
+- Git: `.gitignore`에서 `/content/_private/` 경로를 무시
+- Current generator scope: `scripts/generate-posts-json.ts`는 `content/posts`, `content/digest`, `content/about.md`만 읽음
+
 ## Key Paths
 
 | 용도           | 경로                               |
@@ -196,3 +202,7 @@ export const metadata: Metadata = {
 | 테마           | `src/shared/ui/theme-provider.tsx` |
 | shadcn 설정    | `components.json`                  |
 | Tailwind 설정  | `app/globals.css`                  |
+
+## Project Notes
+
+- 2026-04-08: Added daily digest at `content/digest/2026-04-08.md` from today's skim draft coverage and reorganized all draft sections into topic clusters.
