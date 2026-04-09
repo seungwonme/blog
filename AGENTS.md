@@ -205,6 +205,7 @@ export const metadata: Metadata = {
 
 ## Project Notes
 
+- 2026-04-09: `content/digest/2026-04-09.md`를 기존 누적 보강본 대신 새 구조로 전면 재작성했다. 핵심 해설 섹션을 다시 쓰고, 뉴스/YouTube/SNS/논문 전수 인덱스로 오늘 수집분 전체를 다시 정리했다.
 - 2026-04-09: `content/digest/2026-04-09.md`에 URL 누락분 보강 부록을 추가해 Every 2건, YouTube 2건, Hugging Face/arXiv 논문 전수 링크와 핵심 포인트를 반영했다.
 - 2026-04-09: Expanded `content/digest/2026-04-09.md` after the initial publish to cover omitted social/community sources from today's skim crawl, including LinkedIn, Threads, X, and Reddit stream summaries.
 - 2026-04-09: Added daily digest at `content/digest/2026-04-09.md` from today's skim crawl coverage, focusing on 31 entries with non-empty `content_markdown` across Hacker News, GeekNews, and YouTube.
