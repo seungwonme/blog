@@ -205,5 +205,6 @@ export const metadata: Metadata = {
 
 ## Project Notes
 
+- 2026-04-09: Expanded `content/digest/2026-04-09.md` after the initial publish to cover omitted social/community sources from today's skim crawl, including LinkedIn, Threads, X, and Reddit stream summaries.
 - 2026-04-09: Added daily digest at `content/digest/2026-04-09.md` from today's skim crawl coverage, focusing on 31 entries with non-empty `content_markdown` across Hacker News, GeekNews, and YouTube.
 - 2026-04-08: Added daily digest at `content/digest/2026-04-08.md` from today's skim draft coverage and reorganized all draft sections into topic clusters.
