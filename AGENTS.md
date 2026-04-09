@@ -205,6 +205,7 @@ export const metadata: Metadata = {
 
 ## Project Notes
 
+- 2026-04-09: `content/digest/2026-04-09.md`를 서브에이전트 초안(`sns/news/reddit/youtube/papers`) 기준으로 다시 재생성했다. `2026-04-08`과 같은 `## 섹션 + ### 세부 항목` 구조로 복원하고, 본문 보유 수집분 255건을 에이전트 운영·보안·연구·조직 흐름으로 압축 정리했다.
 - 2026-04-09: `content/digest/2026-04-09.md`를 다시 삭제 후 재생성했다. 기존의 누적 보강/인덱스 중심 구조를 걷어내고, agent 운영체계·보안 공개 전략·경량 도구·비즈니스 운영·연구 레이더 중심의 서술형 digest로 통합했다.
 - 2026-04-09: `content/digest/2026-04-09.md`를 기존 누적 보강본 대신 새 구조로 전면 재작성했다. 핵심 해설 섹션을 다시 쓰고, 뉴스/YouTube/SNS/논문 전수 인덱스로 오늘 수집분 전체를 다시 정리했다.
 - 2026-04-09: `content/digest/2026-04-09.md`에 URL 누락분 보강 부록을 추가해 Every 2건, YouTube 2건, Hugging Face/arXiv 논문 전수 링크와 핵심 포인트를 반영했다.
