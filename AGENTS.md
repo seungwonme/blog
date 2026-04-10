@@ -205,6 +205,7 @@ export const metadata: Metadata = {
 
 ## Project Notes
 
+- 2026-04-10: `content/digest/2026-04-10.md`를 `daily-digest` 스킬 하드 룰에 맞춰 생성했다. 카테고리별 초안(`sns/news/reddit/youtube/hf1/hf2/arxiv1/arxiv2`)을 별도 서브에이전트로 작성한 뒤 퇴고 에이전트가 `81`개 고유 `Draft-ID`, `54`개 `###`, `1245`줄 구조로 통합했고, `merge-plan.md` 대조와 기준선 digest(`2026-04-08`) 대비 밀도 검증을 통과하도록 수치와 사례를 보존했다.
 - 2026-04-09: `content/digest/2026-04-09.md`를 `daily-digest` 스킬 하드 룰에 맞춰 다시 재생성했다. 카테고리별 초안(`sns/reddit/news/youtube/hf1/hf2/arxiv1/2/3/5`)을 별도 서브에이전트로 만든 뒤 퇴고 에이전트가 `32`개 `Draft-ID`, `32`개 `###`, `1146`줄 구조로 통합했고, 기준선 digest(`2026-04-08`) 대비 밀도 검증을 통과하도록 수치와 사례를 보존했다.
 - 2026-04-09: `content/digest/2026-04-09.md`를 카테고리별 서브에이전트 초안(`sns/news/reddit/youtube/hf/arxiv`) 기준으로 다시 재생성했다. 운영체계·평가 재설계·비용/생태계·지식 협업·현실세계 추론·보안 거버넌스 중심의 주제 클러스터 구조로 통합했다.
 - 2026-04-09: `content/digest/2026-04-09.md`를 서브에이전트 초안(`sns/news/reddit/youtube/papers`) 기준으로 다시 재생성했다. `2026-04-08`과 같은 `## 섹션 + ### 세부 항목` 구조로 복원하고, 본문 보유 수집분 255건을 에이전트 운영·보안·연구·조직 흐름으로 압축 정리했다.
