@@ -1,7 +1,7 @@
 "use client";
 
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
-import { LuChevronDown, LuChevronUp } from "react-icons/lu";
 import { cn } from "@/shared/lib";
 
 interface MobileCommandBarProps {
@@ -71,7 +71,7 @@ export function MobileCommandBar({
             )}
             aria-label={expanded ? "Collapse commands" : "More commands"}
           >
-            {expanded ? <LuChevronDown size={14} /> : <LuChevronUp size={14} />}
+            {expanded ? <ChevronDown size={14} /> : <ChevronUp size={14} />}
           </button>
         )}
       </div>
