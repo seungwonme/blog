@@ -52,6 +52,21 @@ export const TerminalLineRenderer = memo(function TerminalLineRenderer({
     return <div className="text-ctp-red">{result.content}</div>;
   }
 
+  if (line.isPending) {
+    return (
+      <div className="flex items-center">
+        <span
+          className="motion-safe:animate-[loading-shimmer_1.6s_ease-in-out_infinite] motion-safe:bg-[linear-gradient(90deg,var(--color-ctp-overlay0)_0%,var(--color-ctp-text)_50%,var(--color-ctp-overlay0)_100%)] motion-safe:bg-[length:200%_100%] motion-safe:bg-clip-text motion-safe:text-transparent text-ctp-subtext0 [will-change:background-position]"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          {result.content}
+        </span>
+      </div>
+    );
+  }
+
   if (result.type === "markdown") {
     return (
       <div className="terminal-markdown">

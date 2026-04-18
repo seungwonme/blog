@@ -150,7 +150,9 @@ export function TerminalWindow({
 
   const replaceLine = useCallback((targetId: string, result: CommandResult) => {
     setLines((prev) =>
-      prev.map((l) => (l.id === targetId ? { ...l, result } : l)),
+      prev.map((l) =>
+        l.id === targetId ? { ...l, result, isPending: false } : l,
+      ),
     );
   }, []);
 
@@ -172,6 +174,7 @@ export function TerminalWindow({
         id: loadingId,
         type: "output",
         result: { type: "text", content: "Loading..." },
+        isPending: true,
       });
 
       try {
@@ -197,6 +200,7 @@ export function TerminalWindow({
         id: loadingId,
         type: "output",
         result: { type: "text", content: "Thinking..." },
+        isPending: true,
       });
 
       const buildContent = (

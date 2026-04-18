@@ -33,4 +33,6 @@ export interface TerminalLine {
   prompt?: string;
   command?: string;
   result?: CommandResult;
+  /** true인 동안 로딩 shimmer 애니메이션으로 렌더 (비동기 결과 대기 중). */
+  isPending?: boolean;
 }
