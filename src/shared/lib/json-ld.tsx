@@ -49,9 +49,8 @@ export function createWebSiteJsonLd(): WithContext<WebSite> {
         "@type": "EntryPoint",
         urlTemplate: `${SITE_URL}/?q={search_term_string}`,
       },
-      // biome-ignore lint/suspicious/noExplicitAny: schema.org requires non-standard query-input property
       "query-input": "required name=search_term_string",
-    } as any,
+    } as WithContext<WebSite>["potentialAction"],
   };
 }
 
