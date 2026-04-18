@@ -150,7 +150,11 @@ export function executeCommand(
     }
 
     case "ls": {
-      const segments = getPathSegments(fs.currentPath);
+      const target = parsed.args[0];
+      const targetPath = target
+        ? resolvePath(fs.currentPath, target)
+        : fs.currentPath;
+      const segments = getPathSegments(targetPath);
       if (segments.length === 0) {
         return {
           result: { type: "posts", content: formatLsHome(fs) },
@@ -162,7 +166,7 @@ export function executeCommand(
         return {
           result: {
             type: "error",
-            content: `ls: cannot access '${fs.currentPath}': No such directory`,
+            content: `ls: cannot access '${target ?? targetPath}': No such directory`,
           },
         };
       }

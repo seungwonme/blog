@@ -70,16 +70,20 @@ export function getCommandCompletions(
   partial: string,
   context: CompletionContext,
 ): string[] {
+  const endsWithSpace = /\s$/.test(partial);
   const trimmed = partial.trim();
-  const parts = trimmed.split(/\s+/);
+  const parts = trimmed.split(/\s+/).filter(Boolean);
 
-  // Complete command name
-  if (parts.length <= 1) {
+  // Complete command name (still typing the command, no trailing space)
+  if (parts.length === 0) {
+    return [...VALID_COMMANDS];
+  }
+  if (parts.length === 1 && !endsWithSpace) {
     return VALID_COMMANDS.filter((cmd) => cmd.startsWith(trimmed));
   }
 
   const cmd = parts[0];
-  const argPartial = parts.slice(1).join(" ");
+  const argPartial = endsWithSpace ? "" : parts.slice(1).join(" ");
 
   // Complete arguments based on command
   if (cmd === "cat") {
@@ -98,7 +102,7 @@ export function getCommandCompletions(
     const options = ["about", ...context.pathEntries];
     return options.filter((s) => s.startsWith(argPartial));
   }
-  if (cmd === "cd") {
+  if (cmd === "cd" || cmd === "ls") {
     const dirs = ["~", "..", ...context.dirs];
     return dirs.filter((d) => d.startsWith(argPartial));
   }

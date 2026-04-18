@@ -74,8 +74,32 @@ export function CommandInput({
   const [cursorPos, setCursorPos] = useState(0);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [completions, setCompletions] = useState<string[]>([]);
+  const [cycleIndex, setCycleIndex] = useState(-1);
+  const cycleOriginalRef = useRef<string>("");
   const [slashMenuIndex, setSlashMenuIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const exitCycle = useCallback(() => {
+    setCycleIndex(-1);
+    setCompletions([]);
+  }, []);
+
+  const applyCompletion = useCallback(
+    (base: string, candidate: string): string => {
+      const endsWithSpace = /\s$/.test(base);
+      const parts = base.trim().split(/\s+/).filter(Boolean);
+      if (parts.length === 0) {
+        return `${candidate} `;
+      }
+      if (parts.length === 1 && !endsWithSpace) {
+        // Still typing the command itself
+        return `${candidate} `;
+      }
+      // Completing an argument of cmd
+      return `${parts[0]} ${candidate}`;
+    },
+    [],
+  );
 
   // Compute filtered slash commands based on current input
   const slashMatches = useMemo(
@@ -177,7 +201,7 @@ export function CommandInput({
         setInput("");
         setCursorPos(0);
         setHistoryIndex(-1);
-        setCompletions([]);
+        exitCycle();
         return;
       }
 
@@ -223,25 +247,76 @@ export function CommandInput({
         }
       }
 
-      // Tab: autocomplete (terminal mode)
+      // Tab / Shift+Tab: autocomplete (terminal mode)
       if (e.key === "Tab") {
         e.preventDefault();
-        const matches = getCommandCompletions(input, completionContext);
-        if (matches.length === 1) {
-          const parts = input.trim().split(/\s+/);
-          if (parts.length <= 1) {
-            const newInput = `${matches[0]} `;
-            setInput(newInput);
-            setCursorPos(newInput.length);
-          } else {
-            const newInput = `${parts[0]} ${matches[0]}`;
-            setInput(newInput);
-            setCursorPos(newInput.length);
-          }
-          setCompletions([]);
-        } else if (matches.length > 1) {
-          setCompletions(matches);
+
+        // Already cycling → advance
+        if (cycleIndex >= 0 && completions.length > 0) {
+          const direction = e.shiftKey ? -1 : 1;
+          const next =
+            (cycleIndex + direction + completions.length) % completions.length;
+          const newInput = applyCompletion(
+            cycleOriginalRef.current,
+            completions[next],
+          );
+          setInput(newInput);
+          setCursorPos(newInput.length);
+          setCycleIndex(next);
+          return;
         }
+
+        // Fresh completion
+        const matches = getCommandCompletions(input, completionContext);
+        if (matches.length === 0) return;
+
+        if (matches.length === 1) {
+          const newInput = applyCompletion(input, matches[0]);
+          setInput(newInput);
+          setCursorPos(newInput.length);
+          setCompletions([]);
+          return;
+        }
+
+        // Multiple matches → show list + start cycling at first candidate
+        cycleOriginalRef.current = input;
+        setCompletions(matches);
+        setCycleIndex(0);
+        const newInput = applyCompletion(input, matches[0]);
+        setInput(newInput);
+        setCursorPos(newInput.length);
+        return;
+      }
+
+      // Escape while cycling → restore original input
+      if (e.key === "Escape" && cycleIndex >= 0) {
+        e.preventDefault();
+        setInput(cycleOriginalRef.current);
+        setCursorPos(cycleOriginalRef.current.length);
+        exitCycle();
+        return;
+      }
+
+      // Arrow keys while cycling → navigate candidates
+      if (
+        cycleIndex >= 0 &&
+        completions.length > 0 &&
+        (e.key === "ArrowLeft" ||
+          e.key === "ArrowRight" ||
+          e.key === "ArrowUp" ||
+          e.key === "ArrowDown")
+      ) {
+        e.preventDefault();
+        const direction = e.key === "ArrowLeft" || e.key === "ArrowUp" ? -1 : 1;
+        const next =
+          (cycleIndex + direction + completions.length) % completions.length;
+        const newInput = applyCompletion(
+          cycleOriginalRef.current,
+          completions[next],
+        );
+        setInput(newInput);
+        setCursorPos(newInput.length);
+        setCycleIndex(next);
         return;
       }
 
@@ -256,7 +331,7 @@ export function CommandInput({
         setHistoryIndex(newIndex);
         setInput(history[newIndex]);
         setCursorPos(history[newIndex].length);
-        setCompletions([]);
+        exitCycle();
         return;
       }
 
@@ -274,7 +349,7 @@ export function CommandInput({
           setInput(history[newIndex]);
           setCursorPos(history[newIndex].length);
         }
-        setCompletions([]);
+        exitCycle();
         return;
       }
 
@@ -286,13 +361,13 @@ export function CommandInput({
           setInput("");
           setCursorPos(0);
           setHistoryIndex(-1);
-          setCompletions([]);
+          exitCycle();
         }
         return;
       }
 
-      // Any other key clears completions
-      setCompletions([]);
+      // Any other key exits cycle + clears completions (keeping current selection)
+      exitCycle();
     },
     [
       input,
@@ -304,6 +379,10 @@ export function CommandInput({
       showSlashMenu,
       slashMatches,
       slashMenuIndex,
+      cycleIndex,
+      completions,
+      applyCompletion,
+      exitCycle,
     ],
   );
 
@@ -335,7 +414,19 @@ export function CommandInput({
   return (
     <div>
       {completions.length > 0 && (
-        <div className="text-ctp-overlay1 mb-1">{completions.join("  ")}</div>
+        <div className="text-ctp-overlay1 mb-1 flex flex-wrap gap-x-3 gap-y-0.5">
+          {completions.map((c, i) => (
+            <span
+              key={c}
+              className={cn(
+                "px-1",
+                i === cycleIndex ? "bg-ctp-surface0 text-ctp-text rounded" : "",
+              )}
+            >
+              {c}
+            </span>
+          ))}
+        </div>
       )}
       <div className="flex items-center">
         <TerminalPrompt
