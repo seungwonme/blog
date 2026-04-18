@@ -1,3 +1,4 @@
+import "server-only";
 import { getEmbedding } from "@/shared/api/gemini/client";
 import { getPinecone, PINECONE_INDEX_NAME } from "@/shared/api/pinecone/client";
 import type { PostData } from "./content";

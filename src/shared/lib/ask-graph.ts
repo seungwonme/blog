@@ -1,3 +1,4 @@
+import "server-only";
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { Annotation, StateGraph } from "@langchain/langgraph";
 import type { PostData } from "./content";

@@ -1,5 +1,12 @@
 import { NextResponse } from "next/server";
-import { getEntryBySlug } from "@/entities/post";
+import { getAllEntries, getEntryBySlug } from "@/entities/post";
+
+export const dynamic = "force-static";
+export const revalidate = false;
+
+export function generateStaticParams() {
+  return getAllEntries().map((entry) => ({ slug: entry.slug }));
+}
 
 export async function GET(
   _request: Request,
