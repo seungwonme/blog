@@ -6,7 +6,7 @@ import { parseCommand } from "@/entities/command";
 import { buildFileSystem } from "@/entities/file-system";
 import type { PostMeta } from "@/entities/post";
 import { executeCommand } from "@/features/command-executor";
-import { CommandInput } from "@/features/command-input";
+import { CommandInput, PromptQueue } from "@/features/command-input";
 import { TerminalLineRenderer } from "@/features/terminal-output";
 import { ASCII_BANNER } from "@/shared/lib/ascii-banner";
 import { MobileCommandBar } from "./mobile-command-bar";
@@ -106,6 +106,7 @@ export function TerminalWindow({
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [isAiMode, setIsAiMode] = useState(false);
+  const [promptQueue, setPromptQueue] = useState<string[]>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
   const chatHistoryRef = useRef<ChatMessage[]>([]);
   const sessionIdRef = useRef(crypto.randomUUID());
@@ -295,6 +296,12 @@ export function TerminalWindow({
     (input: string) => {
       // AI mode
       if (isAiMode) {
+        // AI 스트리밍 중이면 큐에 적재만 하고 반환 (dequeue 시점에 라인 렌더)
+        if (isProcessing) {
+          setPromptQueue((prev) => [...prev, input]);
+          return;
+        }
+
         addLine({
           id: nextId(),
           type: "input",
@@ -371,6 +378,7 @@ export function TerminalWindow({
       aboutContent,
       commandHistory,
       isAiMode,
+      isProcessing,
       addLine,
       nextId,
       handleCat,
@@ -378,8 +386,22 @@ export function TerminalWindow({
     ],
   );
 
+  // StrictMode/dev double-invoke 에서 같은 next 가 두 번 실행되지 않도록 가드
+  const drainingRef = useRef(false);
+
+  // Drain: AI 응답 종료 or 동기 슬래시 처리 후, 큐 첫 항목을 자동 소비
+  useEffect(() => {
+    if (drainingRef.current) return;
+    if (!isProcessing && promptQueue.length > 0) {
+      drainingRef.current = true;
+      const next = promptQueue[0];
+      setPromptQueue((prev) => prev.slice(1));
+      handleCommand(next);
+      drainingRef.current = false;
+    }
+  }, [isProcessing, promptQueue, handleCommand]);
+
   const initialCommandExecuted = useRef(false);
-  // biome-ignore lint/correctness/useExhaustiveDependencies: run only once on mount when handleCommand is ready
   useEffect(() => {
     if (initialCommand && !initialCommandExecuted.current) {
       initialCommandExecuted.current = true;
@@ -389,6 +411,11 @@ export function TerminalWindow({
 
   const toggleAiMode = useCallback(() => {
     setIsAiMode((prev) => !prev);
+    setPromptQueue([]);
+  }, []);
+
+  const popQueue = useCallback(() => {
+    setPromptQueue((prev) => prev.slice(0, -1));
   }, []);
 
   const handleTerminalClick = useCallback((e: React.MouseEvent) => {
@@ -434,6 +461,7 @@ export function TerminalWindow({
             </div>
           ))}
 
+          {isAiMode && <PromptQueue items={promptQueue} />}
           <CommandInput
             currentPath={currentPath}
             onSubmit={handleCommand}
@@ -443,6 +471,8 @@ export function TerminalWindow({
             isAiMode={isAiMode}
             onToggleAiMode={toggleAiMode}
             onLayoutChange={scrollToBottom}
+            queueSize={promptQueue.length}
+            onEscapePopQueue={popQueue}
           />
         </div>
 
