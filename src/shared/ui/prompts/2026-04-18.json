@@ -1,7 +1,0 @@
-[
-  {
-    "time": "22:03:18",
-    "user": "seungwonan",
-    "prompt": "<task-notification>\n<task-id>br2crdf0h</task-id>\n<tool-use-id>toolu_014nYGJCRUe3UfzWy7hvTb97</tool-use-id>\n<output-file>/private/tmp/claude-501/-Users-seungwonan-Dev-1-project-blog/83fa6df6-3ebb-443d-a7e9-152a432365df/tasks/br2crdf0h.output</output-file>\n<status>completed</status>\n<summary>Background command \"Phase 5 final build\" completed (exit code 0)</summary>\n</task-notification>"
-  }
-]
