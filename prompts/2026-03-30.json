@@ -1,0 +1,22 @@
+[
+  {
+    "time": "10:25:00",
+    "user": "seungwonan",
+    "prompt": "/daily"
+  },
+  {
+    "time": "10:25:06",
+    "user": "seungwonan",
+    "prompt": "/daily-digest"
+  },
+  {
+    "time": "10:43:00",
+    "user": "seungwonan",
+    "prompt": "<task-notification>\n<task-id>a070c500df9ed00cb</task-id>\n<tool-use-id>toolu_015q3xoSgMaCHjVmyxDhGmz6</tool-use-id>\n<output-file>/private/tmp/claude-501/-Users-seungwonan-Dev-1-project-blog/021ee4cd-1a3a-402b-9fed-38696226e2b6/tasks/a070c500df9ed00cb.output</output-file>\n<status>completed</status>\n<summary>Agent \"YouTube draft for digest\" completed</summary>\n<result>초안 작성 완료. `/tmp/digest/20260330/draft-youtube.md`에 저장했다.\n\n**커버리지 요약 (5개 영상 전수)**:\n\n1. **Nate Herk** - Claude Code + Paperclip으로 AI만으로 회사 운영 (오케스트레이션 도구, 하트비트, 스킬, 에이전트 조직도)\n2. **비즈니스캔버스** - Jensen Huang All-In 인터뷰 (NVIDIA 전략, 매출 $3500억+, 에이전트 비전, 중국 시장 0%, 로보틱스 3-5년, 디지털 바이올로지)\n3. **비즈니스캔버스** - KKR Scott Nuttall 인터뷰 (K자형 분화, 드라이 파우더 $1180억, 사모 크레딧 우려 과대, Arctos 인수)\n4. **EO Global** - Jacob Bank/Relay.app (40개 AI 마케팅 에이전트, 인간 대비 1/100 비용, Super IC 미래론)\n5. **Hugging Face** - Transformers.js v4 (C++ WebGPU 백엔드, 브라우저에서 20B 모델 40 tok/s, 200+ 아키텍처, ModelRegistry)\n\n메타 분석에서 AI 에이전트 오케스트레이션, Super IC 미래상, 비용 효율성, 브라우저 AI 인프라 성숙 등 교차 주제를 정리했다.</result>\n<usage><total_tokens>78129</total_tokens><tool_uses>9</tool_uses><duration_ms>394101</duration_ms></usage>\n</task-notification>"
+  },
+  {
+    "time": "11:11:36",
+    "user": "seungwonan",
+    "prompt": "<task-notification>\n<task-id>a0a85f3eb5258fa71</task-id>\n<tool-use-id>toolu_015fjumcCx8GF9Qj5XVxWUv9</tool-use-id>\n<output-file>/private/tmp/claude-501/-Users-seungwonan-Dev-1-project-blog/021ee4cd-1a3a-402b-9fed-38696226e2b6/tasks/a0a85f3eb5258fa71.output</output-file>\n<status>completed</status>\n<summary>Agent \"SNS draft for digest\" completed</summary>\n<result>You've hit your limit · resets 1pm (Asia/Seoul)</result>\n<usage><total_tokens>531</total_tokens><tool_uses>13</tool_uses><duration_ms>2136508</duration_ms></usage>\n</task-notification>"
+  }
+]

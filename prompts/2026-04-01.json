@@ -1,0 +1,7 @@
+[
+  {
+    "time": "02:06:17",
+    "user": "seungwonan",
+    "prompt": "<scheduled-task name=\"daily-brief\" file=\"/Users/seungwonan/.claude/scheduled-tasks/daily-brief/SKILL.md\">\nThis is an automated run of a scheduled task. The user is not present to answer questions. For implementation details, execute autonomously without asking clarifying questions — make reasonable choices and note them in your output. However, for \"write\" actions (e.g. MCP tools that send, post, create, update, or delete), only take them if the task file asks for that specific action. When in doubt, producing a report of what you found is the correct output.\n\n/daily-brief\n</scheduled-task>"
+  }
+]

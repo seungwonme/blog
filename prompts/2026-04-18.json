@@ -1,0 +1,172 @@
+[
+  {
+    "time": "21:09:26",
+    "user": "seungwonan",
+    "prompt": "about 업데이트\n\nhttps://docs.google.com/document/d/1d1EH4x59ovoeOELwcpiesklEhkYm6MePIivEjc7e6aE/edit?tab=t.0\n\n안승원 자기소개서\n이름\n| 안승원\n\n주소\n| 서울특별시 서초구 주흥길 35-6\n전화번호\n| 010-5901-0146\n이메일\n| sw.an@jocodingax.ai\n\nWork Experience\n주식회사 대모산개발단 Co-Founder / CCO 2025.02 - 현재\n주식회사 조코딩AX파트너스 AX Director 2026.03 - 현재\n\nTeaching & Instructional Experience\n패스트캠퍼스 ‘1일 1바이브코딩’ 강의 참여 - 2025.08\n오즈코딩스쿨 KDT 과정 AI 리더캠프 1/2기 주강사 - 2025.09 ~ 2025.11\n패스트캠퍼스 ‘내 인생 자동화 바이브코딩 + 자동화 풀 패키지’ 강의 런칭 - 2025.10\n한국콘텐츠진흥원 NCA 뉴콘텐츠 아카데미 장기과정 인터랙티브 바이브 코딩/자동화 강의 - 2025.12\n패스트캠퍼스 ‘N8N x Claude Code 로 10X 생산성 에이전트 군단’ 강의 런칭 - 2026.02\n패스트캠퍼스 ‘n8n 딸깍! 수익형 AI 쇼츠 자동화 패키지 프로젝트’ 강의 런칭 - 2026.03\n대웅제약 재무기획본부 임직원 대상 AI 바이브코딩 업무혁신 과정 - 2026.03\n이랜드 호텔사업부 AX 기초 교육 - 2026.04\n슈피겐 임원 대상 AI 바이브코딩 업무혁신 과정 - 2026.04 ~ 2026.06\n현대자동차그룹 2026 HMG 사업부장 대상 AX 의사결정 과정 2026.05 ~ 2026.06\n\nEducation\n42 Seoul 컴퓨터공학계열 멤버 2023.03 - 2024.12\nCodyssey X SeSAC AI/데이터 분석 2024.12 - 2025.03\nLG AI Research – LG Aimers 6기 (Data Intelligence) 수료 2025.01 - 2025.02\n\nAwards\nCodyssey X SeSAC AI 과학기술정보통신부 장관상 2025.03\n\nCapability & Skills\nC/C++\nLinux\nJavascript/React\nPython/Langgraph\nFigma\nMachine Learning/Deep Learning\n\nOther\n대모산개발단 유튜브 AI/바이브 코딩 정보 공유 - 2025.02 - 현재\n중랑여성인력개발센터 여성가족부 직업교육훈련 과정 기획 및 운영 관련 자문 회의 참여 - 2025.10\n패스트캠퍼스 오픈 세미나 -  콘텐츠 자동화 + 바이브코딩 풀 패키지 - 2025.10\n수도권 ICT 구름 부트캠프 인공지능 심화 특강 - 2025.10\n수도권 ICT 구름 부트캠프 Claude Code 실무 특강 - 2025.11\n일할맛 in 판교 자동화 세미나 강연 - 2025.11\n오즈코딩스쿨 기업 대상 특강 - 2025.11 ~ 2025.12\nPrimer Creator Economy 1 - 2026.02 ~ 현재\n패스트캠퍼스 “바이브코딩으로 만든 AI 숏츠 생성기 수익화 사례 공유” 오픈 세미나 - 2026.03\n패스트캠퍼스 전문가 인터뷰 - 2026.03\n스트롱벤처스 임직원 대상 AI 바이브코딩 특강 - 2026.05"
+  },
+  {
+    "time": "21:10:35",
+    "user": "seungwonan",
+    "prompt": "계속 해줘"
+  },
+  {
+    "time": "21:11:12",
+    "user": "seungwonan",
+    "prompt": "지금 구조가 괜찮은 거 같니?"
+  },
+  {
+    "time": "21:12:04",
+    "user": "seungwonan",
+    "prompt": "일단 현재 내용 커밋/푸시해줘"
+  },
+  {
+    "time": "21:12:43",
+    "user": "seungwonan",
+    "prompt": "그러게 지금 others에 다 넣는 것도 이상하고 온라인 과정이랑 묶이는 것도 이상하다"
+  },
+  {
+    "time": "21:13:38",
+    "user": "seungwonan",
+    "prompt": "특강인데 talks가 맞니 ?"
+  },
+  {
+    "time": "21:14:17",
+    "user": "seungwonan",
+    "prompt": "Lectures랑 Online Courses 또 겹치잖아 ㅋㅋ"
+  },
+  {
+    "time": "21:14:39",
+    "user": "seungwonan",
+    "prompt": "분류가 너무 많은 거 아냐?"
+  },
+  {
+    "time": "21:15:09",
+    "user": "seungwonan",
+    "prompt": "아니야 지금이 나을 거 같아\n특강은 Others로 빼는 거야"
+  },
+  {
+    "time": "21:16:28",
+    "user": "seungwonan",
+    "prompt": "근데 지금 헤딩이 좀 아쉽네\n\n- 경력\n- 프로젝트\n- 강의 경험\n- 학력\n- 수상\n- Others\n\n인데 헤딩의 텍스트 자체가 좀 아쉬워"
+  },
+  {
+    "time": "21:17:10",
+    "user": "seungwonan",
+    "prompt": "Work Experience, Instructional Experience 으로 하는 거 어떨까?"
+  },
+  {
+    "time": "21:17:54",
+    "user": "seungwonan",
+    "prompt": "1은 뭘 정리한다는거\n2는 Work -> Project -> Instructional -> .. 이 좋을 거 같은데 어떻니?"
+  },
+  {
+    "time": "21:19:06",
+    "user": "seungwonan",
+    "prompt": "현재 흐름으로 하자\nSpeaking & Media로 바꾼다면 Others가 이름이 바뀌는 거? 아니면 others는 남아있고 새로 신설되는거?"
+  },
+  {
+    "time": "21:20:29",
+    "user": "seungwonan",
+    "prompt": "아마 추가된다면 인터뷰/미디어에서의 여러 활동/특강 들일 거 같은데 어떻게 분류해야하나"
+  },
+  {
+    "time": "21:21:25",
+    "user": "seungwonan",
+    "prompt": "Others Activities 는 냅두고 프라이머, 중랑구를 여기에 두자\n그리고 전체적으로 시간 역순으로 변경하는게 좋겠다 ㅇㅇ"
+  },
+  {
+    "time": "21:24:13",
+    "user": "seungwonan",
+    "prompt": "기업 AX 솔루션 구축과 사내 AI 교육을 함께하는 대모산개발단 공동 창업자입니다.\rAI 자동화와 워크플로우 설계를 통해 기업의 AX(AI Transformation)와 업무 생산성 향상을 돕는 시스템 구축과 교육을 하고 있습니다.\n\n이거 설명 좀 아쉽지 않나?"
+  },
+  {
+    "time": "21:25:14",
+    "user": "seungwonan",
+    "prompt": "A로 하자 '바이브코딩과' 이 말만빼고"
+  },
+  {
+    "time": "21:27:51",
+    "user": "seungwonan",
+    "prompt": "[Image #1]\n\n텍스트 좀 개선한 버전의 문서인데 다른 텍스트를 찾아줘\n그리고 회사에 볼드체로 더 강조하고 싶어"
+  },
+  {
+    "time": "21:31:14",
+    "user": "seungwonan",
+    "prompt": "Capability & Skills 이거는 빼도돼\n사소한 것 중에서는\n- 내 인생 자동화 기간이 2025.10으로 변경\n- 순서는 역순 유지\n- 구조는 현재 유지\n\n모든 기관명으로 해줘"
+  },
+  {
+    "time": "21:35:58",
+    "user": "seungwonan",
+    "prompt": "해줘"
+  },
+  {
+    "time": "21:36:22",
+    "user": "seungwonan",
+    "prompt": "/code-review"
+  },
+  {
+    "time": "21:36:37",
+    "user": "seungwonan",
+    "prompt": "/codex:review \n\n바뀐 코드 말고 현재 코드 리뷰해줘\n코덱스랑 같이"
+  },
+  {
+    "time": "21:37:17",
+    "user": "seungwonan",
+    "prompt": "<task-notification>\n<task-id>bf0gbxegi</task-id>\n<tool-use-id>toolu_01BMTKVwA9LPMZjKpjF74BGi</tool-use-id>\n<output-file>/private/tmp/claude-501/-Users-seungwonan-Dev-1-project-blog/83fa6df6-3ebb-443d-a7e9-152a432365df/tasks/bf0gbxegi.output</output-file>\n<status>failed</status>\n<summary>Background command \"Codex review\" failed with exit code 1</summary>\n</task-notification>"
+  },
+  {
+    "time": "21:37:52",
+    "user": "seungwonan",
+    "prompt": "/codex:adversarial-review"
+  },
+  {
+    "time": "21:38:18",
+    "user": "seungwonan",
+    "prompt": "prompts는 항상 같이 커밋해\nfnm으로 그 버전이 가장 최신이라 깔았는데 최신 짝수 버전으로 옮기면 되나 ?"
+  },
+  {
+    "time": "21:38:45",
+    "user": "seungwonan",
+    "prompt": "25 lts로 설치 ㄱㄱ"
+  },
+  {
+    "time": "21:39:45",
+    "user": "seungwonan",
+    "prompt": "~/Dev/1-project/blog main* ❯ fnm ls"
+  },
+  {
+    "time": "21:39:52",
+    "user": "seungwonan",
+    "prompt": "<task-notification>\n<task-id>bbo6ug87m</task-id>\n<tool-use-id>toolu_01X37NbatY1LVbhSmbDftPR7</tool-use-id>\n<output-file>/private/tmp/claude-501/-Users-seungwonan-Dev-1-project-blog/83fa6df6-3ebb-443d-a7e9-152a432365df/tasks/bbo6ug87m.output</output-file>\n<status>completed</status>\n<summary>Background command \"Codex adversarial review\" completed (exit code 0)</summary>\n</task-notification>"
+  },
+  {
+    "time": "21:40:03",
+    "user": "seungwonan",
+    "prompt": "24안해 25로 해"
+  },
+  {
+    "time": "21:40:11",
+    "user": "seungwonan",
+    "prompt": "뭐라는 겨\n어떻게 해?"
+  },
+  {
+    "time": "21:40:45",
+    "user": "seungwonan",
+    "prompt": "아니 굳이 안남겨도 됨"
+  },
+  {
+    "time": "21:40:58",
+    "user": "seungwonan",
+    "prompt": "개인정보 들어가도 상관없기는 해\n어차피 내 이력서의 역할도 하기 때문에"
+  },
+  {
+    "time": "21:41:23",
+    "user": "seungwonan",
+    "prompt": "prompt 다 추가하고 agents, agent, omx 이런거 지워줘"
+  },
+  {
+    "time": "21:42:37",
+    "user": "seungwonan",
+    "prompt": "omc도 지우고 커밋 ㄱㄱ"
+  }
+]

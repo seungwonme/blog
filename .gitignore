@@ -65,5 +65,10 @@ next-env.d.ts
 # generated
 src/shared/generated/
 
+# private 로컬 문서
+/content/_private/
+
 # other
 repomix-output.xml
+.omx/
+.omc/
