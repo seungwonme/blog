@@ -302,7 +302,14 @@ export default function FaultyTerminal({
     if (!ctn) return;
 
     const actualDpr = dpr ?? Math.min(window.devicePixelRatio || 1, 2);
-    const renderer = new Renderer({ dpr: actualDpr });
+    // Defense-in-depth: TerminalBackground가 WebGL 지원 여부를 선검증하지만,
+    // Renderer 생성 자체가 throw하면 error boundary가 페이지를 교체한다.
+    let renderer: Renderer;
+    try {
+      renderer = new Renderer({ dpr: actualDpr });
+    } catch {
+      return;
+    }
     rendererRef.current = renderer;
     const gl = renderer.gl;
     gl.clearColor(0, 0, 0, 1);

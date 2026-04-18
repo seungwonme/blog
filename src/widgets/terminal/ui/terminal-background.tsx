@@ -10,11 +10,25 @@ const FaultyTerminal = dynamic(() => import("@/shared/ui/faulty-terminal"), {
 const MOBILE_BREAKPOINT = "(max-width: 767px)";
 const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
 
+// WebGL 미지원 환경 (일부 headless 크롤러, 오래된 브라우저, GPU 블록 상태)에서
+// FaultyTerminal이 throw하면 Next.js 에러 바운더리가 페이지 전체를 교체한다.
+// 사전 감지 후 배경만 정적 그라디언트로 대체한다.
+function supportsWebGL(): boolean {
+  if (typeof window === "undefined") return false;
+  try {
+    const canvas = document.createElement("canvas");
+    return !!(canvas.getContext("webgl2") || canvas.getContext("webgl"));
+  } catch {
+    return false;
+  }
+}
+
 function shouldDisableBackground(): boolean {
   if (typeof window === "undefined") return true;
   return (
     window.matchMedia(MOBILE_BREAKPOINT).matches ||
-    window.matchMedia(REDUCED_MOTION).matches
+    window.matchMedia(REDUCED_MOTION).matches ||
+    !supportsWebGL()
   );
 }
 
