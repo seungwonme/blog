@@ -58,6 +58,8 @@ interface CommandInputProps {
   isAiMode?: boolean;
   onToggleAiMode?: () => void;
   onLayoutChange?: () => void;
+  queueSize?: number;
+  onEscapePopQueue?: () => void;
 }
 
 export function CommandInput({
@@ -69,6 +71,8 @@ export function CommandInput({
   isAiMode = false,
   onToggleAiMode,
   onLayoutChange,
+  queueSize = 0,
+  onEscapePopQueue,
 }: CommandInputProps) {
   const [input, setInput] = useState("");
   const [cursorPos, setCursorPos] = useState(0);
@@ -122,10 +126,10 @@ export function CommandInput({
   }, [slashMatches.length, onLayoutChange]);
 
   useEffect(() => {
-    if (!disabled) {
+    if (!disabled || isAiMode) {
       inputRef.current?.focus();
     }
-  }, [disabled]);
+  }, [disabled, isAiMode]);
 
   // Sync cursor position after input changes
   // biome-ignore lint/correctness/useExhaustiveDependencies: need to trigger on both cursorPos and input changes
@@ -321,6 +325,13 @@ export function CommandInput({
         return;
       }
 
+      // Esc (AI mode, empty input, queue exists) → pop queue
+      if (e.key === "Escape" && isAiMode && input === "" && onEscapePopQueue) {
+        e.preventDefault();
+        onEscapePopQueue();
+        return;
+      }
+
       // Arrow Up: previous history
       if (e.key === "ArrowUp") {
         e.preventDefault();
@@ -385,6 +396,7 @@ export function CommandInput({
       applyCompletion,
       exitCycle,
       isAiMode,
+      onEscapePopQueue,
     ],
   );
 
@@ -447,7 +459,7 @@ export function CommandInput({
             onChange={handleChange}
             onKeyDown={handleKeyDown}
             onSelect={handleSelect}
-            disabled={disabled}
+            disabled={disabled && !isAiMode}
             className="bg-transparent text-ctp-text outline-none w-full caret-transparent font-mono text-sm"
             placeholder={isAiMode ? "Ask anything..." : undefined}
             aria-label={isAiMode ? "AI search input" : "Terminal command input"}
@@ -459,7 +471,7 @@ export function CommandInput({
           />
           <span className="absolute left-0 pointer-events-none text-sm">
             <span className="invisible">{beforeCursor}</span>
-            {!disabled && <TerminalCursor />}
+            {(!disabled || isAiMode) && <TerminalCursor />}
             <span className="invisible">{afterCursor}</span>
           </span>
         </div>
@@ -485,7 +497,12 @@ export function CommandInput({
         </div>
       )}
       {/* Hint */}
-      {!input && !disabled && !showSlashMenu && (
+      {!showSlashMenu && queueSize > 0 && !input && (
+        <div className="text-ctp-overlay0 text-xs mt-1">
+          {queueSize} queued · esc to cancel last
+        </div>
+      )}
+      {!showSlashMenu && queueSize === 0 && !input && !disabled && (
         <div className="text-ctp-overlay0 text-xs mt-1">
           {isAiMode ? "! for terminal mode · / for commands" : "! for AI mode"}
         </div>
