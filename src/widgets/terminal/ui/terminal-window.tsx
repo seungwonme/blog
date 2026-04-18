@@ -199,6 +199,20 @@ export function TerminalWindow({
         result: { type: "text", content: "Thinking..." },
       });
 
+      const buildContent = (
+        answer: string,
+        sources: Array<{ title: string; slug: string; category: string }>,
+      ): string => {
+        let content = answer;
+        if (sources.length > 0) {
+          content += "\n\n---\nSources:";
+          for (const src of sources) {
+            content += `\n  - [${src.title}](/posts/${src.slug})`;
+          }
+        }
+        return content;
+      };
+
       try {
         const res = await fetch("/api/ask", {
           method: "POST",
@@ -210,27 +224,58 @@ export function TerminalWindow({
           }),
         });
 
-        if (!res.ok) throw new Error("API error");
+        if (!res.ok || !res.body) throw new Error("API error");
 
-        const data = await res.json();
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let buffer = "";
+        let answer = "";
+        let sources: Array<{ title: string; slug: string; category: string }> =
+          [];
+        let streamError: string | null = null;
 
-        let content = data.answer;
-        if (data.sources?.length > 0) {
-          content += "\n\n---\nSources:";
-          for (const src of data.sources) {
-            content += `\n  - [${src.title}](/posts/${src.slug})`;
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          buffer += decoder.decode(value, { stream: true });
+
+          const events = buffer.split("\n\n");
+          buffer = events.pop() ?? "";
+
+          for (const evt of events) {
+            if (!evt.trim()) continue;
+            let name = "";
+            let dataStr = "";
+            for (const line of evt.split("\n")) {
+              if (line.startsWith("event: ")) name = line.slice(7);
+              else if (line.startsWith("data: ")) dataStr = line.slice(6);
+            }
+            if (!name) continue;
+
+            if (name === "sources") {
+              sources = JSON.parse(dataStr);
+            } else if (name === "token") {
+              answer += JSON.parse(dataStr);
+              replaceLine(loadingId, {
+                type: "markdown",
+                content: buildContent(answer, sources),
+              });
+            } else if (name === "error") {
+              streamError = JSON.parse(dataStr).message ?? "stream error";
+            }
           }
         }
 
-        if (withHistory) {
+        if (streamError) throw new Error(streamError);
+
+        if (withHistory && answer) {
           chatHistoryRef.current = [
             ...chatHistoryRef.current,
             { role: "user", content: question },
-            { role: "assistant", content: data.answer },
+            { role: "assistant", content: answer },
           ];
         }
-
-        replaceLine(loadingId, { type: "markdown", content });
       } catch {
         replaceLine(loadingId, {
           type: "error",

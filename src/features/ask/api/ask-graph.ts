@@ -197,3 +197,115 @@ export async function runAskGraph(
     sources: result.sources,
   };
 }
+
+export interface StreamChunk {
+  type: "sources" | "token" | "done" | "error";
+  data?: Source[] | string;
+  message?: string;
+}
+
+// Final generation 단계만 토큰 단위로 스트리밍한다.
+// classify/retrieve는 빠른 단계(각 ~500ms)라 그대로 블로킹 유지 —
+// sources 먼저 보내고 그 다음 토큰이 흐르게 하여 체감 TTFB를 줄인다.
+export async function* streamAskGraph(
+  question: string,
+  history: ChatMessage[],
+): AsyncGenerator<StreamChunk> {
+  // 1. 분류
+  const { route } = await classify({
+    question,
+    history,
+    route: "chat",
+    relevantPosts: [],
+    answer: "",
+    sources: [],
+  });
+
+  // 2. RAG 검색 (해당 경로일 때만)
+  let relevantPosts: Post[] = [];
+  if (route === "rag") {
+    const retrieved = await retrieve({
+      question,
+      history,
+      route,
+      relevantPosts: [],
+      answer: "",
+      sources: [],
+    });
+    relevantPosts = retrieved.relevantPosts ?? [];
+  }
+
+  const sources: Source[] = relevantPosts.map((p) => ({
+    title: p.title,
+    slug: p.slug,
+    category: p.category,
+  }));
+
+  // 메타(sources) 먼저 방출
+  yield { type: "sources", data: sources };
+
+  // 3. 최종 답변 생성 — 토큰 스트리밍
+  const aboutContent = getAboutContent();
+  const messages: Array<["system" | "human" | "ai", string]> = [];
+
+  if (route === "rag") {
+    const postsContext = relevantPosts
+      .map(
+        (p) =>
+          `## ${p.title} (slug: ${p.slug}, category: ${p.category})\n${p.content}`,
+      )
+      .join("\n\n---\n\n");
+
+    messages.push([
+      "system",
+      `You are an AI assistant for seunan.dev, a terminal-style developer blog. Answer questions based on the blog content provided below. If the blog content doesn't contain relevant information, say so honestly. Always be concise and helpful. Respond in the same language as the question.
+
+IMPORTANT: When suggesting a command to read a post, always use the English slug with its category. NEVER use Korean titles in commands.
+Available posts:
+${relevantPosts.map((p) => `- cat ${p.category}/${p.slug}`).join("\n")}
+
+Blog content:
+${postsContext || "No relevant posts found."}
+
+About the blog owner:
+${aboutContent}`,
+    ]);
+  } else {
+    messages.push([
+      "system",
+      `You are a friendly AI assistant for seunan.dev, a terminal-style developer blog. You are having a casual conversation with a visitor. Be warm, concise, and helpful. Respond in the same language as the question.
+
+If the visitor asks something that might be related to blog content, suggest they use 'ask "question"' or 'grep keyword' commands to search.
+
+About the blog owner:
+${aboutContent}`,
+    ]);
+  }
+
+  for (const msg of history) {
+    messages.push([msg.role === "user" ? "human" : "ai", msg.content]);
+  }
+  messages.push(["human", question]);
+
+  const model = getModel({
+    maxOutputTokens: route === "rag" ? 1024 : 512,
+  });
+
+  const tokenStream = await model.stream(messages);
+  for await (const chunk of tokenStream) {
+    const text =
+      typeof chunk.content === "string"
+        ? chunk.content
+        : Array.isArray(chunk.content)
+          ? chunk.content
+              .map((c) => ("text" in c ? c.text : ""))
+              .filter(Boolean)
+              .join("")
+          : "";
+    if (text) {
+      yield { type: "token", data: text };
+    }
+  }
+
+  yield { type: "done" };
+}
