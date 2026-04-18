@@ -72,3 +72,4 @@ src/shared/generated/
 repomix-output.xml
 .omx/
 .omc/
+.gstack/

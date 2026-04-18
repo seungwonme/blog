@@ -101,6 +101,7 @@ export default async function PostPage({ params }: Props) {
         posts={posts}
         aboutContent={aboutContent}
         initialCommand={`cat ${post.category}/${slug}`}
+        preloadedContent={{ [slug]: post.content }}
       />
     </>
   );

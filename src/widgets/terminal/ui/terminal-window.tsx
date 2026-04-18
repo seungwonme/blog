@@ -16,6 +16,8 @@ interface TerminalWindowProps {
   posts: PostMeta[];
   aboutContent: string;
   initialCommand?: string;
+  /** Slug → markdown map for server-preloaded post bodies. Avoids the /api/posts fetch when the slug is already known. */
+  preloadedContent?: Record<string, string>;
 }
 
 interface ChatMessage {
@@ -97,6 +99,7 @@ export function TerminalWindow({
   posts,
   aboutContent,
   initialCommand,
+  preloadedContent,
 }: TerminalWindowProps) {
   const [lines, setLines] = useState<TerminalLine[]>(createInitialLines);
   const [currentPath, setCurrentPath] = useState("~");
@@ -153,6 +156,17 @@ export function TerminalWindow({
 
   const handleCat = useCallback(
     async (slug: string) => {
+      const preloaded = preloadedContent?.[slug];
+      if (preloaded) {
+        addLine({
+          id: nextId(),
+          type: "output",
+          result: { type: "markdown", content: preloaded },
+        });
+        setIsProcessing(false);
+        return;
+      }
+
       const loadingId = nextId();
       addLine({
         id: loadingId,
@@ -173,7 +187,7 @@ export function TerminalWindow({
       }
       setIsProcessing(false);
     },
-    [addLine, nextId, replaceLine],
+    [addLine, nextId, replaceLine, preloadedContent],
   );
 
   const handleAsk = useCallback(

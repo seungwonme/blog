@@ -228,5 +228,35 @@
     "time": "22:27:17",
     "user": "seungwonan",
     "prompt": "Gemini 모델은 있어\n이거 말고 쭉 진행해줘"
+  },
+  {
+    "time": "22:30:12",
+    "user": "seungwonan",
+    "prompt": "http://localhost:3000 이걸로 해야지 \n서버 띄워져 있어"
+  },
+  {
+    "time": "22:32:09",
+    "user": "seungwonan",
+    "prompt": "개선해줘\n\n\nLast login: Sat Apr 18 22:20:44 on ttys005\n~/Library/Mobile Documents/iCloud~md~obsidian/Documents ❯ pnrd                      10:28:40 PM\n ERR_PNPM_NO_IMPORTER_MANIFEST_FOUND  No package.json (or package.yaml, or package.json5) was found in \"/Users/seungwonan/Library/Mobile Documents/iCloud~md~obsidian/Documents\".\n~/Library/Mobile Documents/iCloud~md~obsidian/Documents ❯ blog                    10:28:41 오후\n~/Dev/1-project/blog main* ⇡ ❯ pnrd                                               10:30:14 오후\n\n> nextjs@0.1.0 predev /Users/seungwonan/Dev/1-project/blog\n> bunx tsx scripts/generate-posts-json.ts\n\nGenerated 2 posts, 18 digests → /Users/seungwonan/Dev/1-project/blog/src/shared/generated/posts.json\n\n> nextjs@0.1.0 dev /Users/seungwonan/Dev/1-project/blog\n> next dev\n\n▲ Next.js 16.2.1 (Turbopack)\n- Local:         http://localhost:3000\n- Network:       http://172.30.1.93:3000\n- Environments: .env\n✓ Ready in 261ms\n\n GET / 200 in 321ms (next.js: 139ms, application-code: 182ms)\n[browser] unable to create webgl context\n    at FaultyTerminal.useEffect (src/shared/ui/faulty-terminal.tsx:305:22)\n  303 |\n  304 |     const actualDpr = dpr ?? Math.min(window.devicePixelRatio || 1, 2);\n> 305 |     const renderer = new Renderer({ dpr: actualDpr });\n      |                      ^\n  306 |     rendererRef.current = renderer;\n  307 |     const gl = renderer.gl;\n  308 |     gl.clearColor(0, 0, 0, 1); (src/shared/ui/faulty-terminal.tsx:305:22)\n[browser] unable to create webgl context\n    at FaultyTerminal.useEffect (src/shared/ui/faulty-terminal.tsx:305:22)\n  303 |\n  304 |     const actualDpr = dpr ?? Math.min(window.devicePixelRatio || 1, 2);\n> 305 |     const renderer = new Renderer({ dpr: actualDpr });\n      |                      ^\n  306 |     rendererRef.current = renderer;\n  307 |     const gl = renderer.gl;\n  308 |     gl.clearColor(0, 0, 0, 1); (src/shared/ui/faulty-terminal.tsx:305:22)\n[browser] Uncaught TypeError: Cannot set properties of null (setting 'renderer')\n    at FaultyTerminal.useEffect (src/shared/ui/faulty-terminal.tsx:305:22)\n    at TerminalBackground (src/widgets/terminal/ui/terminal-background.tsx:55:7)\n    at TerminalWindow (src/widgets/terminal/ui/terminal-window.tsx:346:7)\n    at HomePage (src/pages/home/ui/home-page.tsx:16:5)\n    at Page (app/page.tsx:24:7)\n  303 |\n  304 |     const actualDpr = dpr ?? Math.min(window.devicePixelRatio || 1, 2);\n> 305 |     const renderer = new Renderer({ dpr: actualDpr });\n      |                      ^\n  306 |     rendererRef.current = renderer;\n  307 |     const gl = renderer.gl;\n  308 |     gl.clearColor(0, 0, 0, 1);\n GET / 200 in 29ms (next.js: 4ms, application-code: 25ms)\n GET /manifest.webmanifest 200 in 60ms (next.js: 53ms, application-code: 7ms)"
+  },
+  {
+    "time": "22:33:45",
+    "user": "seungwonan",
+    "prompt": "<task-notification>\n<task-id>bq5yd02ej</task-id>\n<tool-use-id>toolu_01Spi9HxdHAmYM5G5uiHPu63</tool-use-id>\n<output-file>/private/tmp/claude-501/-Users-seungwonan-Dev-1-project-blog/978547de-0202-4da3-bd0d-935ef006e7ec/tasks/bq5yd02ej.output</output-file>\n<status>completed</status>\n<summary>Background command \"Lint after edit\" completed (exit code 0)</summary>\n</task-notification>"
+  },
+  {
+    "time": "22:33:45",
+    "user": "seungwonan",
+    "prompt": "<task-notification>\n<task-id>b02gpfrrw</task-id>\n<tool-use-id>toolu_01AwHYfPDyfC2QyDmJcEJFh5</tool-use-id>\n<output-file>/private/tmp/claude-501/-Users-seungwonan-Dev-1-project-blog/978547de-0202-4da3-bd0d-935ef006e7ec/tasks/b02gpfrrw.output</output-file>\n<status>completed</status>\n<summary>Background command \"Typecheck after edit\" completed (exit code 0)</summary>\n</task-notification>"
+  },
+  {
+    "time": "22:34:54",
+    "user": "seungwonan",
+    "prompt": "띄웠어 해봐"
+  },
+  {
+    "time": "22:36:35",
+    "user": "seungwonan",
+    "prompt": "싹 다 해줘"
   }
 ]
