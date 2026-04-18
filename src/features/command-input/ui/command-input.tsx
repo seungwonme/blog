@@ -143,8 +143,9 @@ export function CommandInput({
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
-      // IME 조합 중에는 키 이벤트 무시 (한글 이중 입력 방지)
-      if (e.nativeEvent.isComposing) return;
+      // IME 조합 중에는 키 이벤트 무시 (한글 이중 입력 방지).
+      // Esc 는 IME 취소 시그널이라 isComposing=true 로 오지만 queue pop 은 처리해야 함.
+      if (e.nativeEvent.isComposing && e.key !== "Escape") return;
 
       // Cmd+K: clear (macOS)
       if (e.metaKey && e.key === "k") {
