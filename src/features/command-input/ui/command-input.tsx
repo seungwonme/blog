@@ -497,11 +497,6 @@ export function CommandInput({
         </div>
       )}
       {/* Hint */}
-      {!showSlashMenu && queueSize > 0 && !input && (
-        <div className="text-ctp-overlay0 text-xs mt-1">
-          {queueSize} queued · esc to cancel last
-        </div>
-      )}
       {!showSlashMenu && queueSize === 0 && !input && !disabled && (
         <div className="text-ctp-overlay0 text-xs mt-1">
           {isAiMode ? "! for terminal mode · / for commands" : "! for AI mode"}
