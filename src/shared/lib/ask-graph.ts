@@ -1,8 +1,11 @@
 import "server-only";
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { Annotation, StateGraph } from "@langchain/langgraph";
-import type { PostData } from "./content";
-import { getAboutContent, searchPosts } from "./content";
+import type { PostData } from "@/entities/post/api/content-source";
+import {
+  getAboutContent,
+  searchPosts,
+} from "@/entities/post/api/content-source";
 import { semanticSearch } from "./semantic-search";
 
 interface Source {

@@ -1,11 +1,12 @@
-import { getAllEntries } from "@/entities/post";
+import { getAboutContent, getAllEntriesMeta } from "@/entities/post";
 import { HomePage } from "@/pages/home";
 import { createPersonJsonLd, JsonLd } from "@/shared/lib";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://seunan.dev";
 
 export default function Page() {
-  const posts = getAllEntries();
+  const posts = getAllEntriesMeta();
+  const aboutContent = getAboutContent();
   return (
     <>
       <JsonLd
@@ -20,7 +21,7 @@ export default function Page() {
           sameAs: ["https://github.com/seungwonme"],
         })}
       />
-      <HomePage posts={posts} />
+      <HomePage posts={posts} aboutContent={aboutContent} />
     </>
   );
 }

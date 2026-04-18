@@ -2,14 +2,9 @@ import type { Metadata } from "next";
 import ReactMarkdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
-import { getPosts } from "@/entities/post";
+import { getAboutContent, getAllEntriesMeta } from "@/entities/post";
 import { HomePage } from "@/pages/home";
-import {
-  createPersonJsonLd,
-  createWebPageJsonLd,
-  getAboutContent,
-  JsonLd,
-} from "@/shared/lib";
+import { createPersonJsonLd, createWebPageJsonLd, JsonLd } from "@/shared/lib";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://seunan.dev";
 
@@ -36,7 +31,7 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  const posts = getPosts();
+  const posts = getAllEntriesMeta();
   const aboutContent = getAboutContent();
 
   return (
@@ -73,7 +68,11 @@ export default function AboutPage() {
         </article>
       </div>
       {/* Terminal UI with about command auto-executed */}
-      <HomePage posts={posts} initialCommand="about" />
+      <HomePage
+        posts={posts}
+        aboutContent={aboutContent}
+        initialCommand="about"
+      />
     </>
   );
 }

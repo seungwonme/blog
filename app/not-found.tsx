@@ -1,12 +1,10 @@
-"use client";
-
-import { usePathname } from "next/navigation";
-import { getPosts } from "@/entities/post";
+import { getAboutContent, getAllEntriesMeta } from "@/entities/post";
 import { HomePage } from "@/pages/home";
 
 export default function NotFound() {
-  const pathname = usePathname();
-  const posts = getPosts();
-  const command = pathname?.replace(/^\//, "") || "404";
-  return <HomePage posts={posts} initialCommand={command} />;
+  const posts = getAllEntriesMeta();
+  const aboutContent = getAboutContent();
+  return (
+    <HomePage posts={posts} aboutContent={aboutContent} initialCommand="404" />
+  );
 }

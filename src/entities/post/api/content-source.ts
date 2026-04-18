@@ -1,3 +1,4 @@
+import "server-only";
 import postsData from "@/shared/generated/posts.json";
 
 export interface PostFrontmatter {

@@ -1,8 +1,8 @@
 import "server-only";
+import type { PostData } from "@/entities/post/api/content-source";
+import { getPostBySlug } from "@/entities/post/api/content-source";
 import { getEmbedding } from "@/shared/api/gemini/client";
 import { getPinecone, PINECONE_INDEX_NAME } from "@/shared/api/pinecone/client";
-import type { PostData } from "./content";
-import { getPostBySlug } from "./content";
 
 export async function semanticSearch(
   query: string,

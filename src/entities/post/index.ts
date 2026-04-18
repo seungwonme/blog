@@ -1,9 +1,11 @@
 export {
+  getAboutContent,
   getAllEntries,
+  getAllEntriesMeta,
   getDigestBySlug,
   getDigests,
   getEntryBySlug,
   getPostBySlug,
   getPosts,
 } from "./api/get-posts";
-export type { Post } from "./model/types";
+export type { Post, PostMeta } from "./model/types";

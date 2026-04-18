@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CommandResult, TerminalLine } from "@/entities/command";
 import { parseCommand } from "@/entities/command";
 import { buildFileSystem } from "@/entities/file-system";
-import type { Post } from "@/entities/post";
+import type { PostMeta } from "@/entities/post";
 import { executeCommand } from "@/features/command-executor";
 import { CommandInput } from "@/features/command-input";
 import { TerminalLineRenderer } from "@/features/terminal-output";
@@ -13,7 +13,8 @@ import { MobileCommandBar } from "./mobile-command-bar";
 import { TerminalBackground } from "./terminal-background";
 
 interface TerminalWindowProps {
-  posts: Post[];
+  posts: PostMeta[];
+  aboutContent: string;
   initialCommand?: string;
 }
 
@@ -92,7 +93,11 @@ function executeAiSlashCommand(
   }
 }
 
-export function TerminalWindow({ posts, initialCommand }: TerminalWindowProps) {
+export function TerminalWindow({
+  posts,
+  aboutContent,
+  initialCommand,
+}: TerminalWindowProps) {
   const [lines, setLines] = useState<TerminalLine[]>(createInitialLines);
   const [currentPath, setCurrentPath] = useState("~");
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
@@ -148,30 +153,6 @@ export function TerminalWindow({ posts, initialCommand }: TerminalWindowProps) {
 
   const handleCat = useCallback(
     async (slug: string) => {
-      const post = posts.find((p) => p.slug === slug);
-      if (!post) {
-        addLine({
-          id: nextId(),
-          type: "output",
-          result: {
-            type: "error",
-            content: `cat: ${slug}: No such file`,
-          },
-        });
-        setIsProcessing(false);
-        return;
-      }
-
-      if (post.content) {
-        addLine({
-          id: nextId(),
-          type: "output",
-          result: { type: "markdown", content: post.content },
-        });
-        setIsProcessing(false);
-        return;
-      }
-
       const loadingId = nextId();
       addLine({
         id: loadingId,
@@ -192,7 +173,7 @@ export function TerminalWindow({ posts, initialCommand }: TerminalWindowProps) {
       }
       setIsProcessing(false);
     },
-    [posts, addLine, nextId, replaceLine],
+    [addLine, nextId, replaceLine],
   );
 
   const handleAsk = useCallback(
@@ -290,7 +271,7 @@ export function TerminalWindow({ posts, initialCommand }: TerminalWindowProps) {
       const parsed = parseCommand(input);
       const fsState = { ...fs, currentPath };
       const { result, newPath, asyncAction, asyncArg, openMailto } =
-        executeCommand(parsed, fsState, posts, commandHistory);
+        executeCommand(parsed, fsState, posts, commandHistory, aboutContent);
 
       if (result?.type === "clear") {
         setLines([]);
@@ -324,6 +305,7 @@ export function TerminalWindow({ posts, initialCommand }: TerminalWindowProps) {
       currentPath,
       fs,
       posts,
+      aboutContent,
       commandHistory,
       isAiMode,
       addLine,

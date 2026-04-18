@@ -3,7 +3,12 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
-import { getAllEntries, getEntryBySlug } from "@/entities/post";
+import {
+  getAboutContent,
+  getAllEntries,
+  getAllEntriesMeta,
+  getEntryBySlug,
+} from "@/entities/post";
 import { HomePage } from "@/pages/home";
 import {
   createArticleJsonLd,
@@ -27,6 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.description,
+    keywords: post.tags,
     alternates: {
       canonical: postUrl,
     },
@@ -37,6 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: post.date,
       url: postUrl,
       authors: ["Aiden Ahn"],
+      tags: post.tags,
     },
     twitter: {
       card: "summary_large_image",
@@ -55,7 +62,8 @@ export default async function PostPage({ params }: Props) {
   const post = getEntryBySlug(slug);
   if (!post) notFound();
 
-  const posts = getAllEntries();
+  const posts = getAllEntriesMeta();
+  const aboutContent = getAboutContent();
   const postUrl = `${SITE_URL}/posts/${slug}`;
 
   return (
@@ -81,12 +89,19 @@ export default async function PostPage({ params }: Props) {
         <h1>{post.title}</h1>
         <time>{post.date}</time>
         <p>{post.description}</p>
-        <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm, remarkBreaks]}
+          components={{ h1: "h2" }}
+        >
           {post.content}
         </ReactMarkdown>
       </article>
       {/* Terminal UI with cat command auto-executed */}
-      <HomePage posts={posts} initialCommand={`cat ${post.category}/${slug}`} />
+      <HomePage
+        posts={posts}
+        aboutContent={aboutContent}
+        initialCommand={`cat ${post.category}/${slug}`}
+      />
     </>
   );
 }

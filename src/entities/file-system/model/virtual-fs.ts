@@ -1,13 +1,13 @@
-import type { Post } from "@/entities/post";
+import type { PostMeta } from "@/entities/post";
 
 export interface VirtualFS {
   currentPath: string;
   directories: string[];
-  files: Map<string, Post[]>;
+  files: Map<string, PostMeta[]>;
 }
 
-export function buildFileSystem(posts: Post[]): VirtualFS {
-  const categoryMap = new Map<string, Post[]>();
+export function buildFileSystem(posts: PostMeta[]): VirtualFS {
+  const categoryMap = new Map<string, PostMeta[]>();
 
   for (const post of posts) {
     const cat = post.category.toLowerCase();

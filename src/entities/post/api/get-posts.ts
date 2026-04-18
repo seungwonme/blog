@@ -1,12 +1,16 @@
+import "server-only";
+import type { Post, PostMeta } from "../model/types";
 import {
+  getAboutContent as getAboutFromSource,
   getAllDigests,
   getAllPosts,
-  getDigestBySlug as getDigestBySlugFromContent,
-  getPostBySlug as getPostBySlugFromContent,
-} from "@/shared/lib/content";
-import type { Post } from "../model/types";
+  getDigestBySlug as getDigestBySlugFromSource,
+  getPostBySlug as getPostBySlugFromSource,
+} from "./content-source";
 
-function toPost(data: ReturnType<typeof getAllPosts>[number]): Post {
+type SourceData = ReturnType<typeof getAllPosts>[number];
+
+function toPost(data: SourceData): Post {
   return {
     title: data.title,
     slug: data.slug,
@@ -18,12 +22,23 @@ function toPost(data: ReturnType<typeof getAllPosts>[number]): Post {
   };
 }
 
+function toPostMeta(data: SourceData): PostMeta {
+  return {
+    title: data.title,
+    slug: data.slug,
+    category: data.category,
+    tags: data.tags,
+    date: data.date,
+    description: data.description,
+  };
+}
+
 export function getPosts(): Post[] {
   return getAllPosts().map(toPost);
 }
 
 export function getPostBySlug(slug: string): Post | null {
-  const data = getPostBySlugFromContent(slug);
+  const data = getPostBySlugFromSource(slug);
   return data ? toPost(data) : null;
 }
 
@@ -32,7 +47,7 @@ export function getDigests(): Post[] {
 }
 
 export function getDigestBySlug(slug: string): Post | null {
-  const data = getDigestBySlugFromContent(slug);
+  const data = getDigestBySlugFromSource(slug);
   return data ? toPost(data) : null;
 }
 
@@ -44,4 +59,14 @@ export function getAllEntries(): Post[] {
 
 export function getEntryBySlug(slug: string): Post | null {
   return getPostBySlug(slug) ?? getDigestBySlug(slug);
+}
+
+export function getAllEntriesMeta(): PostMeta[] {
+  const posts = getAllPosts().map(toPostMeta);
+  const digests = getAllDigests().map(toPostMeta);
+  return [...posts, ...digests].sort((a, b) => b.date.localeCompare(a.date));
+}
+
+export function getAboutContent(): string {
+  return getAboutFromSource();
 }

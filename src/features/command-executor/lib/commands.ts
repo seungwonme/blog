@@ -1,9 +1,8 @@
 import type { CommandResult, ParsedCommand } from "@/entities/command";
 import type { VirtualFS } from "@/entities/file-system";
 import { getPathSegments, resolvePath } from "@/entities/file-system";
-import type { Post } from "@/entities/post";
+import type { PostMeta } from "@/entities/post";
 import { ASCII_BANNER } from "@/shared/lib/ascii-banner";
-import { getAboutContent } from "@/shared/lib/content";
 
 const HELP_TEXT = `Available commands:
 
@@ -46,7 +45,7 @@ function formatLsHome(fs: VirtualFS): string {
   return lines.join("\n");
 }
 
-function formatLsCategory(posts: Post[]): string {
+function formatLsCategory(posts: PostMeta[]): string {
   if (posts.length === 0) return "(empty directory)";
   return posts
     .map((p) => {
@@ -59,8 +58,9 @@ function formatLsCategory(posts: Post[]): string {
 export function executeCommand(
   parsed: ParsedCommand,
   fs: VirtualFS,
-  allPosts: Post[],
+  allPosts: PostMeta[],
   commandHistory: string[],
+  aboutContent: string,
 ): {
   result: CommandResult | null;
   newPath?: string;
@@ -120,7 +120,7 @@ export function executeCommand(
       };
 
     case "about":
-      return { result: { type: "markdown", content: getAboutContent() } };
+      return { result: { type: "markdown", content: aboutContent } };
 
     case "history": {
       if (commandHistory.length === 0) {
@@ -202,7 +202,7 @@ export function executeCommand(
 
       // Handle "about" file at home directory
       if (arg === "about") {
-        return { result: { type: "markdown", content: getAboutContent() } };
+        return { result: { type: "markdown", content: aboutContent } };
       }
 
       // Resolve slug based on current path and argument
