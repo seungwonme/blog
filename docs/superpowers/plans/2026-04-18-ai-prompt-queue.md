@@ -461,3 +461,11 @@ Expected: 빌드 성공, 에러 없음.
 - `localStorage` 로 queue 영속화.
 - `MobileCommandBar` 버튼 UI 에서의 queue 적재 (현재 버튼 기반이라 별 설계 필요).
 - Queue 항목 편집·재정렬 UI.
+
+## Post-merge review findings
+
+Codex review (gpt-5.4, 109k tokens) + Claude 자체 리뷰 교차 결과. 모두 P2 (minor). 별 이슈로 추적:
+
+- [#1](https://github.com/seungwonme/blog/issues/1) — IME composition 중 Esc 가 queue 를 pop 해서 후보창 dismiss 의도를 하이재킹.
+- [#2](https://github.com/seungwonme/blog/issues/2) — `drainingRef` guard 가 commit 경계 전에 해제되어 StrictMode double-invoke 방어 효과 없음. (Codex + Claude 모두 지적)
+- [#3](https://github.com/seungwonme/blog/issues/3) — `toggleAiMode` state owner 가 queue invariant 를 보장 안 함. CommandInput 가드 외 다른 호출 경로에서 queue 가 silent drop.
