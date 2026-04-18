@@ -39,6 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ko_KR",
+    alternateLocale: ["en_US"],
     url: SITE_URL,
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 2400,
         height: 1260,
-        alt: SITE_NAME,
+        alt: "seunan.dev — Aiden Ahn의 터미널 스타일 개발 블로그",
       },
     ],
   },
@@ -80,7 +81,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1e1e2e",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#1e1e2e" },
+  ],
   width: "device-width",
   initialScale: 1,
 };

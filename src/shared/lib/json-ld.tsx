@@ -43,6 +43,15 @@ export function createWebSiteJsonLd(): WithContext<WebSite> {
     "@type": "WebSite",
     name: SITE_NAME,
     url: SITE_URL,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/?q={search_term_string}`,
+      },
+      // biome-ignore lint/suspicious/noExplicitAny: schema.org requires non-standard query-input property
+      "query-input": "required name=search_term_string",
+    } as any,
   };
 }
 
@@ -96,8 +105,8 @@ export function createArticleJsonLd(
       name: options.authorName,
     },
     publisher: {
-      "@type": "Organization",
-      name: SITE_NAME,
+      "@type": "Person",
+      name: options.authorName,
       url: SITE_URL,
     },
   };

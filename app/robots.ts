@@ -2,6 +2,15 @@ import type { MetadataRoute } from "next";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://seunan.dev";
 
+const AI_BOT_USER_AGENTS = [
+  "GPTBot",
+  "ChatGPT-User",
+  "PerplexityBot",
+  "ClaudeBot",
+  "anthropic-ai",
+  "Google-Extended",
+];
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -10,32 +19,12 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/", "/_next/"],
       },
-      {
-        userAgent: "GPTBot",
+      ...AI_BOT_USER_AGENTS.map((userAgent) => ({
+        userAgent,
         allow: "/",
-      },
-      {
-        userAgent: "ChatGPT-User",
-        allow: "/",
-      },
-      {
-        userAgent: "PerplexityBot",
-        allow: "/",
-      },
-      {
-        userAgent: "ClaudeBot",
-        allow: "/",
-      },
-      {
-        userAgent: "anthropic-ai",
-        allow: "/",
-      },
-      {
-        userAgent: "Google-Extended",
-        allow: "/",
-      },
+        disallow: ["/api/"],
+      })),
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,
-    host: SITE_URL,
   };
 }
