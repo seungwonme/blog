@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# seunan.dev
+
+터미널 UI 기반 개인 블로그. 명령어로 글을 탐색하고, AI에게 질문할 수 있습니다.
+
+Live: https://seunan.dev
+
+## Stack
+
+- **Runtime**: Next.js 16 (App Router), React 19, TypeScript 5
+- **Styling**: Tailwind CSS v4, shadcn/ui (New York), next-themes
+- **Quality**: Biome (lint/format), Steiger (FSD 검증), Lefthook
+- **AI**: LangGraph + Google Gemini + Pinecone (Ask 기능용 RAG)
+
+## Architecture
+
+[Feature-Sliced Design](https://feature-sliced.design) + Next.js App Router.
+
+```
+app/       Next.js 라우팅 (FSD pages에서 re-export)
+src/
+├── app/       providers · 전역 설정
+├── pages/     페이지 컴포지션 (home)
+├── widgets/   terminal
+├── features/  ask · command-input · command-executor · terminal-output
+├── entities/  command · file-system · post
+└── shared/    ui · lib · api · hooks · generated
+content/      posts · digest · about (markdown)
+scripts/      posts.json 생성 · 임베딩 업서트
+```
+
+자세한 규칙은 [`AGENTS.md`](./AGENTS.md)와 각 하위 디렉토리의 `AGENTS.md`를 참고.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev   # localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`.env.local` 필수 키:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+NEXT_PUBLIC_SITE_URL=https://seunan.dev
+NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=<code>
+GEMINI_API_KEY=<key>
+PINECONE_API_KEY=<key>
+PINECONE_INDEX=<index-name>
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Scripts
 
-## Learn More
+| Script | 설명 |
+| --- | --- |
+| `pnpm dev` | 개발 서버 (`predev`에서 `posts.json` 재생성) |
+| `pnpm build` | 프로덕션 빌드 |
+| `pnpm lint` / `pnpm check` | Biome lint / 자동 수정 |
+| `pnpm lint:fsd` | Steiger FSD 아키텍처 검증 |
+| `pnpm upsert-embeddings` | `content/**/*.md`를 Pinecone에 임베딩 업서트 |
+| `pnpm repomix` | 저장소 스냅샷 생성 |
 
-To learn more about Next.js, take a look at the following resources:
+## Content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Posts** — `content/posts/*.md`, frontmatter `category` 기반 분류 (`dev`, `til` 등)
+- **Digest** — `content/digest/YYYY-MM-DD.md`, 일일 뉴스레터 형식
+- **About** — `content/about.md`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+빌드 시 `scripts/generate-posts-json.ts`가 이 세 소스를 `src/shared/generated/posts.json`으로 통합합니다.
 
-## Deploy on Vercel
+## Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Vercel 연결. `main` 푸시 시 자동 배포.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+© Aiden Ahn (@seungwonme). 코드는 MIT, 글은 CC BY-NC 4.0.
