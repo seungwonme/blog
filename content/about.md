@@ -29,6 +29,10 @@ AI 자동화와 워크플로우 설계를 통해 기업의 AX(AI Transformation)
 - 패스트캠퍼스 ['n8n 딸깍! 수익형 AI 쇼츠 자동화 패키지 프로젝트'](https://fastcampus.co.kr/data_online_aishorts) 강의 런칭 (2026.03)
 - 오즈코딩스쿨 KDT 과정 [AI 리더캠프](https://ozcodingschool.com/ozcoding/aileadercamp) 1/2기 주강사 (2025.09 - 2025.11)
 - 한국콘텐츠진흥원 (KOCCA) [NCA 뉴콘텐츠 아카데미](https://www.ncakocca.kr/curriculum) 장기과정 인터랙티브 바이브 코딩/자동화 강의 (2025.09 - 2025.12)
+- 대웅제약 재무기획본부 임직원 대상 AI 바이브코딩 업무혁신 과정 (2026.03)
+- 이랜드 호텔사업부 AX 기초 교육 (2026.04)
+- 슈피겐 임원 대상 AI 바이브코딩 업무혁신 과정 (2026.04 - 2026.06)
+- 현대자동차그룹 2026 HMG 사업부장 대상 AX 의사결정 과정 (2026.05 - 2026.06)
 
 ---
 
@@ -60,7 +64,10 @@ AI 자동화와 워크플로우 설계를 통해 기업의 AX(AI Transformation)
 - 수도권 ICT 구름 부트캠프 Claude Code 실무 특강 (2025.11)
 - 패스트캠퍼스 오픈 세미나 (2025.10, [2026.03](https://fastcampus.co.kr/event_online_demoseminar))
 - [일할맛 in 판교](https://www.pangyotechnovalley.org/base/board/read?boardManagementNo=16&boardNo=3594&menuLevel=&menuNo=) 자동화 세미나 강연 (2025.11)
-- 패스트캠퍼스 [전문가 인터뷰](https://fastcampus.co.kr/story_interview_demosan)
+- 오즈코딩스쿨 기업 대상 특강 (2025.11 - 2025.12)
+- Primer Creator Economy 1기 (2026.02 - 현재)
+- 패스트캠퍼스 [전문가 인터뷰](https://fastcampus.co.kr/story_interview_demosan) (2026.03)
+- 스트롱벤처스 임직원 대상 AI 바이브코딩 특강 (2026.05)
 
 ---
 
