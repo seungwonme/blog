@@ -213,5 +213,20 @@
     "time": "21:51:21",
     "user": "seungwonan",
     "prompt": "<task-notification>\n<task-id>bt1fkzp8e</task-id>\n<tool-use-id>toolu_01CoQkExpwnPo2BMxcTQGXbY</tool-use-id>\n<output-file>/private/tmp/claude-501/-Users-seungwonan-Dev-1-project-blog/978547de-0202-4da3-bd0d-935ef006e7ec/tasks/bt1fkzp8e.output</output-file>\n<status>completed</status>\n<summary>Background command \"Upgrade gstack via git + setup\" completed (exit code 0)</summary>\n</task-notification>"
+  },
+  {
+    "time": "22:19:05",
+    "user": "seungwonan",
+    "prompt": "그렇게 해줘"
+  },
+  {
+    "time": "22:22:43",
+    "user": "seungwonan",
+    "prompt": "B"
+  },
+  {
+    "time": "22:27:17",
+    "user": "seungwonan",
+    "prompt": "Gemini 모델은 있어\n이거 말고 쭉 진행해줘"
   }
 ]
