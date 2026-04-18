@@ -30,7 +30,7 @@ const FAQ_ITEMS = [
   {
     question: "어떻게 연락하나요?",
     answer:
-      "이메일은 sw.an@jocodingax.ai로 보내주세요. GitHub은 github.com/seungwonme, LinkedIn은 linkedin.com/in/seungwon-aiden 입니다.",
+      "이메일은 senugw0u@gmail.com으로 보내주세요. GitHub은 github.com/seungwonme, LinkedIn은 linkedin.com/in/seungwon-aiden 입니다.",
   },
   {
     question: "seunan.dev는 어떤 블로그인가요?",
