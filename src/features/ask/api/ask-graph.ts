@@ -1,11 +1,8 @@
 import "server-only";
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { Annotation, StateGraph } from "@langchain/langgraph";
-import type { PostData } from "@/entities/post/api/content-source";
-import {
-  getAboutContent,
-  searchPosts,
-} from "@/entities/post/api/content-source";
+import type { Post } from "@/entities/post";
+import { getAboutContent, searchPosts } from "@/entities/post";
 import { semanticSearch } from "./semantic-search";
 
 interface Source {
@@ -37,7 +34,7 @@ const AskState = Annotation.Root({
   question: Annotation<string>,
   history: Annotation<ChatMessage[]>,
   route: Annotation<"rag" | "chat">,
-  relevantPosts: Annotation<PostData[]>,
+  relevantPosts: Annotation<Post[]>,
   answer: Annotation<string>,
   sources: Annotation<Source[]>,
 });

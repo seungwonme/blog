@@ -33,7 +33,7 @@ Keyboard shortcuts:
   Ctrl+C            Cancel input
   Ctrl+L / Cmd+K    Clear screen`;
 
-function formatLsHome(fs: VirtualFS): string {
+function formatLsHome(fs: VirtualFS<PostMeta>): string {
   const lines: string[] = [];
   for (const dir of fs.directories) {
     const count = fs.files.get(dir)?.length ?? 0;
@@ -57,7 +57,7 @@ function formatLsCategory(posts: PostMeta[]): string {
 
 export function executeCommand(
   parsed: ParsedCommand,
-  fs: VirtualFS,
+  fs: VirtualFS<PostMeta>,
   allPosts: PostMeta[],
   commandHistory: string[],
   aboutContent: string,

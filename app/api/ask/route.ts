@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { runAskGraph } from "@/shared/lib/ask-graph";
+import { runAskGraph } from "@/features/ask";
 
 interface ChatMessage {
   role: "user" | "assistant";

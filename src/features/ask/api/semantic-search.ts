@@ -1,13 +1,9 @@
 import "server-only";
-import type { PostData } from "@/entities/post/api/content-source";
-import { getPostBySlug } from "@/entities/post/api/content-source";
-import { getEmbedding } from "@/shared/api/gemini/client";
-import { getPinecone, PINECONE_INDEX_NAME } from "@/shared/api/pinecone/client";
+import type { Post } from "@/entities/post";
+import { getPostBySlug } from "@/entities/post";
+import { getEmbedding, getPinecone, PINECONE_INDEX_NAME } from "@/shared/api";
 
-export async function semanticSearch(
-  query: string,
-  topK = 3,
-): Promise<PostData[]> {
+export async function semanticSearch(query: string, topK = 3): Promise<Post[]> {
   const queryEmbedding = await getEmbedding(query);
 
   if (queryEmbedding.length === 0) return [];
@@ -19,7 +15,7 @@ export async function semanticSearch(
     includeMetadata: false,
   });
 
-  const posts: PostData[] = [];
+  const posts: Post[] = [];
   for (const match of results.matches ?? []) {
     const post = getPostBySlug(match.id);
     if (post) {

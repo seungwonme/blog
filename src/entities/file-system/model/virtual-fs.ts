@@ -1,21 +1,29 @@
-import type { PostMeta } from "@/entities/post";
-
-export interface VirtualFS {
-  currentPath: string;
-  directories: string[];
-  files: Map<string, PostMeta[]>;
+// FSD: 같은 레이어의 다른 슬라이스(entities/post)에 결합하지 않기 위해
+// 구조적 최소 타입으로 선언. PostMeta 등이 이 shape를 만족하면 그대로 전달 가능.
+export interface FileSystemEntry {
+  slug: string;
+  title: string;
+  category: string;
 }
 
-export function buildFileSystem(posts: PostMeta[]): VirtualFS {
-  const categoryMap = new Map<string, PostMeta[]>();
+export interface VirtualFS<T extends FileSystemEntry = FileSystemEntry> {
+  currentPath: string;
+  directories: string[];
+  files: Map<string, T[]>;
+}
 
-  for (const post of posts) {
-    const cat = post.category.toLowerCase();
+export function buildFileSystem<T extends FileSystemEntry>(
+  entries: T[],
+): VirtualFS<T> {
+  const categoryMap = new Map<string, T[]>();
+
+  for (const entry of entries) {
+    const cat = entry.category.toLowerCase();
     const existing = categoryMap.get(cat);
     if (existing) {
-      existing.push(post);
+      existing.push(entry);
     } else {
-      categoryMap.set(cat, [post]);
+      categoryMap.set(cat, [entry]);
     }
   }
 

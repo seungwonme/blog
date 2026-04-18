@@ -6,6 +6,7 @@ import {
   getAllPosts,
   getDigestBySlug as getDigestBySlugFromSource,
   getPostBySlug as getPostBySlugFromSource,
+  searchPosts as searchPostsFromSource,
 } from "./content-source";
 
 type SourceData = ReturnType<typeof getAllPosts>[number];
@@ -69,4 +70,8 @@ export function getAllEntriesMeta(): PostMeta[] {
 
 export function getAboutContent(): string {
   return getAboutFromSource();
+}
+
+export function searchPosts(keyword: string): Post[] {
+  return searchPostsFromSource(keyword).map(toPost);
 }
