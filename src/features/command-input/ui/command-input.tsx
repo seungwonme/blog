@@ -405,8 +405,10 @@ export function CommandInput({
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const value = e.target.value;
 
-      // Toggle AI mode when '!' is typed on empty input
+      // Toggle AI mode when '!' is typed on empty input.
+      // AI 모드에서 스트리밍 중이거나 큐에 항목이 있으면 무시 — 모드 전환으로 pending 상태를 잃지 않도록.
       if (value === "!" && input === "" && onToggleAiMode) {
+        if (isAiMode && (disabled || queueSize > 0)) return;
         onToggleAiMode();
         return;
       }
@@ -414,7 +416,7 @@ export function CommandInput({
       setInput(value);
       setCursorPos(e.target.selectionStart ?? value.length);
     },
-    [input, onToggleAiMode],
+    [input, onToggleAiMode, isAiMode, disabled, queueSize],
   );
 
   const handleSelect = useCallback(() => {
