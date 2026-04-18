@@ -386,18 +386,13 @@ export function TerminalWindow({
     ],
   );
 
-  // StrictMode/dev double-invoke 에서 같은 next 가 두 번 실행되지 않도록 가드
-  const drainingRef = useRef(false);
-
-  // Drain: AI 응답 종료 or 동기 슬래시 처리 후, 큐 첫 항목을 자동 소비
+  // Drain: AI 응답 종료 or 동기 슬래시 처리 후, 큐 첫 항목을 자동 소비.
+  // StrictMode double-invoke 는 mount 시점에만 발생. 초기 promptQueue=[] 라 body 진입 불가 — 별도 guard 불필요.
   useEffect(() => {
-    if (drainingRef.current) return;
     if (!isProcessing && promptQueue.length > 0) {
-      drainingRef.current = true;
       const next = promptQueue[0];
       setPromptQueue((prev) => prev.slice(1));
       handleCommand(next);
-      drainingRef.current = false;
     }
   }, [isProcessing, promptQueue, handleCommand]);
 
@@ -410,9 +405,12 @@ export function TerminalWindow({
   }, [initialCommand, handleCommand]);
 
   const toggleAiMode = useCallback(() => {
+    // AI → 터미널 전환 중에 pending(스트리밍 또는 큐) 이 있으면 invariant 보호를 위해 차단.
+    // State owner 에 가드를 두어 CommandInput 외 다른 호출 경로에서도 안전.
+    if (isAiMode && (isProcessing || promptQueue.length > 0)) return;
     setIsAiMode((prev) => !prev);
     setPromptQueue([]);
-  }, []);
+  }, [isAiMode, isProcessing, promptQueue.length]);
 
   const popQueue = useCallback(() => {
     setPromptQueue((prev) => prev.slice(0, -1));
