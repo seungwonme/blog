@@ -247,9 +247,10 @@ export function CommandInput({
         }
       }
 
-      // Tab / Shift+Tab: autocomplete (terminal mode)
+      // Tab / Shift+Tab: autocomplete (terminal mode only)
       if (e.key === "Tab") {
         e.preventDefault();
+        if (isAiMode) return;
 
         // Already cycling → advance
         if (cycleIndex >= 0 && completions.length > 0) {
@@ -383,6 +384,7 @@ export function CommandInput({
       completions,
       applyCompletion,
       exitCycle,
+      isAiMode,
     ],
   );
 
