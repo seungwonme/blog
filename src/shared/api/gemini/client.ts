@@ -14,7 +14,7 @@ export function getGemini(): GoogleGenAI {
 export async function getEmbedding(text: string): Promise<number[]> {
   const client = getGemini();
   const result = await client.models.embedContent({
-    model: "gemini-embedding-2-preview",
+    model: "gemini-embedding-2",
     contents: text,
     config: {
       outputDimensionality: 3072,
