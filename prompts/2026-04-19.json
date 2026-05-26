@@ -1,0 +1,32 @@
+[
+  {
+    "time": "00:02:37",
+    "user": "seungwonan",
+    "prompt": "괜찮으면 커밋 푸시해줘"
+  },
+  {
+    "time": "00:03:24",
+    "user": "seungwonan",
+    "prompt": "이슈 정리하고 커밋푸시"
+  },
+  {
+    "time": "00:05:14",
+    "user": "seungwonan",
+    "prompt": "이슈 너가 해결해줘"
+  },
+  {
+    "time": "00:08:17",
+    "user": "seungwonan",
+    "prompt": "codex 리뷰 백그라운드 작업 (ID: b3jqirlxb) 완료 여부 확인 후 결과 분석 및 Claude 리뷰와 교차 정리"
+  },
+  {
+    "time": "03:21:21",
+    "user": "seungwonan",
+    "prompt": "gh 이슈 닫아줘"
+  },
+  {
+    "time": "03:23:22",
+    "user": "seungwonan",
+    "prompt": "/oh-my-claudecode:external-context"
+  }
+]
