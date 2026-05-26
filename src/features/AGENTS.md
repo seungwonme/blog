@@ -26,7 +26,7 @@
 3. `runAskGraph` — LangGraph `StateGraph`가 Gemini 호출, 컨텍스트로 해당 포스트 본문 주입
 4. 스트리밍 응답 반환
 
-모델은 `gemini-3.1-flash-lite-preview` (ask-graph.ts:19). 교체 시 해당 상수만 수정.
+모델은 `gemini-3.1-flash-lite` (ask-graph.ts:19). 교체 시 해당 상수만 수정.
 
 ## For AI Agents
 

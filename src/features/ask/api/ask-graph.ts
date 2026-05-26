@@ -16,7 +16,7 @@ interface ChatMessage {
   content: string;
 }
 
-const MODEL_NAME = "gemini-3.1-flash-lite-preview";
+const MODEL_NAME = "gemini-3.1-flash-lite";
 
 function getModel(options?: {
   temperature?: number;
