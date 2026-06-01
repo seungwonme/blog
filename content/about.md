@@ -35,6 +35,7 @@ AI 에이전트로 기업 업무를 자동화하고, 이를 가르치는 일을 
   - 2026.01 전체 강의 4위, AI/업무생산성 2위
 - **한국콘텐츠진흥원 (KOCCA)** [NCA 뉴콘텐츠 아카데미](https://www.ncakocca.kr/curriculum) 장기과정 인터랙티브 바이브 코딩/자동화 강의 (2025.09 - 2025.12)
 - **오즈코딩스쿨** KDT 과정 [AI 리더캠프](https://ozcodingschool.com/ozcoding/aileadercamp) 1/2기 주강사 (2025.09 - 2025.11)
+  - [수강생 후기](https://boottent.com/camps/ozcodingschool-aipm_20260424162547842#tab-reviews)
 - **패스트캠퍼스** ['1일 1바이브코딩'](https://fastcampus.co.kr/biz_online_vibecoding30) 강의 참여 (2025.08)
   - 2026.03 전체 강의 1-3위권 유지
 
@@ -49,7 +50,6 @@ AI 에이전트로 기업 업무를 자동화하고, 이를 가르치는 일을 
 ## Speaking & Media
 
 - **[대모산개발단 유튜브](https://www.youtube.com/@%EB%8C%80%EB%AA%A8%EC%82%B0%EA%B0%9C%EB%B0%9C%EB%8B%A8)** — AI/바이브 코딩 정보 공유 (2025.02 - 현재)
-- **스트롱벤처스** 임직원 대상 AI 바이브코딩 특강 (2026.05)
 - **패스트캠퍼스** [오픈 세미나](https://fastcampus.co.kr/event_online_demoseminar) (2025.10, 2026.03)
 - **패스트캠퍼스** [전문가 인터뷰](https://fastcampus.co.kr/story_interview_demosan) (2026.03)
 - **오즈코딩스쿨** 기업 대상 특강 (2025.11 - 2025.12)
