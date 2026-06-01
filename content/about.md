@@ -26,7 +26,7 @@ AI 에이전트로 기업 업무를 자동화하고, 이를 가르치는 일을 
 - **패스트캠퍼스** ['바이브코딩 100일 챌린지'](https://fastcampus.co.kr/biz_online_vibecoding33) 강의 참여 (2026.05)
 - **이랜드** 패션사업부 Claude Code AI Agent 개발 교육 (2026.05)
 - **슈피겐** [임원 대상 AI 바이브코딩 업무혁신 과정](https://blog.jocodingax.ai/spigen-ax-training) (2026.04 - 2026.06)
-- **이랜드** 호텔사업부 AX 기초 교육 (2026.04)
+- **이랜드** [호텔사업부 AX 기초 교육](https://blog.jocodingax.ai/eland-ax-training) (2026.04)
 - **패스트캠퍼스** ['n8n 딸깍! 수익형 AI 쇼츠 자동화 패키지 프로젝트'](https://fastcampus.co.kr/data_online_aishorts) 강의 런칭 (2026.03)
 - **대웅제약** 재무기획본부 임직원 대상 AI 바이브코딩 업무혁신 과정 (2026.03)
 - **패스트캠퍼스** ['n8n x Claude Code 10X 생산성 에이전트 군단'](https://fastcampus.co.kr/biz_online_agentcorps) 강의 런칭 (2026.02)
