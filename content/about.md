@@ -6,8 +6,9 @@ title: About
 
 **Aiden Ahn** (안승원)
 
-AI 에이전트로 기업 업무를 자동화하고, 이를 가르치는 일을 합니다.
-대모산개발단 공동창업자, 조코딩AX파트너스 AX Director로 기업 임직원 AI 교육과 AX 솔루션 구축을 병행하고 있습니다.
+**AI Native Engineer · DevRel**
+
+AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 
 ---
 
