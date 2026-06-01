@@ -45,6 +45,7 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 ## Projects
 
 - **[ShortsGen](https://shorts.demodev.io/)** — AI 쇼츠 자동 생성 서비스 (2026.01)
+  - [서비스 소개서 다운로드](/shortsgen-brochure.pdf)
 
 ---
 
