@@ -60,11 +60,17 @@ src/
 - `content/_private/*.md` — 로컬 비공개 메모 (`.gitignore`됨)
 - `scripts/generate-posts-json.ts`가 `posts` + `digest` + `about`을 `src/shared/generated/posts.json`으로 병합
 
-## SEO
+## SEO / GEO
 
-- `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` 필수
-- `app/{layout,robots,sitemap,manifest}.ts`에 전역 메타 설정
-- JSON-LD는 `@/shared/lib`의 `JsonLd`, `createWebSiteJsonLd`, `createArticleJsonLd` 사용
+- **정본 호스트 `https://www.seunan.dev`** (www). `NEXT_PUBLIC_SITE_URL` 빈값/미설정 시 코드 폴백이 www를 적용 — Vercel production env는 비워둬도 됨. apex(seunan.dev)는 www로 리다이렉트.
+- 전역 메타·verification: `app/{layout,robots,sitemap,manifest}.ts` + `NEXT_PUBLIC_{GOOGLE,BING,NAVER}_SITE_VERIFICATION`.
+- **JSON-LD 엔티티 그래프** (`@/shared/lib`): 안정 `@id`(`#person`/`#website`/`#organization`/`#blog`)로 저자 신호를 페이지 간 누적.
+  - 저자 `Person`은 **layout 1곳**에서만 전역 렌더(`createPersonJsonLd()` 인자 없이 = 풀 E-E-A-T). about/home 중복 금지. 저자 정보 수정은 `json-ld.tsx`의 `AUTHOR_DEFAULTS` 한 곳에서.
+  - 홈 `createBlogJsonLd` · 포스트 `createArticleJsonLd`(BlogPosting)+`createBreadcrumbJsonLd` · about `createWebPageJsonLd`+`createFAQJsonLd`.
+- `app/robots.ts`: AI 크롤러 화이트리스트(2026 검색·학습 봇 17종 전부 허용). 학습 제외는 배열 위 주석 참고.
+- `app/llms.txt/route.ts`: posts.json 기반 AI 인덱스(force-static, 빌드 타임 자동 갱신).
+- `app/posts/[slug]/opengraph-image.tsx`: 글별 동적 OG(next/og, Pretendard **woff** — satori는 woff2 불가).
+- `updated` frontmatter(선택) → `dateModified`/sitemap `lastModified` 정밀화.
 
 ## Hierarchical Docs
 
