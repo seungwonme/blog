@@ -4,12 +4,7 @@ import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
 import { getAboutContent, getAllEntriesMeta } from "@/entities/post";
 import { HomePage } from "@/pages/home";
-import {
-  createFAQJsonLd,
-  createPersonJsonLd,
-  createWebPageJsonLd,
-  JsonLd,
-} from "@/shared/lib";
+import { createFAQJsonLd, createWebPageJsonLd, JsonLd } from "@/shared/lib";
 
 const FAQ_ITEMS = [
   {
@@ -39,7 +34,7 @@ const FAQ_ITEMS = [
   },
 ];
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://seunan.dev";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.seunan.dev";
 
 export const metadata: Metadata = {
   title: "About",
@@ -69,27 +64,13 @@ export default function AboutPage() {
 
   return (
     <>
+      {/* 저자 Person(@id)은 layout에서 전역 렌더 — 여기선 페이지·FAQ 스키마만 */}
       <JsonLd
         data={createWebPageJsonLd({
           title: "About - Aiden Ahn",
           description:
             "Aiden Ahn (안승원) — AI 자동화, 바이브 코딩, 워크플로우 설계 전문.",
           url: `${SITE_URL}/about`,
-        })}
-      />
-      <JsonLd
-        data={createPersonJsonLd({
-          name: "Aiden Ahn",
-          url: SITE_URL,
-          jobTitle: "Software Engineer & Co-founder",
-          worksFor: {
-            name: "대모산개발단 (DemoDev)",
-            url: "https://demodev.io",
-          },
-          sameAs: [
-            "https://github.com/seungwonme",
-            "https://www.linkedin.com/in/seungwon-aiden/",
-          ],
         })}
       />
       <JsonLd data={createFAQJsonLd(FAQ_ITEMS)} />

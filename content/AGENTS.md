@@ -22,6 +22,7 @@ slug: "url-slug"            # 파일명과 일치 권장
 category: "dev"             # posts: dev/til/... | digest: "digest"
 tags: ["tag1", "tag2"]
 date: "2026-04-18"
+updated: "2026-05-01"        # (선택) 최종 수정일. 없으면 date를 dateModified로 사용
 description: "메타 설명"
 ---
 ```

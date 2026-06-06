@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllEntries } from "@/entities/post";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://seunan.dev";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.seunan.dev";
 
 const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
 
@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const entryRoutes = entries.map((entry) => {
     const isDigest = entry.category === "digest";
-    const entryDate = new Date(`${entry.date}T00:00:00Z`);
+    const entryDate = new Date(`${entry.updated || entry.date}T00:00:00Z`);
     const isRecent = now - entryDate.getTime() < SEVEN_DAYS_MS;
 
     return {
@@ -40,7 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE_URL}/about`,
       lastModified: latestDate,
       changeFrequency: "monthly" as const,
-      priority: 0.9,
+      priority: 0.8,
     },
     ...entryRoutes,
   ];

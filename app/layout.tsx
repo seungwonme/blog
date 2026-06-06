@@ -1,12 +1,12 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
-import { createWebSiteJsonLd, JsonLd } from "@/shared/lib";
+import { createPersonJsonLd, createWebSiteJsonLd, JsonLd } from "@/shared/lib";
 import "./globals.css";
 
 const SITE_NAME = "seunan.dev";
 const SITE_DESCRIPTION =
-  "Aiden Ahn — JAX Partners AX Director, Demodev Co-founder, and software engineer. Sharing insights on AI, automation, and software development.";
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://seunan.dev";
+  "안승원(Aiden Ahn)의 터미널 UI 개발 블로그. 조코딩AX파트너스 AX Director이자 대모산개발단 공동창업자가 AI 에이전트, 바이브 코딩, 업무 자동화에 관한 글과 일일 AI 뉴스 다이제스트를 공유합니다.";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.seunan.dev";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -39,7 +39,6 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    alternateLocale: ["en_US"],
     url: SITE_URL,
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
@@ -97,7 +96,9 @@ export default function RootLayout({
   return (
     <html lang="ko" data-theme="dark">
       <body className="antialiased">
+        {/* 전역 엔티티 그래프: WebSite + 저자 Person(@id로 모든 페이지에서 참조됨) */}
         <JsonLd data={createWebSiteJsonLd()} />
+        <JsonLd data={createPersonJsonLd()} />
         {children}
         <Analytics />
       </body>

@@ -7,6 +7,7 @@ export interface PostFrontmatter {
   category: string;
   tags: string[];
   date: string;
+  updated?: string;
   description: string;
 }
 

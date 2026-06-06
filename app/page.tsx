@@ -1,8 +1,6 @@
 import { getAboutContent, getAllEntriesMeta } from "@/entities/post";
 import { HomePage } from "@/pages/home";
-import { createPersonJsonLd, JsonLd } from "@/shared/lib";
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://seunan.dev";
+import { createBlogJsonLd, JsonLd } from "@/shared/lib";
 
 interface Props {
   searchParams: Promise<{ q?: string | string[] }>;
@@ -28,18 +26,8 @@ export default async function Page({ searchParams }: Props) {
 
   return (
     <>
-      <JsonLd
-        data={createPersonJsonLd({
-          name: "Aiden Ahn",
-          url: SITE_URL,
-          jobTitle: "Software Engineer & Co-founder",
-          worksFor: {
-            name: "대모산개발단 (DemoDev)",
-            url: "https://demodev.io",
-          },
-          sameAs: ["https://github.com/seungwonme"],
-        })}
-      />
+      {/* 홈: 사이트 콘텐츠 폭·최신성을 Blog 스키마로 노출 (저자는 layout의 Person @id 참조) */}
+      <JsonLd data={createBlogJsonLd(posts.slice(0, 20))} />
       <HomePage
         posts={posts}
         aboutContent={aboutContent}

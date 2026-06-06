@@ -20,7 +20,7 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://seunan.dev";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.seunan.dev";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -73,9 +73,12 @@ export default async function PostPage({ params }: Props) {
           title: post.title,
           description: post.description,
           url: postUrl,
-          image: `${SITE_URL}/og-image.png`,
+          image: `${postUrl}/opengraph-image`,
           datePublished: post.date,
-          authorName: "Aiden Ahn",
+          dateModified: post.updated,
+          section: post.category,
+          keywords: post.tags,
+          wordCount: post.content.replace(/\s+/g, "").length,
         })}
       />
       <JsonLd

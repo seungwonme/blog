@@ -18,6 +18,7 @@ function toPost(data: SourceData): Post {
     category: data.category,
     tags: data.tags,
     date: data.date,
+    updated: data.updated,
     description: data.description,
     content: data.content,
   };
@@ -30,6 +31,7 @@ function toPostMeta(data: SourceData): PostMeta {
     category: data.category,
     tags: data.tags,
     date: data.date,
+    updated: data.updated,
     description: data.description,
   };
 }

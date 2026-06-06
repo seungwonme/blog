@@ -3,6 +3,7 @@
 export { ASCII_BANNER } from "./ascii-banner";
 export {
   createArticleJsonLd,
+  createBlogJsonLd,
   createBreadcrumbJsonLd,
   createFAQJsonLd,
   createOrganizationJsonLd,

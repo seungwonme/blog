@@ -13,6 +13,7 @@ interface PostEntry {
   category: string;
   tags: string[];
   date: string;
+  updated?: string;
   description: string;
   content: string;
 }
@@ -49,6 +50,11 @@ function main() {
             ? data.date.toISOString().slice(0, 10)
             : String(data.date).slice(0, 10)
           : "1970-01-01",
+        updated: data.updated
+          ? data.updated instanceof Date
+            ? data.updated.toISOString().slice(0, 10)
+            : String(data.updated).slice(0, 10)
+          : undefined,
         description: data.description ?? "",
         content,
       });
@@ -74,6 +80,11 @@ function main() {
             ? data.date.toISOString().slice(0, 10)
             : String(data.date).slice(0, 10)
           : "1970-01-01",
+        updated: data.updated
+          ? data.updated instanceof Date
+            ? data.updated.toISOString().slice(0, 10)
+            : String(data.updated).slice(0, 10)
+          : undefined,
         description: data.description ?? "",
         content,
       });
