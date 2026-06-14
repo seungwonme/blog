@@ -34,13 +34,14 @@ Keyboard shortcuts:
   Ctrl+L / Cmd+K    Clear screen`;
 
 // ls 출력은 markdown으로 렌더된다. 폴더/파일명을 #cmd: 링크로 만들어
-// 클릭 시 해당 명령(ls/cat)이 실행되도록 한다. 권한 문자·정렬은 그대로 유지.
+// 클릭 시 해당 명령(cd/cat)이 실행되도록 한다. 권한 문자·정렬은 그대로 유지.
+// 폴더 클릭 → cd: 그 디렉토리로 진입하고(prompt·URL 갱신) 내용을 보여준다.
 function formatLsHome(fs: VirtualFS<PostMeta>): string {
   const lines: string[] = [];
   for (const dir of fs.directories) {
     const count = fs.files.get(dir)?.length ?? 0;
     lines.push(
-      `drwxr-xr-x  [${dir}/](#cmd:${encodeURIComponent(`ls ${dir}`)})\t\t(${count} post${count !== 1 ? "s" : ""})`,
+      `drwxr-xr-x  [${dir}/](#cmd:${encodeURIComponent(`cd ${dir}`)})\t\t(${count} post${count !== 1 ? "s" : ""})`,
     );
   }
   lines.push(`-rw-r--r--  [about](#cmd:${encodeURIComponent("cat about")})`);
@@ -188,7 +189,15 @@ export function executeCommand(
       }
       const segments = getPathSegments(newPath);
       if (segments.length === 1 && fs.directories.includes(segments[0])) {
-        return { newPath, result: null };
+        // 디렉토리 진입 시 내용도 함께 보여준다(클릭/타이핑 모두 동일 UX).
+        const dirPosts = fs.files.get(segments[0]) ?? [];
+        return {
+          newPath,
+          result: {
+            type: "listing",
+            content: formatLsCategory(dirPosts, segments[0]),
+          },
+        };
       }
       return {
         result: {

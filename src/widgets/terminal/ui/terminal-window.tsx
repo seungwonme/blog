@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CommandResult, TerminalLine } from "@/entities/command";
 import { parseCommand } from "@/entities/command";
-import { buildFileSystem } from "@/entities/file-system";
+import { buildFileSystem, getPathSegments } from "@/entities/file-system";
 import type { PostMeta } from "@/entities/post";
 import { executeCommand } from "@/features/command-executor";
 import { CommandInput, PromptQueue } from "@/features/command-input";
@@ -16,6 +16,8 @@ interface TerminalWindowProps {
   posts: PostMeta[];
   aboutContent: string;
   initialCommand?: string;
+  /** 시작 디렉토리(예: "~/dev"). URL이 카테고리/글이면 그 위치에서 터미널을 연다(새로고침 시 경로 보존). */
+  initialPath?: string;
   /** Slug → markdown map for server-preloaded post bodies. Avoids the /api/posts fetch when the slug is already known. */
   preloadedContent?: Record<string, string>;
 }
@@ -99,10 +101,11 @@ export function TerminalWindow({
   posts,
   aboutContent,
   initialCommand,
+  initialPath,
   preloadedContent,
 }: TerminalWindowProps) {
   const [lines, setLines] = useState<TerminalLine[]>(createInitialLines);
-  const [currentPath, setCurrentPath] = useState("~");
+  const [currentPath, setCurrentPath] = useState(initialPath ?? "~");
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [isAiMode, setIsAiMode] = useState(false);
@@ -212,7 +215,7 @@ export function TerminalWindow({
         if (sources.length > 0) {
           content += "\n\n---\nSources:";
           for (const src of sources) {
-            content += `\n  - [${src.title}](/posts/${src.slug})`;
+            content += `\n  - [${src.title}](/${src.category}/${src.slug})`;
           }
         }
         return content;
@@ -343,6 +346,14 @@ export function TerminalWindow({
       const { result, newPath, asyncAction, asyncArg, openMailto } =
         executeCommand(parsed, fsState, posts, commandHistory, aboutContent);
 
+      // 터미널 내 이동을 브라우저 주소창과 동기화한다(새로고침·공유·뒤로가기 일관성).
+      // 실제 라우트가 존재하는 경로만 history에 push. ls/grep/clear 등 위치 불변 명령은 건드리지 않는다.
+      const syncUrl = (path: string) => {
+        if (window.location.pathname !== path) {
+          window.history.pushState(null, "", path);
+        }
+      };
+
       if (result?.type === "clear") {
         setLines([]);
         return;
@@ -350,6 +361,15 @@ export function TerminalWindow({
 
       if (newPath !== undefined) {
         setCurrentPath(newPath);
+        const segments = getPathSegments(newPath);
+        syncUrl(segments.length > 0 ? `/${segments.join("/")}` : "/");
+      }
+
+      if (
+        parsed.name === "about" ||
+        (parsed.name === "cat" && parsed.args[0] === "about")
+      ) {
+        syncUrl("/about");
       }
 
       if (openMailto) {
@@ -365,6 +385,8 @@ export function TerminalWindow({
       if (asyncAction && asyncArg) {
         setIsProcessing(true);
         if (asyncAction === "cat") {
+          const category = posts.find((p) => p.slug === asyncArg)?.category;
+          if (category) syncUrl(`/${category}/${asyncArg}`);
           handleCat(asyncArg);
         } else if (asyncAction === "ask") {
           handleAsk(asyncArg, false);

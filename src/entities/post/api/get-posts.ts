@@ -64,6 +64,29 @@ export function getEntryBySlug(slug: string): Post | null {
   return getPostBySlug(slug) ?? getDigestBySlug(slug);
 }
 
+export function getEntryByCategoryAndSlug(
+  category: string,
+  slug: string,
+): Post | null {
+  const cat = category.toLowerCase();
+  return (
+    getAllEntries().find(
+      (e) => e.category.toLowerCase() === cat && e.slug === slug,
+    ) ?? null
+  );
+}
+
+export function getCategories(): string[] {
+  return Array.from(
+    new Set(getAllEntries().map((e) => e.category.toLowerCase())),
+  ).sort();
+}
+
+export function getEntriesByCategoryMeta(category: string): PostMeta[] {
+  const cat = category.toLowerCase();
+  return getAllEntriesMeta().filter((e) => e.category.toLowerCase() === cat);
+}
+
 export function getAllEntriesMeta(): PostMeta[] {
   const posts = getAllPosts().map(toPostMeta);
   const digests = getAllDigests().map(toPostMeta);

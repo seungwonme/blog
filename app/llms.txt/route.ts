@@ -26,13 +26,13 @@ export function GET() {
 
   for (const p of posts) {
     const desc = p.description ? `: ${p.description}` : "";
-    lines.push(`- [${p.title}](${SITE_URL}/posts/${p.slug})${desc}`);
+    lines.push(`- [${p.title}](${SITE_URL}/${p.category}/${p.slug})${desc}`);
   }
 
   lines.push("", "## Daily AI Digest");
   for (const d of digests.slice(0, DIGEST_PREVIEW)) {
     const desc = d.description ? `: ${d.description}` : "";
-    lines.push(`- [${d.title}](${SITE_URL}/posts/${d.slug})${desc}`);
+    lines.push(`- [${d.title}](${SITE_URL}/${d.category}/${d.slug})${desc}`);
   }
   if (digests.length > DIGEST_PREVIEW) {
     lines.push(

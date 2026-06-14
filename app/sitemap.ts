@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getAllEntries } from "@/entities/post";
+import { getAllEntries, getCategories } from "@/entities/post";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.seunan.dev";
 
@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const isRecent = now - entryDate.getTime() < SEVEN_DAYS_MS;
 
     return {
-      url: `${SITE_URL}/posts/${entry.slug}`,
+      url: `${SITE_URL}/${entry.category}/${entry.slug}`,
       lastModified: entryDate,
       changeFrequency: isDigest
         ? isRecent
@@ -28,6 +28,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const latestDate =
     entries.length > 0 ? new Date(`${entries[0].date}T00:00:00Z`) : new Date();
+
+  const categoryRoutes = getCategories().map((category) => ({
+    url: `${SITE_URL}/${category}`,
+    lastModified: latestDate,
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
+  }));
 
   return [
     {
@@ -42,6 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     },
+    ...categoryRoutes,
     ...entryRoutes,
   ];
 }

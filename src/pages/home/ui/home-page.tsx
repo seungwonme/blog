@@ -5,6 +5,7 @@ interface HomePageProps {
   posts: PostMeta[];
   aboutContent: string;
   initialCommand?: string;
+  initialPath?: string;
   preloadedContent?: Record<string, string>;
 }
 
@@ -12,6 +13,7 @@ export function HomePage({
   posts,
   aboutContent,
   initialCommand,
+  initialPath,
   preloadedContent,
 }: HomePageProps) {
   return (
@@ -19,6 +21,7 @@ export function HomePage({
       posts={posts}
       aboutContent={aboutContent}
       initialCommand={initialCommand}
+      initialPath={initialPath}
       preloadedContent={preloadedContent}
     />
   );

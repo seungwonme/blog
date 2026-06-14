@@ -1,12 +1,17 @@
 import { ImageResponse } from "next/og";
-import { getAllEntries, getEntryBySlug } from "@/entities/post";
+import { getAllEntries, getEntryByCategoryAndSlug } from "@/entities/post";
 
 export const alt = "seunan.dev";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
-  return getAllEntries().map((entry) => ({ slug: entry.slug }));
+  return getAllEntries().map((entry) => ({
+    category: entry.category,
+    slug: entry.slug,
+  }));
 }
 
 // 한글 렌더를 위해 Pretendard를 빌드 타임에 로드(satori는 woff2 미지원 → woff 사용).
@@ -26,12 +31,12 @@ async function loadFont(): Promise<ArrayBuffer | null> {
 export default async function OgImage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ category: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  const post = getEntryBySlug(slug);
+  const { category, slug } = await params;
+  const post = getEntryByCategoryAndSlug(category, slug);
   const title = post?.title ?? "seunan.dev";
-  const category = post?.category ?? "post";
+  const cat = post?.category ?? category;
   const date = post?.date ?? "";
   const fontData = await loadFont();
 
@@ -68,7 +73,7 @@ export default async function OgImage({
           marginBottom: 24,
         }}
       >
-        {`$ cat ${category}/${slug}`}
+        {`$ cat ${cat}/${slug}`}
       </div>
       <div
         style={{

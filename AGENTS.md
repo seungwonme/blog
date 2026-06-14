@@ -67,9 +67,10 @@ src/
 - **JSON-LD 엔티티 그래프** (`@/shared/lib`): 안정 `@id`(`#person`/`#website`/`#organization`/`#blog`)로 저자 신호를 페이지 간 누적.
   - 저자 `Person`은 **layout 1곳**에서만 전역 렌더(`createPersonJsonLd()` 인자 없이 = 풀 E-E-A-T). about/home 중복 금지. 저자 정보 수정은 `json-ld.tsx`의 `AUTHOR_DEFAULTS` 한 곳에서.
   - 홈 `createBlogJsonLd` · 포스트 `createArticleJsonLd`(BlogPosting)+`createBreadcrumbJsonLd` · about `createWebPageJsonLd`+`createFAQJsonLd`.
+- **URL 구조 = 터미널 경로**: 글의 정식 URL은 `/카테고리/슬러그`(`app/[category]/[slug]`), 카테고리 목록은 `/카테고리`(`app/[category]`). 즉 터미널의 `cat dev/foo`·`ls dev`와 주소창이 일치. canonical·sitemap·llms.txt·`createBlogJsonLd`·OG가 모두 이 구조. 구 URL `/posts/슬러그`는 `next.config.ts`가 posts.json 기반으로 `/카테고리/슬러그`에 308 리다이렉트(신호 누적).
 - `app/robots.ts`: AI 크롤러 화이트리스트(2026 검색·학습 봇 17종 전부 허용). 학습 제외는 배열 위 주석 참고.
 - `app/llms.txt/route.ts`: posts.json 기반 AI 인덱스(force-static, 빌드 타임 자동 갱신).
-- `app/posts/[slug]/opengraph-image.tsx`: 글별 동적 OG(next/og, Pretendard **woff** — satori는 woff2 불가).
+- `app/[category]/[slug]/opengraph-image.tsx`: 글별 동적 OG(next/og, Pretendard **woff** — satori는 woff2 불가).
 - `updated` frontmatter(선택) → `dateModified`/sitemap `lastModified` 정밀화.
 
 ## Hierarchical Docs

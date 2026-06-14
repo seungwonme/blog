@@ -7,7 +7,7 @@ import {
   getAboutContent,
   getAllEntries,
   getAllEntriesMeta,
-  getEntryBySlug,
+  getEntryByCategoryAndSlug,
 } from "@/entities/post";
 import { HomePage } from "@/pages/home";
 import {
@@ -17,17 +17,26 @@ import {
 } from "@/shared/lib";
 
 interface Props {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ category: string; slug: string }>;
 }
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.seunan.dev";
 
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return getAllEntries().map((entry) => ({
+    category: entry.category,
+    slug: entry.slug,
+  }));
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const post = getEntryBySlug(slug);
+  const { category, slug } = await params;
+  const post = getEntryByCategoryAndSlug(category, slug);
   if (!post) return {};
 
-  const postUrl = `${SITE_URL}/posts/${slug}`;
+  const postUrl = `${SITE_URL}/${post.category}/${post.slug}`;
 
   return {
     title: post.title,
@@ -53,18 +62,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export function generateStaticParams() {
-  return getAllEntries().map((entry) => ({ slug: entry.slug }));
-}
-
 export default async function PostPage({ params }: Props) {
-  const { slug } = await params;
-  const post = getEntryBySlug(slug);
+  const { category, slug } = await params;
+  const post = getEntryByCategoryAndSlug(category, slug);
   if (!post) notFound();
 
   const posts = getAllEntriesMeta();
   const aboutContent = getAboutContent();
-  const postUrl = `${SITE_URL}/posts/${slug}`;
+  const postUrl = `${SITE_URL}/${post.category}/${post.slug}`;
 
   return (
     <>
@@ -84,6 +89,7 @@ export default async function PostPage({ params }: Props) {
       <JsonLd
         data={createBreadcrumbJsonLd([
           { name: "Home", url: SITE_URL },
+          { name: post.category, url: `${SITE_URL}/${post.category}` },
           { name: post.title, url: postUrl },
         ])}
       />
@@ -99,12 +105,14 @@ export default async function PostPage({ params }: Props) {
           {post.content}
         </ReactMarkdown>
       </article>
-      {/* Terminal UI with cat command auto-executed */}
+      {/* 터미널을 해당 카테고리 디렉토리에서 열고(cat은 상대 경로),
+          새로고침 시에도 경로(~/카테고리)가 보존되게 한다. */}
       <HomePage
         posts={posts}
         aboutContent={aboutContent}
-        initialCommand={`cat ${post.category}/${slug}`}
-        preloadedContent={{ [slug]: post.content }}
+        initialPath={`~/${post.category}`}
+        initialCommand={`cat ${post.slug}`}
+        preloadedContent={{ [post.slug]: post.content }}
       />
     </>
   );

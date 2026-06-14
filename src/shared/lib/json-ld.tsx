@@ -135,6 +135,7 @@ export function createArticleJsonLd(
 interface BlogPostItem {
   title: string;
   slug: string;
+  category: string;
   date: string;
 }
 
@@ -150,7 +151,7 @@ export function createBlogJsonLd(posts: BlogPostItem[]): WithContext<Blog> {
     blogPost: posts.map((p) => ({
       "@type": "BlogPosting",
       headline: p.title,
-      url: `${SITE_URL}/posts/${p.slug}`,
+      url: `${SITE_URL}/${p.category}/${p.slug}`,
       datePublished: p.date,
       author: { "@id": PERSON_ID },
     })),

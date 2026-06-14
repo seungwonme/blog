@@ -16,14 +16,16 @@ Next.js 라우팅 계층. 페이지 컴포넌트는 **FSD `src/pages/`에서 re-
 | `globals.css` | Tailwind v4 전체 설정 (이 파일에만 작성) |
 | `robots.ts` / `sitemap.ts` / `manifest.ts` | SEO/PWA 메타 |
 | `icon.png` | favicon |
+| `../next.config.ts` | 구 URL `/posts/슬러그` → `/카테고리/슬러그` 308 리다이렉트(posts.json 기반 빌드 타임 생성) |
 
 ## Subdirectories
 
 | Dir | 설명 |
 | --- | --- |
 | `about/` | About 페이지 (`content/about.md` 렌더) |
-| `posts/[slug]/` | 포스트 상세 (digest 포함) |
-| `api/posts/[slug]/` | 포스트 raw JSON API |
+| `[category]/[slug]/` | 포스트 상세(digest 포함). 정식 URL은 터미널 경로와 동일한 `/카테고리/슬러그`. `opengraph-image.tsx`로 글별 동적 OG 생성 |
+| `[category]/` | 카테고리 글 목록. 터미널 `ls <카테고리>` 자동 실행 |
+| `api/posts/[slug]/` | 포스트 raw JSON API (터미널 `cat`이 호출하는 내부 API — 슬러그 키 유지) |
 | `api/ask/` | AI 질문 API (`features/ask` 호출) |
 
 ## For AI Agents
