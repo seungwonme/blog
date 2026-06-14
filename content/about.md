@@ -15,12 +15,13 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 ## Work Experience
 
 - **[주식회사 조코딩AX파트너스](https://jocodingax.ai/)** AX Director (2026.03 - 현재)
-- **[주식회사 대모산개발단](https://demodev.io/)** Co-Founder / CCO (2025.02 - 현재)
+- **[주식회사 대모산개발단](https://demodev.io/)** Co-Founder / CCO (2025.02 - 2026.03)
 
 ---
 
 ## Instructional Experience
 
+- **아머스포츠코리아** 임직원 대상 AI 바이브코딩 교육 (2026.06)
 - **선엔지니어링** 임직원 Claude Code AI 교육 (2026.05 - 2026.08)
 - **현대자동차그룹** 2026 HMG 사업부장 대상 AX 의사결정 과정 (2026.05 - 2026.06)
 - **멋쟁이사자처럼** 'Claude 생태계 200% 활용하기' 강의 런칭 (2026.05)
@@ -51,7 +52,9 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 
 ## Speaking & Media
 
-- **[대모산개발단 유튜브](https://www.youtube.com/@%EB%8C%80%EB%AA%A8%EC%82%B0%EA%B0%9C%EB%B0%9C%EB%8B%A8)** — AI/바이브 코딩 정보 공유 (2025.02 - 현재)
+- **AI 뉴스** — AI 뉴스 팟캐스트 운영
+  - [Apple Podcasts](https://podcasts.apple.com/us/podcast/ai-%EB%89%B4%EC%8A%A4/id1896925394) · [Spotify](https://open.spotify.com/show/033yjadLipOvdTtsENnNGE) · [RSS](https://seungwonme.github.io/ai-podcast/feed.xml)
+- **[조코딩AX파트너스 유튜브](https://www.youtube.com/@%EC%A1%B0%EC%BD%94%EB%94%A9AX%ED%8C%8C%ED%8A%B8%EB%84%88%EC%8A%A4)** — AI/바이브 코딩 정보 공유 (2025.02 - 2026.06)
 - **패스트캠퍼스** [오픈 세미나](https://fastcampus.co.kr/event_online_demoseminar) (2025.10, 2026.03)
 - **패스트캠퍼스** [전문가 인터뷰](https://fastcampus.co.kr/story_interview_demosan) (2026.03)
 - **오즈코딩스쿨** 기업 대상 특강 (2025.11 - 2025.12)
@@ -84,10 +87,7 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 
 ## Contact & Links
 
-- Email: [senugw0u@gmail.com](mailto:senugw0u@gmail.com)
-- LinkedIn: [linkedin.com/in/seungwon-aiden](https://www.linkedin.com/in/seungwon-aiden/)
-- GitHub: [github.com/seungwonme](https://github.com/seungwonme)
-- Blog: [seunan.dev](https://seunan.dev)
+[Email](mailto:senugw0u@gmail.com) · [LinkedIn](https://www.linkedin.com/in/seungwon-aiden/) · [GitHub](https://github.com/seungwonme) · [YouTube](https://www.youtube.com/@aidensystems) · [X](https://x.com/aidensystems) · [Instagram](https://www.instagram.com/aidensystems) · [Threads](https://www.threads.com/@aidensystems) · [Blog](https://seunan.dev)
 
 ---
 

@@ -94,7 +94,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" data-theme="dark">
+    <html lang="ko" data-theme="dark" suppressHydrationWarning>
       <body className="antialiased">
         {/* 전역 엔티티 그래프: WebSite + 저자 Person(@id로 모든 페이지에서 참조됨) */}
         <JsonLd data={createWebSiteJsonLd()} />

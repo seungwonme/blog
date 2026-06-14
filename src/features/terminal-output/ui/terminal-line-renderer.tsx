@@ -1,11 +1,46 @@
 "use client";
 
-import { memo } from "react";
+import { Globe, Mail } from "lucide-react";
+import { type ComponentType, memo, type SVGProps } from "react";
+import {
+  FaGithub,
+  FaInstagram,
+  FaLinkedinIn,
+  FaThreads,
+  FaXTwitter,
+  FaYoutube,
+} from "react-icons/fa6";
 import ReactMarkdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
 import type { TerminalLine } from "@/entities/command";
 import { TerminalPrompt } from "@/shared/ui";
+
+type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
+type LinkMeta = { Icon: IconComponent; label: string };
+
+// 호스트명 → 브랜드 아이콘 매핑. about Contact & Links 및 외부 링크에 적용된다.
+const SOCIAL_HOSTS: Record<string, LinkMeta> = {
+  "github.com": { Icon: FaGithub, label: "GitHub" },
+  "linkedin.com": { Icon: FaLinkedinIn, label: "LinkedIn" },
+  "youtube.com": { Icon: FaYoutube, label: "YouTube" },
+  "x.com": { Icon: FaXTwitter, label: "X" },
+  "twitter.com": { Icon: FaXTwitter, label: "X" },
+  "instagram.com": { Icon: FaInstagram, label: "Instagram" },
+  "threads.com": { Icon: FaThreads, label: "Threads" },
+  "threads.net": { Icon: FaThreads, label: "Threads" },
+  "seunan.dev": { Icon: Globe, label: "Blog" },
+};
+
+function getLinkMeta(href: string): LinkMeta | null {
+  if (href.startsWith("mailto:")) return { Icon: Mail, label: "Email" };
+  try {
+    const host = new URL(href).hostname.replace(/^www\./, "");
+    return SOCIAL_HOSTS[host] ?? null;
+  } catch {
+    return null;
+  }
+}
 
 interface TerminalLineRendererProps {
   line: TerminalLine;
@@ -86,6 +121,8 @@ export const TerminalLineRenderer = memo(function TerminalLineRenderer({
                   </button>
                 );
               }
+              const meta = href ? getLinkMeta(href) : null;
+              const Icon = meta?.Icon;
               return (
                 <a
                   href={href}
@@ -93,6 +130,15 @@ export const TerminalLineRenderer = memo(function TerminalLineRenderer({
                   rel="noopener noreferrer"
                   className="text-ctp-sapphire underline hover:text-ctp-sky cursor-pointer"
                 >
+                  {Icon && (
+                    <>
+                      <Icon
+                        className="mr-1.5 inline-block size-[1em] align-[-0.125em]"
+                        aria-hidden="true"
+                      />
+                      <span className="sr-only">{meta?.label}: </span>
+                    </>
+                  )}
                   {children}
                 </a>
               );
