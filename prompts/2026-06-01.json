@@ -1,0 +1,112 @@
+[
+  {
+    "time": "17:02:37",
+    "user": "seungwonan",
+    "prompt": "about에 링크 추가 슈피겐에 \"https://blog.jocodingax.ai/spigen-ax-training\""
+  },
+  {
+    "time": "17:03:06",
+    "user": "seungwonan",
+    "prompt": "https://fastcampus.co.kr/biz_online_vibecoding33\n\n이것도 추가"
+  },
+  {
+    "time": "17:03:31",
+    "user": "seungwonan",
+    "prompt": "ㄱㄱ"
+  },
+  {
+    "time": "17:05:11",
+    "user": "seungwonan",
+    "prompt": "https://blog.jocodingax.ai/eland-ax-training\n\n이랜드에 링크 추가"
+  },
+  {
+    "time": "17:05:26",
+    "user": "seungwonan",
+    "prompt": "호텔사업부 AX 기초 교육 으로"
+  },
+  {
+    "time": "17:09:02",
+    "user": "seungwonan",
+    "prompt": "https://boottent.com/camps/ozcodingschool-aipm_20260424162547842#tab-reviews\n\n오즈코딩스쿨 1/2기 후기 링크야\n불렛으로 추가할까?"
+  },
+  {
+    "time": "17:09:29",
+    "user": "seungwonan",
+    "prompt": "스트롱벤처스 임직원 대상 AI 바이브코딩 특강 (2026.05)\n\n이거 빼줘라 그냥"
+  },
+  {
+    "time": "17:09:47",
+    "user": "seungwonan",
+    "prompt": "푸시 ㄱ"
+  },
+  {
+    "time": "17:18:40",
+    "user": "seungwonan",
+    "prompt": "/session-history \n\n오늘 내 회고를 좀 했는데 세션에서 찾아봐\n그리고 내 소개를 바꿔야 할 거 같아\n\nAI Native Engineer, DevRel 로\n\n소개 추천해줘"
+  },
+  {
+    "time": "17:22:19",
+    "user": "seungwonan",
+    "prompt": "가르친다는 부분 좀 별로야\n 대모산개발단 공동창업자 / 조코딩AX파트너스 AX Director를 두고 \"AI Native Engineer / DevRel\" 정체성을 부여해줘\n\n좀 더 짧고 \n직접 만들고 전파한다는 늒미"
+  },
+  {
+    "time": "17:23:32",
+    "user": "seungwonan",
+    "prompt": "기업 업무를 자동화하는 AI 에이전트를 직접 만들고, 전파합니다. 이거 약간 와닿지 않는 느낌"
+  },
+  {
+    "time": "17:24:23",
+    "user": "seungwonan",
+    "prompt": "2로 갈까\n그 방법을 공유합니다?\n\n/im-not-ai  ai 아닌 거 처럼 해줘"
+  },
+  {
+    "time": "17:26:07",
+    "user": "seungwonan",
+    "prompt": "대모산개발단 공동창업자, 조코딩AX파트너스 AX Director. 이거 떼자"
+  },
+  {
+    "time": "17:26:59",
+    "user": "seungwonan",
+    "prompt": "ㄱㄱ"
+  },
+  {
+    "time": "17:27:33",
+    "user": "seungwonan",
+    "prompt": "retro-writer 에이전트로 직전 종료 세션(cwd: /Users/seungwonan/Dev/1-project/blog, session_id: 05f7cbb9-11bb-4c70-8bd8-a329bc811a74)의 회고 초안을 작성하라. session-history 로 해당 세션 내용을 불러오고, 결과를 다음 경로에 마크다운으로 저장: /Users/seungwonan/.agents/memory/retros/retro-20260601-172732.md"
+  },
+  {
+    "time": "18:11:13",
+    "user": "seungwonan",
+    "prompt": "@/Users/seungwonan/Archive/_review/쇼츠젠_소개서.pdf\n\n이거 복사해서 쇼츠젠에 서비스 소개서 다운로드 링크 ㄱㄱ"
+  },
+  {
+    "time": "18:13:28",
+    "user": "seungwonan",
+    "prompt": "쇼츠젠 푸터에도 넣고\n블로그에 쇼츠젠 하단 불렛에 소개서 다운로드 와 같은 항목으로 추가해줘 다운 가능하도록"
+  },
+  {
+    "time": "18:17:20",
+    "user": "seungwonan",
+    "prompt": "둘 다 커밋 푸시"
+  },
+  {
+    "time": "18:19:57",
+    "user": "seungwonan",
+    "prompt": "main에 푸시해야함 shortsgen"
+  },
+  {
+    "time": "18:25:17",
+    "user": "seungwonan",
+    "prompt": "쇼츠젠은 파일이 손상되었다네\n왜이러니?"
+  },
+  {
+    "time": "18:29:39",
+    "user": "seungwonan",
+    "prompt": "<task-notification>\n<task-id>bvo70pj9u</task-id>\n<tool-use-id>toolu_01Y1Rmz9dFe22UVYhwU3qzS5</tool-use-id>\n<output-file>/private/tmp/claude-501/-Users-seungwonan-Dev-1-project-blog/e590b465-f118-4a4d-b403-054d9004b13c/tasks/bvo70pj9u.output</output-file>\n<status>completed</status>\n<summary>Background command \"배포 반영까지 PDF 응답 폴링\" completed (exit code 0)</summary>\n</task-notification>"
+  },
+  {
+    "time": "18:39:06",
+    "user": "seungwonan",
+    "prompt": "retro-writer 에이전트로 직전 종료 세션(cwd: /Users/seungwonan/Dev/1-project/blog, session_id: e590b465-f118-4a4d-b403-054d9004b13c)의 회고 초안을 작성하라. session-history 로 해당 세션 내용을 불러오고, 결과를 다음 경로에 마크다운으로 저장: /Users/seungwonan/.agents/memory/retros/retro-20260601-183905.md"
+  }
+]

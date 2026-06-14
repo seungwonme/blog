@@ -1,0 +1,62 @@
+[
+  {
+    "time": "01:23:09",
+    "user": "seungwonan",
+    "prompt": "about에 \n\n팟캐스트 운영 (아래 같은 팟캐스트고 다른 플랫폼)\nhttps://seungwonme.github.io/ai-podcast/feed.xml (RSS)\nhttps://podcasts.apple.com/us/podcast/ai-뉴스/id1896925394\nhttps://open.spotify.com/show/033yjadLipOvdTtsENnNGE?si=f2e4e6ac20124717\n\n\n이거 추가하려고 해 어떻게 추가할까"
+  },
+  {
+    "time": "01:25:15",
+    "user": "seungwonan",
+    "prompt": "대모산개발단 유튜브 -> 조코딩AX파트너스로 이름 바꾸고 링크도 https://www.youtube.com/@%EC%A1%B0%EC%BD%94%EB%94%A9AX%ED%8C%8C%ED%8A%B8%EB%84%88%EC%8A%A4 이걸로 바꿔줘\n그리고 기간을 2026.6월까지로 해줘"
+  },
+  {
+    "time": "01:25:38",
+    "user": "seungwonan",
+    "prompt": "조코딩AX파트너스 유튜브 인거지"
+  },
+  {
+    "time": "01:26:12",
+    "user": "seungwonan",
+    "prompt": "https://www.youtube.com/@aidensystems\n\n개인 유튜브 운영도 추가할까?"
+  },
+  {
+    "time": "01:27:33",
+    "user": "seungwonan",
+    "prompt": "아니다 Contact & Links 에 추가하는 게 낫겠어 이건 개인이니까\n\nhttps://www.threads.com/@aidensystems\nhttps://www.instagram.com/aidensystems\nhttps://x.com/aidensystems\n\n이렇게 추가하면 좋을듯 ?\n\n아니면 각 SNS 아스키 아트 혹은 react-icon으로 아이콘 추가하는 식으로는 어ㄸ ?"
+  },
+  {
+    "time": "01:36:19",
+    "user": "seungwonan",
+    "prompt": "[Image #2]\n\n이거 너무 많지 않아?\n어떻게 하는 게 좋으려나\n\n그냥 가로로 한 줄 배치할까?\nsuppressHydrationWarning 일단 추가해봐"
+  },
+  {
+    "time": "01:40:08",
+    "user": "seungwonan",
+    "prompt": "/gog \n/agent-slack \n\n아머스포츠강의도 추가하자"
+  },
+  {
+    "time": "01:45:32",
+    "user": "seungwonan",
+    "prompt": "그래 그렇게 수정해줘"
+  },
+  {
+    "time": "01:45:45",
+    "user": "seungwonan",
+    "prompt": "임직원 대상 AI 바이브코딩 교육 으로 바꾸고 커밋 푸시 해줘"
+  },
+  {
+    "time": "01:50:19",
+    "user": "seungwonan",
+    "prompt": "분류해서 커밋하자 우선 삭제 대상부터 찾아줘"
+  },
+  {
+    "time": "01:54:30",
+    "user": "seungwonan",
+    "prompt": "1,2 삭제하고 다 커밋하자"
+  },
+  {
+    "time": "01:54:33",
+    "user": "seungwonan",
+    "prompt": "1,2 삭제하고 다 커밋 푸시하자"
+  }
+]
