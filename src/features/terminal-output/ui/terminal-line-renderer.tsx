@@ -10,7 +10,7 @@ import {
   FaXTwitter,
   FaYoutube,
 } from "react-icons/fa6";
-import ReactMarkdown from "react-markdown";
+import ReactMarkdown, { type Components } from "react-markdown";
 import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
 import type { TerminalLine } from "@/entities/command";
@@ -102,49 +102,64 @@ export const TerminalLineRenderer = memo(function TerminalLineRenderer({
     );
   }
 
+  const linkComponents: Components = {
+    a: ({ href, children }) => {
+      // #cmd: 링크 → 클릭 시 해당 터미널 명령 실행 (ls 항목/about 등)
+      if (href?.startsWith("#cmd:") && onCommand) {
+        const cmd = decodeURIComponent(href.slice(5));
+        return (
+          <button
+            type="button"
+            onClick={() => onCommand(cmd)}
+            className="text-ctp-sapphire underline hover:text-ctp-sky cursor-pointer"
+          >
+            {children}
+          </button>
+        );
+      }
+      const meta = href ? getLinkMeta(href) : null;
+      const Icon = meta?.Icon;
+      return (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-ctp-sapphire underline hover:text-ctp-sky cursor-pointer"
+        >
+          {Icon && (
+            <>
+              <Icon
+                className="mr-1.5 inline-block size-[1em] align-[-0.125em]"
+                aria-hidden="true"
+              />
+              <span className="sr-only">{meta?.label}: </span>
+            </>
+          )}
+          {children}
+        </a>
+      );
+    },
+  };
+
   if (result.type === "markdown") {
     return (
       <div className="terminal-markdown">
         <ReactMarkdown
           remarkPlugins={[remarkGfm, remarkBreaks]}
-          components={{
-            a: ({ href, children }) => {
-              if (href?.startsWith("#cmd:") && onCommand) {
-                const cmd = decodeURIComponent(href.slice(5));
-                return (
-                  <button
-                    type="button"
-                    onClick={() => onCommand(cmd)}
-                    className="text-ctp-sapphire underline hover:text-ctp-sky cursor-pointer"
-                  >
-                    {children}
-                  </button>
-                );
-              }
-              const meta = href ? getLinkMeta(href) : null;
-              const Icon = meta?.Icon;
-              return (
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-ctp-sapphire underline hover:text-ctp-sky cursor-pointer"
-                >
-                  {Icon && (
-                    <>
-                      <Icon
-                        className="mr-1.5 inline-block size-[1em] align-[-0.125em]"
-                        aria-hidden="true"
-                      />
-                      <span className="sr-only">{meta?.label}: </span>
-                    </>
-                  )}
-                  {children}
-                </a>
-              );
-            },
-          }}
+          components={linkComponents}
         >
+          {result.content}
+        </ReactMarkdown>
+      </div>
+    );
+  }
+
+  // ls 출력: 등폭·정렬 유지(whitespace-pre-wrap이 개행/공백 처리) + #cmd 링크 클릭 가능.
+  // remark-breaks는 제외 — pre-wrap이 줄바꿈을 처리하므로 중복 방지.
+  if (result.type === "listing") {
+    return (
+      <div className="terminal-markdown whitespace-pre-wrap font-mono text-sm">
+        <ReactMarkdown remarkPlugins={[remarkGfm]} components={linkComponents}>
           {result.content}
         </ReactMarkdown>
       </div>

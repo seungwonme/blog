@@ -23,7 +23,14 @@ export interface ParsedCommand {
 }
 
 export interface CommandResult {
-  type: "text" | "markdown" | "error" | "clear" | "posts" | "banner";
+  type:
+    | "text"
+    | "markdown"
+    | "error"
+    | "clear"
+    | "posts"
+    | "banner"
+    | "listing";
   content: string;
 }
 

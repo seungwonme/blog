@@ -33,24 +33,26 @@ Keyboard shortcuts:
   Ctrl+C            Cancel input
   Ctrl+L / Cmd+K    Clear screen`;
 
+// ls 출력은 markdown으로 렌더된다. 폴더/파일명을 #cmd: 링크로 만들어
+// 클릭 시 해당 명령(ls/cat)이 실행되도록 한다. 권한 문자·정렬은 그대로 유지.
 function formatLsHome(fs: VirtualFS<PostMeta>): string {
   const lines: string[] = [];
   for (const dir of fs.directories) {
     const count = fs.files.get(dir)?.length ?? 0;
     lines.push(
-      `drwxr-xr-x  ${dir}/\t\t(${count} post${count !== 1 ? "s" : ""})`,
+      `drwxr-xr-x  [${dir}/](#cmd:${encodeURIComponent(`ls ${dir}`)})\t\t(${count} post${count !== 1 ? "s" : ""})`,
     );
   }
-  lines.push("-rw-r--r--  about");
+  lines.push(`-rw-r--r--  [about](#cmd:${encodeURIComponent("cat about")})`);
   return lines.join("\n");
 }
 
-function formatLsCategory(posts: PostMeta[]): string {
+function formatLsCategory(posts: PostMeta[], category: string): string {
   if (posts.length === 0) return "(empty directory)";
   return posts
     .map((p) => {
       const tags = p.tags.map((t) => `#${t}`).join(" ");
-      return `-rw-r--r--  ${p.slug}\t${p.date}\t${tags}`;
+      return `-rw-r--r--  [${p.slug}](#cmd:${encodeURIComponent(`cat ${category}/${p.slug}`)})\t${p.date}\t${tags}`;
     })
     .join("\n");
 }
@@ -157,7 +159,7 @@ export function executeCommand(
       const segments = getPathSegments(targetPath);
       if (segments.length === 0) {
         return {
-          result: { type: "posts", content: formatLsHome(fs) },
+          result: { type: "listing", content: formatLsHome(fs) },
         };
       }
       const category = segments[0];
@@ -171,7 +173,7 @@ export function executeCommand(
         };
       }
       return {
-        result: { type: "posts", content: formatLsCategory(posts) },
+        result: { type: "listing", content: formatLsCategory(posts, category) },
       };
     }
 
