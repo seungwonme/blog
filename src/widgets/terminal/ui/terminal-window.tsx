@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowUp } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { CommandResult, TerminalLine } from "@/entities/command";
 import { parseCommand } from "@/entities/command";
@@ -110,6 +111,7 @@ export function TerminalWindow({
   const [isProcessing, setIsProcessing] = useState(false);
   const [isAiMode, setIsAiMode] = useState(false);
   const [promptQueue, setPromptQueue] = useState<string[]>([]);
+  const [showJumpButton, setShowJumpButton] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const chatHistoryRef = useRef<ChatMessage[]>([]);
   const sessionIdRef = useRef(crypto.randomUUID());
@@ -140,10 +142,40 @@ export function TerminalWindow({
     });
   }, []);
 
+  // 가장 최근 입력한 명령줄(data-cmd)이 뷰포트 상단 위로 벗어났을 때만 점프 버튼을 띄운다.
+  const updateJumpButton = useCallback(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const cmds = container.querySelectorAll<HTMLElement>("[data-cmd]");
+    const last = cmds[cmds.length - 1];
+    if (!last) {
+      setShowJumpButton(false);
+      return;
+    }
+    const containerTop = container.getBoundingClientRect().top;
+    const lastTop = last.getBoundingClientRect().top;
+    setShowJumpButton(lastTop < containerTop - 4);
+  }, []);
+
+  const jumpToLastCommand = useCallback(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const cmds = container.querySelectorAll<HTMLElement>("[data-cmd]");
+    const last = cmds[cmds.length - 1];
+    if (!last) return;
+    const delta =
+      last.getBoundingClientRect().top - container.getBoundingClientRect().top;
+    container.scrollTo({
+      top: container.scrollTop + delta - 8,
+      behavior: "smooth",
+    });
+  }, []);
+
   // biome-ignore lint/correctness/useExhaustiveDependencies: scroll on every lines change
   useEffect(() => {
     scrollToBottom();
-  }, [lines, scrollToBottom]);
+    requestAnimationFrame(updateJumpButton);
+  }, [lines, scrollToBottom, updateJumpButton]);
 
   const addLine = useCallback((line: TerminalLine) => {
     setLines((prev) => {
@@ -473,10 +505,15 @@ export function TerminalWindow({
         <div
           ref={scrollRef}
           onClick={handleTerminalClick}
+          onScroll={updateJumpButton}
           className="flex-1 overflow-y-auto p-4 font-mono text-sm text-ctp-text bg-ctp-base/90 backdrop-blur-md terminal-scroll cursor-text select-text"
         >
           {lines.map((line) => (
-            <div key={line.id} className="mb-1">
+            <div
+              key={line.id}
+              className="mb-1"
+              data-cmd={line.type === "input" ? "" : undefined}
+            >
               <TerminalLineRenderer line={line} onCommand={handleCommand} />
             </div>
           ))}
@@ -501,6 +538,20 @@ export function TerminalWindow({
           disabled={isProcessing}
           isAiMode={isAiMode}
         />
+
+        {/* 최근 입력한 명령줄 위치로 되돌아가는 플로팅 버튼.
+            명령줄이 위로 스크롤되어 사라졌을 때만 노출(모바일은 명령 바 위로 띄움). */}
+        {showJumpButton && (
+          <button
+            type="button"
+            onClick={jumpToLastCommand}
+            aria-label="최근 명령어 위치로 이동"
+            title="최근 명령어 위치로 이동"
+            className="absolute bottom-20 right-4 z-30 flex size-10 items-center justify-center rounded-full border border-ctp-surface1 bg-ctp-surface0/90 text-ctp-sapphire shadow-lg backdrop-blur-md transition-colors hover:bg-ctp-surface1 hover:text-ctp-sky md:bottom-6"
+          >
+            <ArrowUp className="size-5" aria-hidden="true" />
+          </button>
+        )}
       </div>
     </div>
   );
