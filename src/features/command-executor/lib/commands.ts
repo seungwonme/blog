@@ -94,7 +94,7 @@ export function executeCommand(
       return { result: { type: "text", content: "visitor" } };
 
     case "hostname":
-      return { result: { type: "text", content: "seunan.dev" } };
+      return { result: { type: "text", content: "aidenahn.com" } };
 
     case "echo":
       return {

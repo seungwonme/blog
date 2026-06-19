@@ -1,8 +1,8 @@
-# seunan.dev
+# aidenahn.com
 
 터미널 UI 기반 개인 블로그. 명령어로 글을 탐색하고, AI에게 질문할 수 있습니다.
 
-Live: https://seunan.dev
+Live: https://www.aidenahn.com
 
 ## Stack
 
@@ -40,7 +40,7 @@ pnpm dev   # localhost:3000
 `.env.local` 필수 키:
 
 ```bash
-NEXT_PUBLIC_SITE_URL=https://seunan.dev
+NEXT_PUBLIC_SITE_URL=https://www.aidenahn.com
 NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=<code>
 GEMINI_API_KEY=<key>
 PINECONE_API_KEY=<key>

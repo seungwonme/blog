@@ -87,7 +87,7 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 
 ## Contact & Links
 
-[Email](mailto:senugw0u@gmail.com) · [LinkedIn](https://www.linkedin.com/in/seungwon-aiden/) · [GitHub](https://github.com/seungwonme) · [YouTube](https://www.youtube.com/@aidensystems) · [X](https://x.com/aidensystems) · [Instagram](https://www.instagram.com/aidensystems) · [Threads](https://www.threads.com/@aidensystems) · [Blog](https://seunan.dev)
+[Email](mailto:senugw0u@gmail.com) · [LinkedIn](https://www.linkedin.com/in/seungwon-aiden/) · [GitHub](https://github.com/seungwonme) · [YouTube](https://www.youtube.com/@aidensystems) · [X](https://x.com/aidensystems) · [Instagram](https://www.instagram.com/aidensystems) · [Threads](https://www.threads.com/@aidensystems) · [Blog](https://www.aidenahn.com)
 
 ---
 

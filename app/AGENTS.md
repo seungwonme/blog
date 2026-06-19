@@ -32,7 +32,7 @@ Next.js 라우팅 계층. 페이지 컴포넌트는 **FSD `src/pages/`에서 re-
 
 - 페이지 파일은 `src/pages/*`에서 import 후 `export default`만. 비즈니스 로직 넣지 말 것.
 - API route는 `NextResponse` 사용. `src/features/*/api/`의 함수를 호출하는 얇은 래퍼 유지.
-- 페이지별 metadata는 해당 `page.tsx`의 `export const metadata`로. 루트 `layout.tsx`의 template이 `%s | seunan.dev` 형태로 래핑.
+- 페이지별 metadata는 해당 `page.tsx`의 `export const metadata`로. 루트 `layout.tsx`의 template이 `%s | aidenahn.com` 형태로 래핑.
 - `app/` 안에서 `src/*`를 직접 import할 때는 `@/` 경로 사용.
 
 <!-- MANUAL: -->

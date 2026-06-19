@@ -3,10 +3,10 @@ import type { Metadata, Viewport } from "next";
 import { createPersonJsonLd, createWebSiteJsonLd, JsonLd } from "@/shared/lib";
 import "./globals.css";
 
-const SITE_NAME = "seunan.dev";
+const SITE_NAME = "aidenahn.com";
 const SITE_DESCRIPTION =
   "안승원(Aiden Ahn)의 터미널 UI 개발 블로그. 조코딩AX파트너스 AX Director이자 대모산개발단 공동창업자가 AI 에이전트, 바이브 코딩, 업무 자동화에 관한 글과 일일 AI 뉴스 다이제스트를 공유합니다.";
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.seunan.dev";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.aidenahn.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 2400,
         height: 1260,
-        alt: "seunan.dev — Aiden Ahn의 터미널 스타일 개발 블로그",
+        alt: "aidenahn.com — Aiden Ahn의 터미널 스타일 개발 블로그",
       },
     ],
   },

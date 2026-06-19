@@ -11,8 +11,8 @@ import type {
   WithContext,
 } from "schema-dts";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.seunan.dev";
-const SITE_NAME = "seunan.dev";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.aidenahn.com";
+const SITE_NAME = "aidenahn.com";
 
 // 안정적 엔티티 식별자 — 페이지마다 같은 @id를 참조해 저자/사이트 신호를 누적한다.
 const PERSON_ID = `${SITE_URL}/#person`;

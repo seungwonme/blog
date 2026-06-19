@@ -1,4 +1,4 @@
-# Blog — seunan.dev
+# Blog — aidenahn.com
 
 터미널 UI 기반 개인 블로그. Next.js 16 App Router + React 19 + FSD 아키텍처.
 
@@ -62,7 +62,7 @@ src/
 
 ## SEO / GEO
 
-- **정본 호스트 `https://www.seunan.dev`** (www). `NEXT_PUBLIC_SITE_URL` 빈값/미설정 시 코드 폴백이 www를 적용 — Vercel production env는 비워둬도 됨. apex(seunan.dev)는 www로 리다이렉트.
+- **정본 호스트 `https://www.aidenahn.com`** (www). `NEXT_PUBLIC_SITE_URL` 빈값/미설정 시 코드 폴백이 www를 적용 — Vercel production env는 비워둬도 됨. apex(aidenahn.com)는 www로 리다이렉트. 구 도메인 seunan.dev는 Vercel에 유지+www.aidenahn.com으로 리다이렉트 설정 시 기존 신호 누적.
 - 전역 메타·verification: `app/{layout,robots,sitemap,manifest}.ts` + `NEXT_PUBLIC_{GOOGLE,BING,NAVER}_SITE_VERIFICATION`.
 - **JSON-LD 엔티티 그래프** (`@/shared/lib`): 안정 `@id`(`#person`/`#website`/`#organization`/`#blog`)로 저자 신호를 페이지 간 누적.
   - 저자 `Person`은 **layout 1곳**에서만 전역 렌더(`createPersonJsonLd()` 인자 없이 = 풀 E-E-A-T). about/home 중복 금지. 저자 정보 수정은 `json-ld.tsx`의 `AUTHOR_DEFAULTS` 한 곳에서.

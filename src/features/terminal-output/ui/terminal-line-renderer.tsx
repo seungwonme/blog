@@ -29,7 +29,7 @@ const SOCIAL_HOSTS: Record<string, LinkMeta> = {
   "instagram.com": { Icon: FaInstagram, label: "Instagram" },
   "threads.com": { Icon: FaThreads, label: "Threads" },
   "threads.net": { Icon: FaThreads, label: "Threads" },
-  "seunan.dev": { Icon: Globe, label: "Blog" },
+  "aidenahn.com": { Icon: Globe, label: "Blog" },
 };
 
 function getLinkMeta(href: string): LinkMeta | null {

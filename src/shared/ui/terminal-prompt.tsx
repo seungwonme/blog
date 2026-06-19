@@ -12,7 +12,7 @@ export function TerminalPrompt({
       <span className="whitespace-nowrap">
         <span className="text-ctp-mauve font-bold">ai</span>
         <span className="text-ctp-text">@</span>
-        <span className="text-ctp-mauve font-bold">seunan.dev</span>
+        <span className="text-ctp-mauve font-bold">aidenahn.com</span>
         <span className="text-ctp-text">{" >"}</span>
       </span>
     );
@@ -22,7 +22,7 @@ export function TerminalPrompt({
     <span className="whitespace-nowrap">
       <span className="text-ctp-green font-bold">visitor</span>
       <span className="text-ctp-text">@</span>
-      <span className="text-ctp-green font-bold">seunan.dev</span>
+      <span className="text-ctp-green font-bold">aidenahn.com</span>
       <span className="text-ctp-text">:</span>
       <span className="text-ctp-blue font-bold">{path}</span>
       <span className="text-ctp-text">{" $"}</span>

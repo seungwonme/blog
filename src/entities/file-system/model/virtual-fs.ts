@@ -51,5 +51,5 @@ export function getPathSegments(path: string): string[] {
 }
 
 export function formatPrompt(currentPath: string): string {
-  return `visitor@seunan.dev:${currentPath}$`;
+  return `visitor@aidenahn.com:${currentPath}$`;
 }

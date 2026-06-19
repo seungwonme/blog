@@ -12,7 +12,7 @@ interface Props {
   params: Promise<{ category: string }>;
 }
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.seunan.dev";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.aidenahn.com";
 
 export const dynamicParams = false;
 
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: url,
     },
     openGraph: {
-      title: `${cat} — seunan.dev`,
+      title: `${cat} — aidenahn.com`,
       description: `${cat} 카테고리의 글 ${entries.length}편`,
       type: "website",
       url,

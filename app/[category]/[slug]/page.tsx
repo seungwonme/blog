@@ -20,7 +20,7 @@ interface Props {
   params: Promise<{ category: string; slug: string }>;
 }
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.seunan.dev";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.aidenahn.com";
 
 export const dynamicParams = false;
 

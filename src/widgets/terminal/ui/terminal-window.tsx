@@ -406,7 +406,7 @@ export function TerminalWindow({
 
       if (openMailto) {
         window.location.href =
-          "mailto:senugw0u@gmail.com?subject=[seunan.dev] Contact";
+          "mailto:senugw0u@gmail.com?subject=[aidenahn.com] Contact";
       }
 
       if (result) {
@@ -496,7 +496,7 @@ export function TerminalWindow({
             <div className="w-3 h-3 rounded-full bg-ctp-green" />
           </div>
           <span className="text-ctp-subtext0 text-xs mx-auto">
-            seunan.dev — terminal
+            aidenahn.com — terminal
           </span>
         </div>
 

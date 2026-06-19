@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { getAllEntries, getEntryByCategoryAndSlug } from "@/entities/post";
 
-export const alt = "seunan.dev";
+export const alt = "aidenahn.com";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -35,7 +35,7 @@ export default async function OgImage({
 }) {
   const { category, slug } = await params;
   const post = getEntryByCategoryAndSlug(category, slug);
-  const title = post?.title ?? "seunan.dev";
+  const title = post?.title ?? "aidenahn.com";
   const cat = post?.category ?? category;
   const date = post?.date ?? "";
   const fontData = await loadFont();
@@ -94,7 +94,7 @@ export default async function OgImage({
           color: "#9399b2",
         }}
       >
-        <span>seunan.dev</span>
+        <span>aidenahn.com</span>
         <span>{date}</span>
       </div>
     </div>,

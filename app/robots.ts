@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.seunan.dev";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.aidenahn.com";
 
 // 전략: AI 검색·학습 크롤러를 모두 명시적으로 허용해 브랜드 노출을 극대화한다.
 // (* 규칙이 이미 전체 허용이지만, 봇별 명시 규칙이 우선 적용되고 의도가 코드로 남는다.)

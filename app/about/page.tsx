@@ -28,13 +28,13 @@ const FAQ_ITEMS = [
       "이메일은 senugw0u@gmail.com으로 보내주세요. GitHub은 github.com/seungwonme, LinkedIn은 linkedin.com/in/seungwon-aiden 입니다.",
   },
   {
-    question: "seunan.dev는 어떤 블로그인가요?",
+    question: "aidenahn.com는 어떤 블로그인가요?",
     answer:
       "Aiden Ahn이 운영하는 터미널 스타일 개발 블로그입니다. AI 자동화, 에이전트 엔지니어링, 바이브 코딩에 관한 글과 일일 AI 뉴스 다이제스트를 제공합니다.",
   },
 ];
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.seunan.dev";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.aidenahn.com";
 
 export const metadata: Metadata = {
   title: "About",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     canonical: `${SITE_URL}/about`,
   },
   openGraph: {
-    title: "About | seunan.dev",
+    title: "About | aidenahn.com",
     description:
       "Aiden Ahn (안승원) — JAX Partners AX Director, DemoDev Co-founder. AI 자동화, 바이브 코딩, 워크플로우 설계 전문.",
     type: "profile",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "About | seunan.dev",
+    title: "About | aidenahn.com",
     description:
       "Aiden Ahn (안승원) — JAX Partners AX Director, DemoDev Co-founder.",
   },

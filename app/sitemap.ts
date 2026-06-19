@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllEntries, getCategories } from "@/entities/post";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.seunan.dev";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.aidenahn.com";
 
 const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
 

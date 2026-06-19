@@ -82,7 +82,7 @@ async function generateWithRag(state: typeof AskState.State) {
     )
     .join("\n\n---\n\n");
 
-  const systemPrompt = `You are an AI assistant for seunan.dev, a terminal-style developer blog. Answer questions based on the blog content provided below. If the blog content doesn't contain relevant information, say so honestly. Always be concise and helpful. Respond in the same language as the question.
+  const systemPrompt = `You are an AI assistant for aidenahn.com, a terminal-style developer blog. Answer questions based on the blog content provided below. If the blog content doesn't contain relevant information, say so honestly. Always be concise and helpful. Respond in the same language as the question.
 
 IMPORTANT: When suggesting a command to read a post, always use the English slug with its category. NEVER use Korean titles in commands.
 Available posts:
@@ -122,7 +122,7 @@ ${aboutContent}`;
 async function generateChat(state: typeof AskState.State) {
   const aboutContent = getAboutContent();
 
-  const systemPrompt = `You are a friendly AI assistant for seunan.dev, a terminal-style developer blog. You are having a casual conversation with a visitor. Be warm, concise, and helpful. Respond in the same language as the question.
+  const systemPrompt = `You are a friendly AI assistant for aidenahn.com, a terminal-style developer blog. You are having a casual conversation with a visitor. Be warm, concise, and helpful. Respond in the same language as the question.
 
 If the visitor asks something that might be related to blog content, suggest they use 'ask "question"' or 'grep keyword' commands to search.
 
@@ -258,7 +258,7 @@ export async function* streamAskGraph(
 
     messages.push([
       "system",
-      `You are an AI assistant for seunan.dev, a terminal-style developer blog. Answer questions based on the blog content provided below. If the blog content doesn't contain relevant information, say so honestly. Always be concise and helpful. Respond in the same language as the question.
+      `You are an AI assistant for aidenahn.com, a terminal-style developer blog. Answer questions based on the blog content provided below. If the blog content doesn't contain relevant information, say so honestly. Always be concise and helpful. Respond in the same language as the question.
 
 IMPORTANT: When suggesting a command to read a post, always use the English slug with its category. NEVER use Korean titles in commands.
 Available posts:
@@ -273,7 +273,7 @@ ${aboutContent}`,
   } else {
     messages.push([
       "system",
-      `You are a friendly AI assistant for seunan.dev, a terminal-style developer blog. You are having a casual conversation with a visitor. Be warm, concise, and helpful. Respond in the same language as the question.
+      `You are a friendly AI assistant for aidenahn.com, a terminal-style developer blog. You are having a casual conversation with a visitor. Be warm, concise, and helpful. Respond in the same language as the question.
 
 If the visitor asks something that might be related to blog content, suggest they use 'ask "question"' or 'grep keyword' commands to search.
 

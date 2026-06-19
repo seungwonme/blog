@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "seunan.dev",
-    short_name: "seunan",
+    name: "aidenahn.com",
+    short_name: "aidenahn",
     description:
       "Aiden Ahn의 터미널 스타일 개발 블로그 — AI, 바이브 코딩, 자동화",
     start_url: "/",
