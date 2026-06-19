@@ -102,20 +102,27 @@ export const TerminalLineRenderer = memo(function TerminalLineRenderer({
     );
   }
 
+  // #cmd: 링크는 author가 생성한 신뢰된 출력(ls/cd의 listing)에서만 실행 가능.
+  // ask LLM 답변 등 markdown 출력에 섞인 #cmd:는 프롬프트 인젝션 벡터이므로 실행하지 않는다.
+  const allowCommandLinks = result.type === "listing";
   const linkComponents: Components = {
     a: ({ href, children }) => {
       // #cmd: 링크 → 클릭 시 해당 터미널 명령 실행 (ls 항목/about 등)
-      if (href?.startsWith("#cmd:") && onCommand) {
-        const cmd = decodeURIComponent(href.slice(5));
-        return (
-          <button
-            type="button"
-            onClick={() => onCommand(cmd)}
-            className="text-ctp-sapphire underline hover:text-ctp-sky cursor-pointer"
-          >
-            {children}
-          </button>
-        );
+      if (href?.startsWith("#cmd:")) {
+        if (allowCommandLinks && onCommand) {
+          const cmd = decodeURIComponent(href.slice(5));
+          return (
+            <button
+              type="button"
+              onClick={() => onCommand(cmd)}
+              className="text-ctp-sapphire underline hover:text-ctp-sky cursor-pointer"
+            >
+              {children}
+            </button>
+          );
+        }
+        // 신뢰되지 않은 출처(LLM 등)의 #cmd: 링크 → 비활성 텍스트로만 렌더
+        return <span className="text-ctp-subtext0">{children}</span>;
       }
       const meta = href ? getLinkMeta(href) : null;
       const Icon = meta?.Icon;

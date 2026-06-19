@@ -10,7 +10,7 @@
 | --- | --- |
 | `command` | 명령어 파서·타입 (`ParsedCommand`, `CommandResult`) |
 | `file-system` | 가상 파일시스템 (`VirtualFS`, `resolvePath`, `buildFileSystem`). 포스트를 카테고리별 디렉토리로 표현 |
-| `post` | 블로그 콘텐츠 접근 (`getPosts`, `searchPosts`, `getAboutContent`). `shared/generated/posts.json`을 소스로 사용 |
+| `post` | 블로그 콘텐츠 접근 (`getAllEntries`, `searchPosts`, `getAboutContent`). `shared/generated/posts.json`을 소스로 사용 |
 
 ## Decoupling Pattern
 

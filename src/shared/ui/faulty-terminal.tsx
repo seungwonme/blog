@@ -280,6 +280,7 @@ export default function FaultyTerminal({
   const rafRef = useRef<number>(0);
   const loadAnimationStartRef = useRef<number>(0);
   const timeOffsetRef = useRef<number>(Math.random() * 100);
+  const pauseRef = useRef(pause);
 
   const tintVec = useMemo(() => hexToRgb(tint), [tint]);
 
@@ -287,6 +288,12 @@ export default function FaultyTerminal({
     () => (typeof dither === "boolean" ? (dither ? 1 : 0) : dither),
     [dither],
   );
+
+  // pause를 ref로 동기화 — 메인 WebGL effect 의존성에서 pause를 제외해,
+  // 탭 가시성 토글 시 컨텍스트 재생성 없이 RAF 루프에서만 정지/재개한다.
+  useEffect(() => {
+    pauseRef.current = pause;
+  }, [pause]);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
     const ctn = containerRef.current;
@@ -377,7 +384,7 @@ export default function FaultyTerminal({
         loadAnimationStartRef.current = t;
       }
 
-      if (!pause) {
+      if (!pauseRef.current) {
         const elapsed = (t * 0.001 + timeOffsetRef.current) * timeScale;
         program.uniforms.iTime.value = elapsed;
         frozenTimeRef.current = elapsed;
@@ -422,7 +429,6 @@ export default function FaultyTerminal({
     };
   }, [
     dpr,
-    pause,
     timeScale,
     scale,
     gridMul,

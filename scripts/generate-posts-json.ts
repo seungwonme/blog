@@ -44,7 +44,11 @@ function main() {
         title: data.title ?? file.replace(".md", ""),
         slug: data.slug ?? file.replace(".md", ""),
         category: data.category ?? "uncategorized",
-        tags: data.tags ?? [],
+        tags: Array.isArray(data.tags)
+          ? data.tags.map(String)
+          : data.tags
+            ? [String(data.tags)]
+            : [],
         date: data.date
           ? data.date instanceof Date
             ? data.date.toISOString().slice(0, 10)
@@ -61,7 +65,7 @@ function main() {
     }
   }
 
-  posts.sort((a, b) => (a.date > b.date ? -1 : 1));
+  posts.sort((a, b) => b.date.localeCompare(a.date));
 
   // Parse digests
   const digests: DigestEntry[] = [];
@@ -74,7 +78,11 @@ function main() {
         title: data.title ?? file.replace(".md", ""),
         slug: data.slug ?? file.replace(".md", ""),
         category: data.category ?? "digest",
-        tags: data.tags ?? [],
+        tags: Array.isArray(data.tags)
+          ? data.tags.map(String)
+          : data.tags
+            ? [String(data.tags)]
+            : [],
         date: data.date
           ? data.date instanceof Date
             ? data.date.toISOString().slice(0, 10)
@@ -91,7 +99,7 @@ function main() {
     }
   }
 
-  digests.sort((a, b) => (a.date > b.date ? -1 : 1));
+  digests.sort((a, b) => b.date.localeCompare(a.date));
 
   // Parse about
   let about = "";

@@ -9,7 +9,7 @@ import type { PostMeta } from "@/entities/post";
 import { executeCommand } from "@/features/command-executor";
 import { CommandInput, PromptQueue } from "@/features/command-input";
 import { TerminalLineRenderer } from "@/features/terminal-output";
-import { ASCII_BANNER } from "@/shared/lib/ascii-banner";
+import { ASCII_BANNER } from "@/shared/lib";
 import { MobileCommandBar } from "./mobile-command-bar";
 import { TerminalBackground } from "./terminal-background";
 

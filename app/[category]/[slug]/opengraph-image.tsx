@@ -77,7 +77,10 @@ export default async function OgImage({
       </div>
       <div
         style={{
-          display: "flex",
+          display: "-webkit-box",
+          WebkitBoxOrient: "vertical",
+          WebkitLineClamp: 3,
+          overflow: "hidden",
           fontSize: 64,
           fontWeight: 700,
           lineHeight: 1.25,

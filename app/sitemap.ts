@@ -29,9 +29,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const latestDate =
     entries.length > 0 ? new Date(`${entries[0].date}T00:00:00Z`) : new Date();
 
+  // 카테고리별 최신일 — 카테고리 목록 페이지의 lastModified를 전역 최신일이
+  // 아니라 해당 카테고리 글 중 가장 최근 날짜로 채운다(크롤러 신뢰도).
+  const categoryLatest = new Map<string, number>();
+  for (const entry of entries) {
+    const cat = entry.category.toLowerCase();
+    const t = new Date(`${entry.updated || entry.date}T00:00:00Z`).getTime();
+    const cur = categoryLatest.get(cat);
+    if (cur === undefined || t > cur) categoryLatest.set(cat, t);
+  }
+
   const categoryRoutes = getCategories().map((category) => ({
     url: `${SITE_URL}/${category}`,
-    lastModified: latestDate,
+    lastModified: new Date(
+      categoryLatest.get(category) ?? latestDate.getTime(),
+    ),
     changeFrequency: "weekly" as const,
     priority: 0.6,
   }));

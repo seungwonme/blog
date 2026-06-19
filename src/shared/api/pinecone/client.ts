@@ -1,3 +1,4 @@
+import "server-only";
 import { Pinecone } from "@pinecone-database/pinecone";
 
 let pineconeClient: Pinecone | null = null;

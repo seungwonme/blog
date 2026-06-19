@@ -10,6 +10,10 @@ const FaultyTerminal = dynamic(() => import("@/shared/ui/faulty-terminal"), {
 const MOBILE_BREAKPOINT = "(max-width: 767px)";
 const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
 
+// 모듈 스코프 상수 — 매 렌더 새 배열 리터럴을 넘기면 FaultyTerminal의 effect
+// 의존성이 매번 바뀌어 WebGL 컨텍스트가 재생성된다. 참조를 고정해 단일 컨텍스트 유지.
+const GRID_MUL: [number, number] = [2, 1];
+
 // WebGL 미지원 환경 (일부 headless 크롤러, 오래된 브라우저, GPU 블록 상태)에서
 // FaultyTerminal이 throw하면 Next.js 에러 바운더리가 페이지 전체를 교체한다.
 // 사전 감지 후 배경만 정적 그라디언트로 대체한다.
@@ -68,9 +72,10 @@ export const TerminalBackground = memo(function TerminalBackground() {
     <div className="absolute inset-0 z-0">
       <FaultyTerminal
         scale={1.5}
-        gridMul={[2, 1]}
+        gridMul={GRID_MUL}
         digitSize={1.2}
-        timeScale={paused ? 0 : 0.5}
+        timeScale={0.5}
+        pause={paused}
         scanlineIntensity={0.5}
         glitchAmount={1}
         flickerAmount={1}

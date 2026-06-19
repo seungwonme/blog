@@ -36,7 +36,7 @@ function toPostMeta(data: SourceData): PostMeta {
   };
 }
 
-export function getPosts(): Post[] {
+function getPosts(): Post[] {
   return getAllPosts().map(toPost);
 }
 
@@ -45,11 +45,11 @@ export function getPostBySlug(slug: string): Post | null {
   return data ? toPost(data) : null;
 }
 
-export function getDigests(): Post[] {
+function getDigests(): Post[] {
   return getAllDigests().map(toPost);
 }
 
-export function getDigestBySlug(slug: string): Post | null {
+function getDigestBySlug(slug: string): Post | null {
   const data = getDigestBySlugFromSource(slug);
   return data ? toPost(data) : null;
 }

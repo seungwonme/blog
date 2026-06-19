@@ -210,7 +210,11 @@ export interface StreamChunk {
 export async function* streamAskGraph(
   question: string,
   history: ChatMessage[],
+  signal?: AbortSignal,
 ): AsyncGenerator<StreamChunk> {
+  // 클라이언트가 이미 연결을 끊었으면 유료 호출 시작 전에 즉시 중단.
+  if (signal?.aborted) return;
+
   // 1. 분류
   const { route } = await classify({
     question,
@@ -291,7 +295,11 @@ ${aboutContent}`,
     maxOutputTokens: route === "rag" ? 1024 : 512,
   });
 
-  const tokenStream = await model.stream(messages);
+  // 클라이언트 연결이 끊기면(signal abort) Gemini 토큰 생성을 중단해 낭비 방지.
+  const tokenStream = await model.stream(
+    messages,
+    signal ? { signal } : undefined,
+  );
   for await (const chunk of tokenStream) {
     const text =
       typeof chunk.content === "string"

@@ -6,9 +6,43 @@ interface ChatMessage {
   content: string;
 }
 
+// 스트리밍 LLM 응답이 중간에 끊기지 않도록 함수 실행 시간 상한을 명시.
+export const maxDuration = 30;
+
 const MAX_QUESTION_LENGTH = 2000;
 const MAX_HISTORY_TURNS = 10;
 const MAX_MESSAGE_LENGTH = 2000;
+
+// 인메모리 IP 레이트리밋(고정 윈도우). 공개 엔드포인트가 매 요청마다 유료
+// Gemini+Pinecone를 호출하므로 빈도 제한으로 cost/concurrency 남용을 막는다.
+// 주의: 서버리스 인스턴스별 카운터라 다중 인스턴스 환경에선 한도가 인스턴스
+// 수만큼 곱해진다. 강한 전역 보장이 필요하면 Upstash 등 외부 스토어로 교체.
+const RATE_LIMIT = 15;
+const RATE_WINDOW_MS = 60_000;
+const rateHits = new Map<string, { count: number; resetAt: number }>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateHits.get(ip);
+  if (!entry || now > entry.resetAt) {
+    rateHits.set(ip, { count: 1, resetAt: now + RATE_WINDOW_MS });
+    // 만료 엔트리 정리 — Map 무한 증가 방지
+    if (rateHits.size > 5000) {
+      for (const [key, value] of rateHits) {
+        if (now > value.resetAt) rateHits.delete(key);
+      }
+    }
+    return false;
+  }
+  entry.count += 1;
+  return entry.count > RATE_LIMIT;
+}
+
+function getClientIp(request: Request): string {
+  const forwarded = request.headers.get("x-forwarded-for");
+  if (forwarded) return forwarded.split(",")[0].trim();
+  return request.headers.get("x-real-ip") ?? "unknown";
+}
 
 function sanitizeContent(text: string): string {
   return text.replace(/<[^>]*>/g, "").slice(0, MAX_MESSAGE_LENGTH);
@@ -42,6 +76,13 @@ function encodeSse(event: string, data: unknown): Uint8Array {
 
 export async function POST(request: Request) {
   try {
+    if (isRateLimited(getClientIp(request))) {
+      return NextResponse.json(
+        { error: "Too many requests. Please slow down." },
+        { status: 429 },
+      );
+    }
+
     const body = await request.json();
     const { question, history } = body;
 
@@ -64,7 +105,11 @@ export async function POST(request: Request) {
     const stream = new ReadableStream({
       async start(controller) {
         try {
-          for await (const chunk of streamAskGraph(safeQuestion, chatHistory)) {
+          for await (const chunk of streamAskGraph(
+            safeQuestion,
+            chatHistory,
+            request.signal,
+          )) {
             if (chunk.type === "sources") {
               controller.enqueue(encodeSse("sources", chunk.data));
             } else if (chunk.type === "token") {

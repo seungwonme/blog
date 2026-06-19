@@ -2,7 +2,7 @@ import type { CommandResult, ParsedCommand } from "@/entities/command";
 import type { VirtualFS } from "@/entities/file-system";
 import { getPathSegments, resolvePath } from "@/entities/file-system";
 import type { PostMeta } from "@/entities/post";
-import { ASCII_BANNER } from "@/shared/lib/ascii-banner";
+import { ASCII_BANNER } from "@/shared/lib";
 
 const HELP_TEXT = `Available commands:
 
@@ -163,7 +163,7 @@ export function executeCommand(
           result: { type: "listing", content: formatLsHome(fs) },
         };
       }
-      const category = segments[0];
+      const category = segments[0].toLowerCase();
       const posts = fs.files.get(category);
       if (!posts) {
         return {
@@ -188,16 +188,20 @@ export function executeCommand(
         return { newPath: "~", result: null };
       }
       const segments = getPathSegments(newPath);
-      if (segments.length === 1 && fs.directories.includes(segments[0])) {
-        // 디렉토리 진입 시 내용도 함께 보여준다(클릭/타이핑 모두 동일 UX).
-        const dirPosts = fs.files.get(segments[0]) ?? [];
-        return {
-          newPath,
-          result: {
-            type: "listing",
-            content: formatLsCategory(dirPosts, segments[0]),
-          },
-        };
+      if (segments.length === 1) {
+        const category = segments[0].toLowerCase();
+        if (fs.directories.includes(category)) {
+          // 디렉토리 진입 시 내용도 함께 보여준다(클릭/타이핑 모두 동일 UX).
+          // 카테고리를 소문자로 정규화해 대소문자 무관 매칭 + 경로 일치 유지.
+          const dirPosts = fs.files.get(category) ?? [];
+          return {
+            newPath: `~/${category}`,
+            result: {
+              type: "listing",
+              content: formatLsCategory(dirPosts, category),
+            },
+          };
+        }
       }
       return {
         result: {
@@ -226,7 +230,7 @@ export function executeCommand(
         // Explicit path: "cat dev/hello-world"
         const parts = arg.split("/");
         const targetSlug = parts.pop() ?? arg;
-        const targetDir = parts.join("/");
+        const targetDir = parts.join("/").toLowerCase();
         const dirPosts = fs.files.get(targetDir);
         if (!dirPosts?.some((p) => p.slug === targetSlug)) {
           return {
@@ -241,7 +245,7 @@ export function executeCommand(
         const segments = getPathSegments(fs.currentPath);
         if (segments.length > 0) {
           // Inside a category directory: only files in this directory
-          const categoryPosts = fs.files.get(segments[0]);
+          const categoryPosts = fs.files.get(segments[0].toLowerCase());
           if (!categoryPosts?.some((p) => p.slug === arg)) {
             return {
               result: {
