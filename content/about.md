@@ -6,7 +6,7 @@ title: About
 
 **Aiden Ahn** (안승원)
 
-**AI Native Engineer · DevRel**
+**AI Native Engineer / DevRel**
 
 AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 
@@ -15,9 +15,9 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 ## Work Experience
 
 - **[주식회사 조코딩AX파트너스](https://jocodingax.ai/)** AX Director (2026.03 - 현재)
-  - 기업 AX 교육·컨설팅, Claude Code/AI 에이전트 커리큘럼 기획 및 강의 진행
+  - Claude Code/AI 에이전트 교육 커리큘럼 설계 및 강의, 기업 AX 도입 컨설팅
 - **[주식회사 대모산개발단](https://demodev.io/)** Co-Founder / CCO (2025.02 - 2026.03)
-  - AI 자동화 제품·강의 기획 및 진행, ShortsGen 및 바이브코딩 콘텐츠 운영
+  - 바이브코딩 교육 콘텐츠 기획 및 운영, AI 쇼츠 생성 서비스 ShortsGen 기획 및 런칭
 
 ---
 
@@ -56,7 +56,7 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 ## Speaking & Media
 
 - **AI 뉴스** — AI 뉴스 팟캐스트 운영 (2026.06 - 현재)
-  - [Apple Podcasts](https://podcasts.apple.com/us/podcast/ai-%EB%89%B4%EC%8A%A4/id1896925394) · [Spotify](https://open.spotify.com/show/033yjadLipOvdTtsENnNGE) · [RSS](https://seungwonme.github.io/ai-podcast/feed.xml)
+  - [Apple Podcasts](https://podcasts.apple.com/us/podcast/ai-%EB%89%B4%EC%8A%A4/id1896925394) / [Spotify](https://open.spotify.com/show/033yjadLipOvdTtsENnNGE) / [RSS](https://seungwonme.github.io/ai-podcast/feed.xml)
 - **[조코딩AX파트너스 유튜브](https://www.youtube.com/@%EC%A1%B0%EC%BD%94%EB%94%A9AX%ED%8C%8C%ED%8A%B8%EB%84%88%EC%8A%A4)** — AI/바이브 코딩 정보 공유 (2025.02 - 2026.06)
 - **패스트캠퍼스** [오픈 세미나](https://fastcampus.co.kr/event_online_demoseminar) (2025.10, 2026.03)
 - **패스트캠퍼스** [전문가 인터뷰](https://fastcampus.co.kr/story_interview_demosan) (2026.03)
@@ -90,7 +90,7 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 
 ## Contact & Links
 
-[Email](mailto:senugw0u@gmail.com) · [LinkedIn](https://www.linkedin.com/in/seungwon-aiden/) · [GitHub](https://github.com/seungwonme) · [YouTube](https://www.youtube.com/@aidensystems) · [X](https://x.com/aidensystems) · [Instagram](https://www.instagram.com/aidensystems) · [Threads](https://www.threads.com/@aidensystems) · [Blog](https://www.aidenahn.com)
+[Email](mailto:senugw0u@gmail.com) / [LinkedIn](https://www.linkedin.com/in/seungwon-aiden/) / [GitHub](https://github.com/seungwonme) / [YouTube](https://www.youtube.com/@aidensystems) / [X](https://x.com/aidensystems) / [Instagram](https://www.instagram.com/aidensystems) / [Threads](https://www.threads.com/@aidensystems) / [Blog](https://www.aidenahn.com)
 
 ---
 
