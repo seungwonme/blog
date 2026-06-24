@@ -15,9 +15,9 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 ## Work Experience
 
 - **[주식회사 조코딩AX파트너스](https://jocodingax.ai/)** AX Director (2026.03 - 현재)
-  - 기업 AX 교육·컨설팅, Claude Code/AI 에이전트 커리큘럼 설계 및 강의
+  - 기업 AX 교육·컨설팅, Claude Code/AI 에이전트 커리큘럼 기획 및 강의 진행
 - **[주식회사 대모산개발단](https://demodev.io/)** Co-Founder / CCO (2025.02 - 2026.03)
-  - AI 자동화 제품·강의 기획, ShortsGen 및 바이브코딩 콘텐츠 운영
+  - AI 자동화 제품·강의 기획 및 진행, ShortsGen 및 바이브코딩 콘텐츠 운영
 
 ---
 
