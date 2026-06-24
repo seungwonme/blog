@@ -37,12 +37,12 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 - **패스트캠퍼스** ['n8n x Claude Code 10X 생산성 에이전트 군단'](https://fastcampus.co.kr/biz_online_agentcorps) 강의 런칭 (2026.02)
   - 2026.03 AI/업무생산성 분야 4위
 - **패스트캠퍼스** ['내 인생 자동화 바이브코딩 + 자동화 풀 패키지'](https://fastcampus.co.kr/biz_online_vibecodingn8n) 강의 런칭 (2025.10)
-  - 2026.01 전체 강의 4위, AI/업무생산성 2위
+  - 2026.01 [전체 강의 4위, AI/업무생산성 2위](https://www.gosiweek.com/article/1065573039086631)
 - **한국콘텐츠진흥원 (KOCCA)** [NCA 뉴콘텐츠 아카데미](https://www.ncakocca.kr/curriculum) 장기과정 인터랙티브 바이브 코딩/자동화 강의 (2025.09 - 2025.12)
 - **오즈코딩스쿨** KDT 과정 [AI 리더캠프](https://ozcodingschool.com/ozcoding/aileadercamp) 1/2기 주강사 (2025.09 - 2025.11)
   - [수강생 후기](https://boottent.com/camps/ozcodingschool-aipm_20260424162547842#tab-reviews)
 - **패스트캠퍼스** ['1일 1바이브코딩'](https://fastcampus.co.kr/biz_online_vibecoding30) 강의 참여 (2025.08)
-  - 2025.08 - 2026.03 전체 강의 1-3위권 유지
+  - 2025.08 - 2026.03 [전체 강의 1-3위권 유지](https://www.gosiweek.com/article/1065573039086631)
 
 ---
 
@@ -50,6 +50,7 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 
 - **[ShortsGen](https://shorts.demodev.io/)** — AI 쇼츠 자동 생성 서비스 (2026.01)
   - [서비스 소개서 다운로드](/shortsgen-brochure.pdf)
+  - 타입캐스트(네오사피엔스) AI 음성 API 연동 및 패스트캠퍼스 [강의 연계 협업](https://www.aitimes.kr/news/articleView.html?idxno=38778) (2026.02)
 
 ---
 
@@ -58,7 +59,7 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 - **AI 뉴스** — AI 뉴스 팟캐스트 운영 (2026.06 - 현재)
   - [Apple Podcasts](https://podcasts.apple.com/us/podcast/ai-%EB%89%B4%EC%8A%A4/id1896925394) / [Spotify](https://open.spotify.com/show/033yjadLipOvdTtsENnNGE) / [RSS](https://seungwonme.github.io/ai-podcast/feed.xml)
 - **[조코딩AX파트너스 유튜브](https://www.youtube.com/@%EC%A1%B0%EC%BD%94%EB%94%A9AX%ED%8C%8C%ED%8A%B8%EB%84%88%EC%8A%A4)** — AI/바이브 코딩 정보 공유 (2025.02 - 2026.06)
-- **패스트캠퍼스** [오픈 세미나](https://fastcampus.co.kr/event_online_demoseminar) (2025.10, 2026.03)
+- **패스트캠퍼스** 오픈 세미나 (2025.10, [2026.03](https://fastcampus.co.kr/event_online_demoseminar))
 - **패스트캠퍼스** [전문가 인터뷰](https://fastcampus.co.kr/story_interview_demosan) (2026.03)
 - **오즈코딩스쿨** 기업 대상 특강 (2025.11 - 2025.12)
 - **[일할맛 in 판교](https://www.pangyotechnovalley.org/base/board/read?boardManagementNo=16&boardNo=3594&menuLevel=&menuNo=)** 자동화 세미나 강연 (2025.11)
