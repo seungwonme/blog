@@ -23,7 +23,7 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 
 ## Instructional Experience
 
-- **셀트리온** 임직원 대상 AI 바이브코딩 / 개발 아카데미 (2026.07)
+- **셀트리온** 임직원 대상 AI 바이브코딩 / 개발 아카데미 (2026.07 - 2026.08)
 - **아머스포츠코리아** 임직원 대상 AI 바이브코딩 교육 (2026.06)
 - **선엔지니어링** [임직원 Claude Code AI 교육](https://blog.jocodingax.ai/seon-ax-training) (2026.05 - 2026.08)
 - **현대자동차그룹** 2026 HMG 사업부장 대상 AX 의사결정 과정 (2026.05 - 2026.06)
@@ -42,7 +42,7 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 - **오즈코딩스쿨** KDT 과정 [AI 리더캠프](https://ozcodingschool.com/ozcoding/aileadercamp) 1/2기 주강사 (2025.09 - 2025.11)
   - [수강생 후기](https://boottent.com/camps/ozcodingschool-aipm_20260424162547842#tab-reviews)
 - **패스트캠퍼스** ['1일 1바이브코딩'](https://fastcampus.co.kr/biz_online_vibecoding30) 강의 참여 (2025.08)
-  - 2026.03 전체 강의 1-3위권 유지
+  - 2025.08 - 2026.03 전체 강의 1-3위권 유지
 
 ---
 
