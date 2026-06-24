@@ -3,21 +3,23 @@ import type { Metadata, Viewport } from "next";
 import { createPersonJsonLd, createWebSiteJsonLd, JsonLd } from "@/shared/lib";
 import "./globals.css";
 
-const SITE_NAME = "aidenahn.com";
+const SITE_NAME = "aidenahn.com"; // 브랜드(제목 접미사 template·og:siteName 용)
+const SITE_TITLE = "안승원(Aiden Ahn)의 개발 블로그"; // 홈/OG 제목(도메인명 대신 설명형)
 const SITE_DESCRIPTION =
-  "안승원(Aiden Ahn)의 터미널 UI 개발 블로그. 조코딩AX파트너스 AX Director이자 대모산개발단 공동창업자가 AI 에이전트, 바이브 코딩, 업무 자동화에 관한 글과 일일 AI 뉴스 다이제스트를 공유합니다.";
+  "안승원(Aiden Ahn)의 개발 블로그. 기업의 AX, AI 에이전트, 바이브 코딩, 업무 자동화와 일일 AI 뉴스 다이제스트를 다룹니다."; // 네이버 권장 80자 이내(78자)
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.aidenahn.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: SITE_NAME,
+    default: SITE_TITLE,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
   keywords: [
     "Aiden Ahn",
     "안승원",
+    "AX",
     "개발 블로그",
     "소프트웨어 엔지니어",
     "AI",
@@ -40,7 +42,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ko_KR",
     url: SITE_URL,
-    title: SITE_NAME,
+    title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     siteName: SITE_NAME,
     images: [
@@ -54,7 +56,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: SITE_NAME,
+    title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     images: ["/og-image.png"],
   },
