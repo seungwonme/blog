@@ -50,7 +50,7 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 
 - **[ShortsGen](https://shorts.demodev.io/)** — AI 쇼츠 자동 생성 서비스 (2026.01)
   - [서비스 소개서 다운로드](/shortsgen-brochure.pdf)
-  - 타입캐스트(네오사피엔스) AI 음성 API 연동 및 패스트캠퍼스 [강의 연계 협업](https://www.aitimes.kr/news/articleView.html?idxno=38778) (2026.02)
+  - 타입캐스트(네오사피엔스) AI 음성 API 연동 및 패스트캠퍼스 강의 연계 협업 (2026.02) (관련 보도 [1](https://www.aitimes.kr/news/articleView.html?idxno=38778), [2](https://besuccess.com/?p=180378))
 
 ---
 
