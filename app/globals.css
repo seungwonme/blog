@@ -3,8 +3,7 @@
 
 @font-face {
   font-family: "D2Coding";
-  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/D2Coding.woff")
-    format("woff");
+  src: url("/fonts/D2Coding-Ver1.3.2-20180524.ttf") format("truetype");
   font-weight: normal;
   font-display: swap;
 }
