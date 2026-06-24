@@ -10,6 +10,7 @@ import {
   FaXTwitter,
   FaYoutube,
 } from "react-icons/fa6";
+import { SiApplepodcasts, SiRss, SiSpotify } from "react-icons/si";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
@@ -29,14 +30,22 @@ const SOCIAL_HOSTS: Record<string, LinkMeta> = {
   "instagram.com": { Icon: FaInstagram, label: "Instagram" },
   "threads.com": { Icon: FaThreads, label: "Threads" },
   "threads.net": { Icon: FaThreads, label: "Threads" },
+  "podcasts.apple.com": { Icon: SiApplepodcasts, label: "Apple Podcasts" },
+  "open.spotify.com": { Icon: SiSpotify, label: "Spotify" },
   "aidenahn.com": { Icon: Globe, label: "Blog" },
 };
 
 function getLinkMeta(href: string): LinkMeta | null {
   if (href.startsWith("mailto:")) return { Icon: Mail, label: "Email" };
   try {
-    const host = new URL(href).hostname.replace(/^www\./, "");
-    return SOCIAL_HOSTS[host] ?? null;
+    const url = new URL(href);
+    const host = url.hostname.replace(/^www\./, "");
+    if (SOCIAL_HOSTS[host]) return SOCIAL_HOSTS[host];
+    // 팟캐스트 RSS 피드 등 .xml/feed 링크는 호스트와 무관하게 RSS 로고
+    if (url.pathname.endsWith(".xml") || /\/feed\b/i.test(url.pathname)) {
+      return { Icon: SiRss, label: "RSS" };
+    }
+    return null;
   } catch {
     return null;
   }
