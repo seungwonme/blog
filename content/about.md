@@ -26,6 +26,7 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 - **셀트리온** 임직원 대상 AI 바이브코딩 / 개발 아카데미 (2026.07 - 2026.08)
 - **아머스포츠코리아** 임직원 대상 AI 바이브코딩 교육 (2026.06)
 - **선엔지니어링** [임직원 Claude Code AI 교육](https://blog.jocodingax.ai/seon-ax-training) (2026.05 - 2026.08)
+  - 8개 주요 부서 대상 건축설계/CM 업무 AI 전환 교육 운영 (관련 보도 [1](https://www.newswire.co.kr/newsRead.php?no=1037560), [2](https://www.newstap.co.kr/news/articleView.html?idxno=329318), [3](https://www.esnews.kr/news/articleView.html?idxno=4759))
 - **현대자동차그룹** 2026 HMG 사업부장 대상 AX 의사결정 과정 (2026.05 - 2026.06)
 - **멋쟁이사자처럼** 'Claude 생태계 200% 활용하기' 강의 런칭 (2026.05)
 - **패스트캠퍼스** ['바이브코딩 100일 챌린지'](https://fastcampus.co.kr/biz_online_vibecoding33) 강의 참여 (2026.05)
