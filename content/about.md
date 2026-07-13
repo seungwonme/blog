@@ -16,6 +16,7 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 
 - **[주식회사 조코딩AX파트너스](https://jocodingax.ai/)** AX Director (2026.03 - 현재)
   - Claude Code/AI 에이전트 교육 커리큘럼 설계 및 강의, 기업 AX 도입 컨설팅
+  - 조코딩, 프라이머, 대모산개발단이 함께 출범한 조코딩AX파트너스 초기 멤버로 합류 (관련 보도 [1](https://www.junggi.co.kr/news/articleView.html?idxno=35879))
 - **[주식회사 대모산개발단](https://demodev.io/)** Co-Founder / CCO (2025.02 - 2026.03)
   - 바이브코딩 교육 콘텐츠 기획 및 운영, AI 쇼츠 생성 서비스 ShortsGen 기획 및 런칭
 
