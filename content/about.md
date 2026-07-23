@@ -14,9 +14,9 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 
 ## Work Experience
 
-- **[주식회사 조코딩AX파트너스](https://jocodingax.ai/)** AX Director (2026.03 - 현재)
+- **[주식회사 조코딩AX파트너스](https://jocodingax.ai/)** AX Director (2026.03 - 2026.07)
   - Claude Code/AI 에이전트 교육 커리큘럼 설계 및 강의, 기업 AX 도입 컨설팅
-  - 조코딩, 프라이머, 대모산개발단이 함께 출범한 조코딩AX파트너스 초기 멤버로 합류 (관련 보도 [1](https://www.junggi.co.kr/news/articleView.html?idxno=35879))
+  - 조코딩, 프라이머, 대모산개발단이 함께 출범한 조코딩AX파트너스 초기 멤버로 합류 ([관련 보도](https://www.junggi.co.kr/news/articleView.html?idxno=35879))
 - **[주식회사 대모산개발단](https://demodev.io/)** Co-Founder / CCO (2025.02 - 2026.03)
   - 바이브코딩 교육 콘텐츠 기획 및 운영, AI 쇼츠 생성 서비스 ShortsGen 기획 및 런칭
 
@@ -32,10 +32,12 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 - **멋쟁이사자처럼** 'Claude 생태계 200% 활용하기' 강의 런칭 (2026.05)
 - **패스트캠퍼스** ['바이브코딩 100일 챌린지'](https://fastcampus.co.kr/biz_online_vibecoding33) 강의 참여 (2026.05)
 - **이랜드** 패션사업부 Claude Code AI Agent 개발 교육 (2026.05)
-- **슈피겐** [임원 대상 AI 바이브코딩 업무혁신 과정](https://blog.jocodingax.ai/spigen-ax-training) (2026.04 - 2026.06)
+- **슈피겐** [임원 대상 AI 바이브코딩 업무혁신 과정](https://blog.jocodingax.ai/spigen-ax-training) (2026.04 - 2026.07)
+  - [관련 보도](https://www.newstheai.com/news/articleView.html?idxno=21195)
 - **이랜드** [호텔사업부 AX 기초 교육](https://blog.jocodingax.ai/eland-ax-training) (2026.04)
 - **패스트캠퍼스** ['n8n 딸깍! 수익형 AI 쇼츠 자동화 패키지 프로젝트'](https://fastcampus.co.kr/data_online_aishorts) 강의 런칭 (2026.03)
 - **대웅제약** 재무기획본부 임직원 대상 AI 바이브코딩 업무혁신 과정 (2026.03)
+  - [관련 보도](https://www.mt.co.kr/tech/2026/04/05/2026040316074172991)
 - **패스트캠퍼스** ['n8n x Claude Code 10X 생산성 에이전트 군단'](https://fastcampus.co.kr/biz_online_agentcorps) 강의 런칭 (2026.02)
   - 2026.03 AI/업무생산성 분야 4위
 - **패스트캠퍼스** ['내 인생 자동화 바이브코딩 + 자동화 풀 패키지'](https://fastcampus.co.kr/biz_online_vibecodingn8n) 강의 런칭 (2025.10)
@@ -86,7 +88,7 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 
 ## Other Activities
 
-- **Primer Creator Economy** 1기 (2026.02 - 현재)
+- **Primer Creator Economy** 1기 (2026.02)
 - **중랑여성인력개발센터** 여성가족부 직업교육훈련 과정 기획 및 운영 관련 자문 회의 참여 (2025.10)
 
 ---
