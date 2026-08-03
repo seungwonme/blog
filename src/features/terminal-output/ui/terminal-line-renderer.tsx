@@ -10,7 +10,13 @@ import {
   FaXTwitter,
   FaYoutube,
 } from "react-icons/fa6";
-import { SiApplepodcasts, SiRss, SiSpotify } from "react-icons/si";
+import {
+  SiApplepodcasts,
+  SiRss,
+  SiSpotify,
+  SiTiktok,
+  SiVelog,
+} from "react-icons/si";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkBreaks from "remark-breaks";
 import remarkGfm from "remark-gfm";
@@ -30,6 +36,8 @@ const SOCIAL_HOSTS: Record<string, LinkMeta> = {
   "instagram.com": { Icon: FaInstagram, label: "Instagram" },
   "threads.com": { Icon: FaThreads, label: "Threads" },
   "threads.net": { Icon: FaThreads, label: "Threads" },
+  "tiktok.com": { Icon: SiTiktok, label: "TikTok" },
+  "velog.io": { Icon: SiVelog, label: "Velog" },
   "podcasts.apple.com": { Icon: SiApplepodcasts, label: "Apple Podcasts" },
   "open.spotify.com": { Icon: SiSpotify, label: "Spotify" },
   "aidenahn.com": { Icon: Globe, label: "Blog" },

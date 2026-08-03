@@ -218,13 +218,13 @@ interface PersonJsonLdOptions {
 const AUTHOR_DEFAULTS: PersonJsonLdOptions = {
   name: AUTHOR_NAME,
   url: SITE_URL,
-  jobTitle: "AX Director · Co-founder",
+  jobTitle: "DevRel / OSS Growth",
   alternateName: ["안승원", "Seungwon Ahn"],
   description:
-    "AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유하는 AI Native Engineer. 조코딩AX파트너스 AX Director이자 대모산개발단 공동창업자(CCO).",
+    "AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유하는 AI Native Engineer. NomaDamas에서 DevRel과 OSS Growth를 담당하며 대모산개발단을 공동창업했다.",
   worksFor: [
-    { name: "조코딩AX파트너스", url: "https://jocodingax.ai/" },
-    { name: "대모산개발단 (DemoDev)", url: "https://demodev.io/" },
+    { name: "NomaDamas", url: "https://nomadamas.org/" },
+    { name: "주식회사 마커", url: "http://markr.ai/" },
   ],
   alumniOf: [
     { name: "42 Seoul", url: "https://42seoul.kr/" },

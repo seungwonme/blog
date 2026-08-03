@@ -16,7 +16,7 @@ export function GET() {
   const lines: string[] = [
     "# aidenahn.com",
     "",
-    "> 안승원(Aiden Ahn)의 터미널 UI 개인 기술 블로그. 저자는 조코딩AX파트너스 AX Director이자 대모산개발단 공동창업자(CCO)로, AI 에이전트·CLI·바이브 코딩·업무 자동화와 AI 교육을 다룬다. 글은 한국어이며 dev/til 카테고리 포스트와 일일 AI 뉴스 다이제스트로 구성된다.",
+    "> 안승원(Aiden Ahn)의 터미널 UI 개인 기술 블로그. 저자는 [NomaDamas](https://nomadamas.org/)([주식회사 마커](http://markr.ai/))에서 DevRel과 OSS Growth를 담당하고 대모산개발단을 공동창업했으며, AI 에이전트, CLI, 바이브 코딩, 업무 자동화와 AI 교육을 다룬다. 글은 한국어이며 dev/til 카테고리 포스트와 일일 AI 뉴스 다이제스트로 구성된다.",
     "",
     "## About",
     `- [About — Aiden Ahn](${SITE_URL}/about): 저자 경력·강의 이력·수상·연락처. 원문(md): ${RAW_BASE}/about.md`,

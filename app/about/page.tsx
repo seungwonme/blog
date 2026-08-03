@@ -10,12 +10,12 @@ const FAQ_ITEMS = [
   {
     question: "Aiden Ahn은 누구인가요?",
     answer:
-      "안승원(Aiden Ahn)은 대모산개발단(DemoDev) 공동창업자이자 조코딩AX파트너스 AX Director입니다. AI 자동화, 바이브 코딩, 워크플로우 설계를 전문으로 합니다.",
+      "안승원(Aiden Ahn)은 주식회사 마커가 운영하는 NomaDamas에서 DevRel과 OSS Growth를 담당하는 AI Native Engineer이자 대모산개발단 공동창업자입니다.",
   },
   {
     question: "무슨 일을 하시나요?",
     answer:
-      "기업 임직원 대상 AI 바이브코딩 교육, 외주 솔루션 개발, AI 에이전트/자동화 워크플로우 설계를 주로 합니다. 패스트캠퍼스, 오즈코딩스쿨, 대웅제약, 이랜드, 슈피겐, 현대자동차그룹 등에서 강의를 진행했습니다.",
+      "AI 오픈소스 프로젝트의 유즈케이스 콘텐츠, SNS, SEO, GitHub 성장 시스템을 구축하고 기업 임직원 대상 AI 바이브코딩 교육과 AI 에이전트 워크플로우 설계를 합니다.",
   },
   {
     question: "어떤 기술 스택을 사용하나요?",
@@ -39,14 +39,14 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.aidenahn.com";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Aiden Ahn (안승원) — JAX Partners AX Director, DemoDev Co-founder. AI 자동화, 바이브 코딩, 워크플로우 설계 전문.",
+    "Aiden Ahn (안승원) - NomaDamas DevRel / OSS Growth, DemoDev Co-founder. AI 에이전트, 오픈소스 성장, 워크플로우 자동화.",
   alternates: {
     canonical: `${SITE_URL}/about`,
   },
   openGraph: {
     title: "About | aidenahn.com",
     description:
-      "Aiden Ahn (안승원) — JAX Partners AX Director, DemoDev Co-founder. AI 자동화, 바이브 코딩, 워크플로우 설계 전문.",
+      "Aiden Ahn (안승원) - NomaDamas DevRel / OSS Growth, DemoDev Co-founder. AI 에이전트, 오픈소스 성장, 워크플로우 자동화.",
     type: "profile",
     url: `${SITE_URL}/about`,
   },
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "About | aidenahn.com",
     description:
-      "Aiden Ahn (안승원) — JAX Partners AX Director, DemoDev Co-founder.",
+      "Aiden Ahn (안승원) - NomaDamas DevRel / OSS Growth, DemoDev Co-founder.",
   },
 };
 
@@ -69,7 +69,7 @@ export default function AboutPage() {
         data={createWebPageJsonLd({
           title: "About - Aiden Ahn",
           description:
-            "Aiden Ahn (안승원) — AI 자동화, 바이브 코딩, 워크플로우 설계 전문.",
+            "Aiden Ahn (안승원) - NomaDamas DevRel / OSS Growth. AI 에이전트, 오픈소스 성장, 워크플로우 자동화.",
           url: `${SITE_URL}/about`,
         })}
       />
