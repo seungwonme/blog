@@ -27,6 +27,8 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 
 ## Instructional Experience
 
+- **서울대학교 중앙도서관** [디지털 리터러시 아카데미 원데이클래스](https://www.snu.ac.kr/snunow/events?bbsidx=174680&md=v) 주강사 (2026.09)
+    - 재학생 및 교직원 대상 n8n 활용 AI 숏폼 영상 자동 생성 실습 강의
 - **셀트리온** 임직원 대상 AI 바이브코딩 / 개발 아카데미 (2026.07 - 2026.08)
 - **아머스포츠코리아** 임직원 대상 AI 바이브코딩 교육 (2026.06)
 - **선엔지니어링** [임직원 Claude Code AI 교육](https://blog.jocodingax.ai/seon-ax-training) (2026.05 - 2026.08)
