@@ -1,6 +1,6 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
-import { createWebSiteJsonLd, JsonLd } from "@/shared/lib";
+import { createPersonJsonLd, createWebSiteJsonLd, JsonLd } from "@/shared/lib";
 import "./globals.css";
 
 const SITE_NAME = "aidenahn.com";
@@ -94,6 +94,7 @@ export default function RootLayout({
   return (
     <html lang="ko" data-theme="dark">
       <body className="antialiased">
+        <JsonLd data={createPersonJsonLd()} />
         <JsonLd data={createWebSiteJsonLd()} />
         {children}
         <Analytics />
