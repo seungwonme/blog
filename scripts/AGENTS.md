@@ -20,7 +20,8 @@
 
 ## upsert-embeddings
 
-- `GEMINI_API_KEY`, `PINECONE_API_KEY`, `PINECONE_INDEX` 환경변수 필요
+- `GEMINI_API_KEY`, `GEMINI_EMBEDDING_MODEL`, `PINECONE_API_KEY`, `PINECONE_INDEX` 환경변수 필요
+- 임베딩 모델 변경 시 모델명이 콘텐츠 해시에 포함되어 전체 벡터를 다시 생성함. Pinecone 인덱스는 3072차원을 유지해야 함.
 - 콘텐츠 수정 후 검색 품질 유지하려면 수동 실행
 - CI에서 자동화 시 post 추가 → 임베딩 업데이트 파이프라인 구축 지점
 

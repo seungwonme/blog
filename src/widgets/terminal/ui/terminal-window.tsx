@@ -29,6 +29,7 @@ interface ChatMessage {
 }
 
 const MAX_LINES = 500;
+const MODEL_NAME = process.env.NEXT_PUBLIC_GEMINI_MODEL ?? "not configured";
 
 function createInitialLines(): TerminalLine[] {
   return [
@@ -55,7 +56,7 @@ function executeAiSlashCommand(
       return {
         result: {
           type: "text",
-          content: `Model: gemini-3.1-flash-lite (Google)\nMode: AI chat\nConversation turns: ${Math.floor(chatHistory.length / 2)}`,
+          content: `Model: ${MODEL_NAME} (Google)\nMode: AI chat\nConversation turns: ${Math.floor(chatHistory.length / 2)}`,
         },
       };
     case "/clear":

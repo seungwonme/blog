@@ -2,6 +2,11 @@ import "server-only";
 import { GoogleGenAI } from "@google/genai";
 
 let geminiClient: GoogleGenAI | null = null;
+const EMBEDDING_MODEL = process.env.GEMINI_EMBEDDING_MODEL ?? "";
+
+if (!EMBEDDING_MODEL) {
+  throw new Error("GEMINI_EMBEDDING_MODEL is required");
+}
 
 export function getGemini(): GoogleGenAI {
   if (!geminiClient) {
@@ -16,7 +21,7 @@ export async function getEmbedding(text: string): Promise<number[]> {
   const client = getGemini();
   try {
     const result = await client.models.embedContent({
-      model: "gemini-embedding-2",
+      model: EMBEDDING_MODEL,
       contents: text,
       config: {
         outputDimensionality: 3072,
