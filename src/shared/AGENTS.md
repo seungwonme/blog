@@ -24,7 +24,7 @@
 ## For AI Agents
 
 - 새 shadcn 컴포넌트: `pnpm dlx shadcn@latest add <name>` → `shared/ui/`에 자동 배치.
-- `api/gemini`, `api/pinecone`은 환경변수 필요 (`GEMINI_API_KEY`, `PINECONE_API_KEY`). 서버 코드에서만 호출.
+- `api/gemini`, `api/pinecone`은 환경변수 필요 (`GEMINI_API_KEY`, `GEMINI_EMBEDDING_MODEL`, `PINECONE_API_KEY`). 서버 코드에서만 호출.
 - 프로젝트 도메인 개념(post, command 등)이 섞이면 `shared`가 아님 → 해당 entity로 이동.
 
 <!-- MANUAL: -->

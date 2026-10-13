@@ -16,16 +16,15 @@ interface ChatMessage {
   content: string;
 }
 
-const MODEL_NAME = "gemini-3.1-flash-lite";
+const MODEL_NAME = process.env.NEXT_PUBLIC_GEMINI_MODEL ?? "";
+if (!MODEL_NAME) {
+  throw new Error("NEXT_PUBLIC_GEMINI_MODEL is required");
+}
 
-function getModel(options?: {
-  temperature?: number;
-  maxOutputTokens?: number;
-}) {
+function getModel(options?: { maxOutputTokens?: number }) {
   return new ChatGoogleGenerativeAI({
     model: MODEL_NAME,
     apiKey: process.env.GEMINI_API_KEY,
-    temperature: options?.temperature ?? 0.7,
     maxOutputTokens: options?.maxOutputTokens,
   });
 }
@@ -41,7 +40,7 @@ const AskState = Annotation.Root({
 
 // Node 1: 질문 분류
 async function classify(state: typeof AskState.State) {
-  const model = getModel({ temperature: 0, maxOutputTokens: 10 });
+  const model = getModel({ maxOutputTokens: 10 });
   const result = await model.invoke([
     [
       "system",

@@ -43,6 +43,8 @@ pnpm dev   # localhost:3000
 NEXT_PUBLIC_SITE_URL=https://www.aidenahn.com
 NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=<code>
 GEMINI_API_KEY=<key>
+NEXT_PUBLIC_GEMINI_MODEL=gemini-3.5-flash-lite
+GEMINI_EMBEDDING_MODEL=gemini-embedding-2
 PINECONE_API_KEY=<key>
 PINECONE_INDEX=<index-name>
 ```

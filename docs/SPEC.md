@@ -403,7 +403,9 @@ visitor@seunan.dev:~/dev$ ls
 
 ```bash
 # .env.local
-GROQ_API_KEY=gsk_xxx                # Gemini API Key
+GEMINI_API_KEY=<key>
+NEXT_PUBLIC_GEMINI_MODEL=gemini-3.5-flash-lite
+GEMINI_EMBEDDING_MODEL=gemini-embedding-2
 NEXT_PUBLIC_SITE_URL=https://seunan.dev
 NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=  # Google Search Console 인증 코드
 ```
@@ -414,7 +416,7 @@ NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=  # Google Search Console 인증 코드
 - **타이핑 속도**: 문자당 5~10ms — 사용감에 따라 조정
 - **ls 출력**: Unix `ls -l` 스타일 (drwxr-xr-x, 날짜, 태그 포함)
 - **콘텐츠 소스**: 로컬 마크다운 파일 + 빌드 타임 JSON 생성
-- **AI 모델**: Gemini `gemini-3.1-flash-lite`
+- **AI 모델**: `NEXT_PUBLIC_GEMINI_MODEL`, 임베딩은 `GEMINI_EMBEDDING_MODEL`
 - **SEO**: `generateStaticParams()`로 정적 페이지 생성
 
 ## Open Questions

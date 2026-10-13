@@ -20,10 +20,11 @@ function contentHash(text: string): string {
 
 async function getEmbedding(
   client: GoogleGenAI,
+  model: string,
   text: string,
 ): Promise<number[]> {
   const result = await client.models.embedContent({
-    model: "gemini-embedding-2",
+    model,
     contents: text,
     config: {
       outputDimensionality: 3072,
@@ -35,9 +36,12 @@ async function getEmbedding(
 async function main() {
   const pineconeApiKey = process.env.PINECONE_API_KEY;
   const geminiApiKey = process.env.GEMINI_API_KEY;
+  const embeddingModel = process.env.GEMINI_EMBEDDING_MODEL;
 
-  if (!pineconeApiKey || !geminiApiKey) {
-    console.error("PINECONE_API_KEY and GEMINI_API_KEY are required in .env");
+  if (!pineconeApiKey || !geminiApiKey || !embeddingModel) {
+    console.error(
+      "PINECONE_API_KEY, GEMINI_API_KEY, and GEMINI_EMBEDDING_MODEL are required in .env",
+    );
     process.exit(1);
   }
 
@@ -81,7 +85,7 @@ async function main() {
   for (const post of allEntries) {
     const text = `${post.title}\n${post.description}\n${post.content}`;
     const truncated = text.slice(0, 10000);
-    const hash = contentHash(truncated);
+    const hash = contentHash(`${embeddingModel}\0${truncated}`);
 
     currentHashes[post.slug] = hash;
     currentSlugs.add(post.slug);
@@ -93,7 +97,7 @@ async function main() {
     }
 
     console.log(`  Embedding: ${post.slug}`);
-    const values = await getEmbedding(gemini, truncated);
+    const values = await getEmbedding(gemini, embeddingModel, truncated);
 
     if (values.length === 0) {
       console.warn(`  Skipped (empty embedding): ${post.slug}`);
