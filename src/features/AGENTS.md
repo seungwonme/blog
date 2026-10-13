@@ -28,6 +28,8 @@
 
 모델은 필수 환경변수 `NEXT_PUBLIC_GEMINI_MODEL`로 설정. 공개 변수인 이유는 터미널 `/status`에도 같은 모델명을 표시하기 위함.
 
+모델을 바꾸기 전에 그 모델로 한 요청의 Gemini 호출(`classify`, 답변 생성)이 끝나는 시간을 운영 키로 재고, `app/api/ask/route.ts`의 `maxDuration`(30초)과 비교한다. 로컬 `next dev`에는 이 제한이 없어 로컬에서 성공해도 운영에서는 504로 끝날 수 있다.
+
 ## For AI Agents
 
 - 새 기능을 만들 때 UI/API/model을 각각 `ui/`, `api/`, `model/`, `lib/`로 분리.
