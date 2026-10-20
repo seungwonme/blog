@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hycli Social Test가 접근하는 TikTok 정보, 로컬 보관, 외부 도구 사용, 연결 해제와 삭제 요청 방법을 안내합니다.">
+  <link rel="canonical" href="https://www.aidenahn.com/apps/hycli-social-test/privacy.html">
+  <link rel="stylesheet" href="styles.css">
+  <title>개인정보처리방침 | Hycli Social Test</title>
+</head>
+<body>
+  <a class="skip" href="#main">본문으로 이동</a>
+  <header class="page">
+    <p class="brand">Hycli Social Test</p>
+    <nav aria-label="앱 문서"><a href="index.html">앱 소개</a><a href="terms.html">이용약관</a><a href="privacy.html" aria-current="page">개인정보처리방침</a></nav>
+  </header>
+  <main class="page" id="main">
+    <h1>개인정보처리방침</h1>
+    <p class="muted">최종 수정: 2026년 10월 20일</p>
+    <p>이 방침은 안승원(Aiden Ahn)이 개인 환경에서 운영하는 Hycli Social Test의 TikTok Sandbox 연동에 적용됩니다.</p>
+    <h2>1. 처리 목적</h2>
+    <p>계정 연결, 본인 또는 관리 권한이 있는 계정의 정보 조회, 공개 영상과 집계 통계 조회, 연동 오류 진단을 위해 정보를 처리합니다. 정보를 판매하거나 광고 프로파일을 만드는 목적으로 사용하지 않습니다.</p>
+    <h2>2. 접근하는 정보</h2>
+    <ul>
+      <li>계정 식별자, 표시 이름, 프로필 이미지와 사용자가 허용한 공개 프로필 정보</li>
+      <li>팔로워 수, 팔로잉 수, 좋아요 수, 공개 영상 수 등 계정 집계 정보</li>
+      <li>공개 영상의 식별자, 제목, 설명, 게시 시각, 길이, 공유 주소와 조회/반응 집계 정보</li>
+      <li>TikTok이 발급한 접근 토큰과 갱신 토큰 등 연결 유지에 필요한 인증 정보</li>
+      <li>요청 시각, 성공/실패 상태, 오류 메시지, 사용자가 저장한 조회 결과 등 로컬 실행 기록</li>
+    </ul>
+    <p>현재 요청하는 권한은 <code>user.info.basic</code>, <code>user.info.profile</code>, <code>user.info.stats</code>, <code>video.list</code>입니다. 이 권한으로 TikTok 비밀번호, 개인 메시지, 비공개 영상이나 결제 정보를 요청하지 않습니다.</p>
+    <h2>3. 처리와 보관 위치</h2>
+    <p>계정 연결과 조회는 사용자의 로컬 환경에서 실행합니다. 인증 정보는 Hycli의 비공개 로컬 보관소에 저장하며, 운영체제 키 보관소 또는 사용자 전용 파일 접근 권한으로 보호합니다. 조회 결과는 명령 출력, 활동 기록 또는 사용자가 저장한 테스트 파일에 남을 수 있습니다. 이 개인 테스트 앱을 위한 별도의 중앙 사용자 데이터 수집 서버는 운영하지 않습니다.</p>
+    <h2>4. TikTok, AI 도구와 외부 서비스</h2>
+    <p>TikTok은 공식 로그인, 권한 동의와 API 요청을 처리합니다. 사용자가 AI 도구나 클라우드 도구에 조회 또는 분석을 요청하면, 그 작업에 필요한 계정/게시물 정보가 선택한 도구 제공자에게 전달될 수 있습니다. 이때 해당 서비스의 개인정보 처리 조건도 적용됩니다. 인증 정보는 로컬 보관과 출력 마스킹 기능을 사용해 보호합니다.</p>
+    <p>이 안내 페이지에는 광고나 방문자 분석 스크립트를 추가하지 않습니다. 페이지를 제공하는 호스팅 사업자는 웹 요청에 따른 일반 접속 정보를 처리할 수 있습니다.</p>
+    <h2>5. 보관 기간과 삭제</h2>
+    <p>운영자가 보관하는 계정 정보와 실행 기록은 연동 검증에 필요한 기간 동안 보관합니다. 테스트가 끝나거나 삭제 요청을 받으면 불필요한 인증 정보와 테스트 사본을 삭제합니다.</p>
+    <p>TikTok에서 접근 권한을 취소하고 Hycli에서 저장된 연결 또는 인증 정보를 제거할 수 있습니다. 연결을 해제해도 별도로 저장한 조회 결과와 내보낸 파일이 자동 삭제되지는 않으므로, 해당 파일은 별도로 삭제해야 합니다. 운영자에게 전달한 정보의 삭제는 아래 연락처로 요청할 수 있습니다.</p>
+    <h2>6. 이용자의 선택과 문의</h2>
+    <p>TikTok 권한 동의 화면에서 허용 범위를 선택하거나 연결을 취소할 수 있습니다. 제공한 정보의 확인, 정정 또는 삭제에 관한 문의도 접수합니다. 운영자가 보관하지 않는 TikTok 원본 정보의 변경은 TikTok에서 진행해야 합니다.</p>
+    <p>개인정보 처리 및 삭제 요청 담당자: 안승원(Aiden Ahn)<br>연락처: <a href="mailto:hello@aidenahn.com">hello@aidenahn.com</a></p>
+    <h2>7. 방침 변경</h2>
+    <p>처리 목적, 정보 항목 또는 외부 서비스 사용 범위가 달라지면 이 방침과 최종 수정일을 갱신합니다. 추가 동의가 필요한 권한은 동의 없이 확대하지 않습니다.</p>
+  </main>
+  <footer class="page"><p>이 방침의 적용 대상은 Hycli Social Test입니다.</p><a href="terms.html">이용약관 보기</a></footer>
+</body>
+</html>
