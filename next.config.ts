@@ -36,7 +36,14 @@ const nextConfig: NextConfig = {
     ];
   },
   async redirects() {
-    return legacyPostRedirects();
+    return [
+      {
+        source: "/apps/hycli-social-test",
+        destination: "/apps/hycli-social-test/index.html",
+        permanent: true,
+      },
+      ...legacyPostRedirects(),
+    ];
   },
 };
 
