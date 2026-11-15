@@ -57,6 +57,8 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 
 ## Projects
 
+- **[Fishcut](https://fishcut.nomadamas.org)** — AI 에이전트가 초안을 만들고 사람이 마무리하는 로컬 쇼츠 편집기 (2026.10 - 현재)
+  - [GitHub](https://github.com/NomaDamas/fishcut)
 - **[ShortsGen](https://shorts.demodev.io/)** — AI 쇼츠 자동 생성 서비스 (2026.01)
   - [서비스 소개서 다운로드](/shortsgen-brochure.pdf)
   - 타입캐스트(네오사피엔스) AI 음성 API 연동 및 패스트캠퍼스 강의 연계 협업 (2026.02) (관련 보도 [1](https://www.aitimes.kr/news/articleView.html?idxno=38778), [2](https://besuccess.com/?p=180378))
@@ -70,6 +72,8 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 - **AI 뉴스** — AI 뉴스 팟캐스트 운영 (2026.06 - 현재)
   - [Apple Podcasts](https://podcasts.apple.com/us/podcast/ai-%EB%89%B4%EC%8A%A4/id1896925394) / [Spotify](https://open.spotify.com/show/033yjadLipOvdTtsENnNGE) / [RSS](https://seungwonme.github.io/ai-podcast/feed.xml)
 - **[조코딩AX파트너스 유튜브](https://www.youtube.com/@%EC%A1%B0%EC%BD%94%EB%94%A9AX%ED%8C%8C%ED%8A%B8%EB%84%88%EC%8A%A4)** — AI/바이브 코딩 정보 공유 (2025.02 - 2026.06)
+- **[AutoRAG Meetup](https://luma.com/wlmnk9mo)** 사회 (2026.10) (Markr x 브레인크루 주최)
+  - [테디노트 X AutoRAG 영상](https://www.youtube.com/watch?v=ZvgmMilxFkY)
 - **패스트캠퍼스** 오픈 세미나 (2025.10, [2026.03](https://fastcampus.co.kr/event_online_demoseminar))
 - **패스트캠퍼스** [전문가 인터뷰](https://fastcampus.co.kr/story_interview_demosan) (2026.03)
 - **오즈코딩스쿨** 기업 대상 특강 (2025.11 - 2025.12)
