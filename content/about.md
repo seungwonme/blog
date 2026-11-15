@@ -16,7 +16,6 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 
 - **[NomaDamas](https://nomadamas.org/) ([주식회사 마커](http://markr.ai/))** DevRel / OSS Growth (2026.08 - 현재)
   - AI 오픈소스 프로젝트의 유즈케이스 콘텐츠, SNS, SEO/블로그, 커뮤니티 및 행사 운영
-  - GitHub Star, 트래픽, SNS 반응을 추적하고 README, 데모, 콘텐츠를 연결하는 반복 가능한 OSS 성장 시스템 구축
 - **[주식회사 조코딩AX파트너스](https://jocodingax.ai/)** AX Director (2026.03 - 2026.07)
   - Claude Code/AI 에이전트 교육 커리큘럼 설계 및 강의, 기업 AX 도입 컨설팅
   - 조코딩, 프라이머, 대모산개발단이 함께 출범한 조코딩AX파트너스 초기 멤버로 합류 ([관련 보도](https://www.junggi.co.kr/news/articleView.html?idxno=35879))
@@ -57,6 +56,8 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 
 ## Projects
 
+- **[Fishcut](https://fishcut.nomadamas.org)** — 잘 터진 쇼츠를 분석해 AI 에이전트와 함께 만드는 AI 네이티브 바이럴 쇼츠 생성기 (2026.10 - 현재)
+  - [GitHub](https://github.com/NomaDamas/fishcut)
 - **[ShortsGen](https://shorts.demodev.io/)** — AI 쇼츠 자동 생성 서비스 (2026.01)
   - [서비스 소개서 다운로드](/shortsgen-brochure.pdf)
   - 타입캐스트(네오사피엔스) AI 음성 API 연동 및 패스트캠퍼스 강의 연계 협업 (2026.02) (관련 보도 [1](https://www.aitimes.kr/news/articleView.html?idxno=38778), [2](https://besuccess.com/?p=180378))
@@ -66,10 +67,12 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 ## Speaking & Media
 
 - **NomaDamas 공식 채널** — AI 오픈소스 프로젝트 및 에이전트 활용 콘텐츠 (2026.08 - 현재)
-  - [LinkedIn](https://www.linkedin.com/showcase/nomadamas) / [YouTube](https://www.youtube.com/@nomadamasorg) / [X](https://x.com/n0madamas) / [Threads](https://www.threads.com/@n0madamas) / [Instagram](https://www.instagram.com/n0madamas/) / [TikTok](https://www.tiktok.com/@nomadamas) / [Facebook](https://www.facebook.com/people/NomaDamas/61592614631363/) / [Velog](https://velog.io/@nomadamas/posts)
+  - [링크 모음](https://link.nomadamas.org/ko/)
 - **AI 뉴스** — AI 뉴스 팟캐스트 운영 (2026.06 - 현재)
   - [Apple Podcasts](https://podcasts.apple.com/us/podcast/ai-%EB%89%B4%EC%8A%A4/id1896925394) / [Spotify](https://open.spotify.com/show/033yjadLipOvdTtsENnNGE) / [RSS](https://seungwonme.github.io/ai-podcast/feed.xml)
 - **[조코딩AX파트너스 유튜브](https://www.youtube.com/@%EC%A1%B0%EC%BD%94%EB%94%A9AX%ED%8C%8C%ED%8A%B8%EB%84%88%EC%8A%A4)** — AI/바이브 코딩 정보 공유 (2025.02 - 2026.06)
+- **[AutoRAG Meetup](https://luma.com/wlmnk9mo)** 사회 (2026.10) (Markr x 브레인크루 주최)
+  - [현장 스케치 영상 (테디노트)](https://www.youtube.com/watch?v=h0Xpdf9-Hcs)
 - **패스트캠퍼스** 오픈 세미나 (2025.10, [2026.03](https://fastcampus.co.kr/event_online_demoseminar))
 - **패스트캠퍼스** [전문가 인터뷰](https://fastcampus.co.kr/story_interview_demosan) (2026.03)
 - **오즈코딩스쿨** 기업 대상 특강 (2025.11 - 2025.12)
