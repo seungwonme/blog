@@ -1,5 +1,5 @@
 import "server-only";
-import type { Post, PostMeta } from "../model/types";
+import type { AboutLanguage, Post, PostMeta } from "../model/types";
 import {
   getAboutContent as getAboutFromSource,
   getAllDigests,
@@ -93,8 +93,8 @@ export function getAllEntriesMeta(): PostMeta[] {
   return [...posts, ...digests].sort((a, b) => b.date.localeCompare(a.date));
 }
 
-export function getAboutContent(): string {
-  return getAboutFromSource();
+export function getAboutContent(language?: AboutLanguage): string {
+  return getAboutFromSource(language);
 }
 
 export function searchPosts(keyword: string): Post[] {

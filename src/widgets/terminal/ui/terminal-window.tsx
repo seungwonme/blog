@@ -1,7 +1,14 @@
 "use client";
 
 import { ArrowUp } from "lucide-react";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  type ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import type { CommandResult, TerminalLine } from "@/entities/command";
 import { parseCommand } from "@/entities/command";
 import { buildFileSystem, getPathSegments } from "@/entities/file-system";
@@ -16,6 +23,8 @@ import { TerminalBackground } from "./terminal-background";
 interface TerminalWindowProps {
   posts: PostMeta[];
   aboutContent: string;
+  aboutPath?: string;
+  headerAction?: ReactNode;
   initialCommand?: string;
   /** 시작 디렉토리(예: "~/dev"). URL이 카테고리/글이면 그 위치에서 터미널을 연다(새로고침 시 경로 보존). */
   initialPath?: string;
@@ -102,6 +111,8 @@ function executeAiSlashCommand(
 export function TerminalWindow({
   posts,
   aboutContent,
+  aboutPath = "/about",
+  headerAction,
   initialCommand,
   initialPath,
   preloadedContent,
@@ -402,7 +413,7 @@ export function TerminalWindow({
         parsed.name === "about" ||
         (parsed.name === "cat" && parsed.args[0] === "about")
       ) {
-        syncUrl("/about");
+        syncUrl(aboutPath);
       }
 
       if (openMailto) {
@@ -431,6 +442,7 @@ export function TerminalWindow({
       fs,
       posts,
       aboutContent,
+      aboutPath,
       commandHistory,
       isAiMode,
       isProcessing,
@@ -499,6 +511,7 @@ export function TerminalWindow({
           <span className="text-ctp-subtext0 text-xs mx-auto">
             aidenahn.com — terminal
           </span>
+          {headerAction}
         </div>
 
         {/* biome-ignore lint/a11y/noStaticElementInteractions: terminal container needs click handler for focus */}

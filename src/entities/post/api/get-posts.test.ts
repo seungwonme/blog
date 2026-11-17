@@ -1,10 +1,19 @@
 import { describe, expect, it } from "vitest";
 import {
+  getAboutContent,
   getAllEntries,
   getCategories,
   getEntryByCategoryAndSlug,
   getEntryBySlug,
 } from "@/entities/post";
+
+describe("About content", () => {
+  it("uses Korean by default and loads the separate English profile", () => {
+    expect(getAboutContent()).toBe(getAboutContent("ko"));
+    expect(getAboutContent("ko")).toContain("AI 에이전트로 일하는 방식");
+    expect(getAboutContent("en")).toContain("I use AI agents");
+  });
+});
 
 // These run against the real generated posts.json (built by predev/prebuild),
 // so assertions are written to be robust to content changes.

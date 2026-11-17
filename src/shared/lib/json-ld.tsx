@@ -76,6 +76,7 @@ interface WebPageJsonLdOptions {
   title: string;
   description: string;
   url: string;
+  inLanguage?: string;
 }
 
 export function createWebPageJsonLd(
@@ -87,7 +88,7 @@ export function createWebPageJsonLd(
     name: options.title,
     description: options.description,
     url: options.url,
-    inLanguage: "ko-KR",
+    inLanguage: options.inLanguage ?? "ko-KR",
     isPartOf: { "@id": WEBSITE_ID },
   };
 }

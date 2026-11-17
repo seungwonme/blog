@@ -10,7 +10,8 @@
 | --- | --- |
 | `posts/*.md` | 블로그 글. frontmatter `category`로 분류 (`dev`, `til` 등) |
 | `digest/YYYY-MM-DD.md` | 일일 digest. `category: digest`, slug는 날짜 |
-| `about.md` | About 페이지 본문 |
+| `about.md` | 한국어 About 본문 (`/about`) |
+| `about.en.md` | 영어 About 본문 (`/about/en`) |
 | `_private/` | 로컬 비공개 메모. **`.gitignore`됨, 커밋 금지** |
 
 ## Frontmatter
@@ -32,7 +33,8 @@ description: "메타 설명"
 - 새 포스트 추가 후 `pnpm dev` 재시작 또는 `pnpm predev` 수동 실행 → `posts.json` 갱신.
 - slug는 파일명과 일치시킬 것. 중복 slug는 generate 스크립트에서 덮어쓰기 발생.
 - digest는 `daily-digest` 스킬의 하드 룰 준수 (Draft-ID, `###` 섹션 구조). 별도 스킬 문서 참고.
-- `_private/`에 작성한 파일은 `posts.json`에 포함되지 않음 (generator scope: posts + digest + about.md only).
+- `_private/`에 작성한 파일은 `posts.json`에 포함되지 않음 (생성 범위는 posts, digest, about.md, about.en.md).
+- About에서 날짜나 링크를 수정할 때는 한국어와 영어 원본을 함께 확인한다.
 - 글 커밋 후 Pinecone 인덱스 동기화 필요 시: `pnpm upsert-embeddings`.
 
 <!-- MANUAL: -->

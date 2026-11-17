@@ -22,7 +22,7 @@ Next.js 라우팅 계층. 페이지 컴포넌트는 **FSD `src/pages/`에서 re-
 
 | Dir | 설명 |
 | --- | --- |
-| `about/` | About 페이지 (`content/about.md` 렌더) |
+| `about/` | 한국어 About (`content/about.md`)와 영어 About (`/about/en`, `content/about.en.md`) |
 | `[category]/[slug]/` | 포스트 상세(digest 포함). 정식 URL은 터미널 경로와 동일한 `/카테고리/슬러그`. `opengraph-image.tsx`로 글별 동적 OG 생성 |
 | `[category]/` | 카테고리 글 목록. 터미널 `ls <카테고리>` 자동 실행 |
 | `api/posts/[slug]/` | 포스트 raw JSON API (터미널 `cat`이 호출하는 내부 API — 슬러그 키 유지) |
