@@ -9,4 +9,4 @@ export {
   getPostBySlug,
   searchPosts,
 } from "./api/get-posts";
-export type { Post, PostMeta } from "./model/types";
+export type { AboutLanguage, Post, PostMeta } from "./model/types";

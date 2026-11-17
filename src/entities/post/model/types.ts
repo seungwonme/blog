@@ -1,3 +1,5 @@
+export type AboutLanguage = "ko" | "en";
+
 export interface PostMeta {
   title: string;
   slug: string;

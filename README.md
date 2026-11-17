@@ -64,7 +64,7 @@ PINECONE_INDEX=<index-name>
 
 - **Posts** — `content/posts/*.md`, frontmatter `category` 기반 분류 (`dev`, `til` 등)
 - **Digest** — `content/digest/YYYY-MM-DD.md`, 일일 뉴스레터 형식
-- **About** — `content/about.md`
+- **About** — 한국어 `content/about.md` (`/about`), 영어 `content/about.en.md` (`/about/en`)
 
 빌드 시 `scripts/generate-posts-json.ts`가 이 세 소스를 `src/shared/generated/posts.json`으로 통합합니다.
 

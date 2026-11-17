@@ -1,5 +1,6 @@
 import "server-only";
 import postsData from "@/shared/generated/posts.json";
+import type { AboutLanguage } from "../model/types";
 
 export interface PostFrontmatter {
   title: string;
@@ -19,13 +20,13 @@ interface GeneratedPostsData {
   posts: PostData[];
   digests: PostData[];
   about: string;
+  aboutEn?: string;
   generatedAt: string;
 }
 
 const data = postsData as GeneratedPostsData;
 const posts: PostData[] = data.posts;
 const digests: PostData[] = data.digests;
-const aboutContent: string = data.about;
 
 export function getAllPosts(): PostData[] {
   return posts;
@@ -63,6 +64,6 @@ export function getDigestBySlug(slug: string): PostData | null {
   return digests.find((d) => d.slug === slug) ?? null;
 }
 
-export function getAboutContent(): string {
-  return aboutContent;
+export function getAboutContent(language: AboutLanguage = "ko"): string {
+  return language === "en" ? (data.aboutEn ?? "") : data.about;
 }

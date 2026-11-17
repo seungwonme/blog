@@ -5,6 +5,7 @@ import matter from "gray-matter";
 const POSTS_DIR = path.join(process.cwd(), "content/posts");
 const DIGEST_DIR = path.join(process.cwd(), "content/digest");
 const ABOUT_PATH = path.join(process.cwd(), "content/about.md");
+const ENGLISH_ABOUT_PATH = path.join(process.cwd(), "content/about.en.md");
 const OUTPUT_PATH = path.join(process.cwd(), "src/shared/generated/posts.json");
 
 interface PostEntry {
@@ -24,6 +25,7 @@ interface GeneratedData {
   posts: PostEntry[];
   digests: DigestEntry[];
   about: string;
+  aboutEn: string;
   generatedAt: string;
 }
 
@@ -113,6 +115,7 @@ function main() {
     posts,
     digests,
     about,
+    aboutEn: matter(fs.readFileSync(ENGLISH_ABOUT_PATH, "utf-8")).content,
     generatedAt: new Date().toISOString(),
   };
 
