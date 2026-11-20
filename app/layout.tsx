@@ -97,6 +97,9 @@ export default function RootLayout({
         <JsonLd data={createPersonJsonLd()} />
         <JsonLd data={createWebSiteJsonLd()} />
         {children}
+        <footer className="px-4 py-2 text-center text-xs opacity-60">
+          상호: 에이든 / 대표자: 안승원 / Business name: 에이든 (Aiden)
+        </footer>
         <Analytics />
       </body>
     </html>
