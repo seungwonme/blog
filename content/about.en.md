@@ -27,7 +27,7 @@ I use AI agents to change how work gets done, and I share what I learn along the
 
 ## Instructional Experience
 
-- **KAIST Center for Administration Development** - Led an online workshop for administrative staff on using AI to make promotional shorts (Nov 18, 2026).
+- **[KAIST Center for Administration Development](https://www.kaist.ac.kr/kr/html/kaist/0106.html?sitesearch=dept_name&q=행정발전센터)** - Led an online workshop for administrative staff on using AI to make promotional shorts (Nov 18, 2026).
     - Used Codex to cut highlights from [KAIST’s Strawberry Party video](https://www.youtube.com/watch?v=i-jQHQcNdWI) and turn a [KAIST News article about the “Beyond Intelligence” symposium](https://news.kaist.ac.kr/news/html/news/?mode=V&mng_no=69410) into a narrated short. [Workshop materials](https://github.com/seungwonme/ai-shorts-project)
 - **Seoul National University Library** - Lead instructor for the [Digital Literacy Academy workshop](https://www.snu.ac.kr/snunow/events?bbsidx=174680&md=v) (Sep 2026).
     - Taught students and staff how to automate short-form video production with n8n.
