@@ -26,6 +26,8 @@ AI 에이전트로 일하는 방식을 바꾸고 그 방법을 공유합니다.
 
 ## Instructional Experience
 
+- **[KAIST 행정발전센터](https://www.kaist.ac.kr/kr/html/kaist/0106.html?sitesearch=dept_name&q=행정발전센터)** 행정직원 대상 온라인 강의 「단 5분, AI가 다 해주는 홍보 쇼츠 자동 제작법」 (2026.11.18)
+    - Codex로 [KAIST 딸기파티 영상](https://www.youtube.com/watch?v=i-jQHQcNdWI)에서 하이라이트를 뽑고, [‘지능 너머’ 심포지엄 기사](https://news.kaist.ac.kr/news/html/news/?mode=V&mng_no=69410)를 내레이션이 담긴 홍보 쇼츠로 만드는 과정을 시연. [실습 자료](https://github.com/seungwonme/ai-shorts-project)
 - **서울대학교 중앙도서관** [디지털 리터러시 아카데미 원데이클래스](https://www.snu.ac.kr/snunow/events?bbsidx=174680&md=v) 주강사 (2026.09)
     - 재학생 및 교직원 대상 n8n 활용 AI 숏폼 영상 자동 생성 실습 강의
 - **셀트리온** 임직원 대상 AI 바이브코딩 / 개발 아카데미 (2026.07 - 2026.08)
